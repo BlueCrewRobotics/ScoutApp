@@ -1,0 +1,57 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Add Team</ion-title>
+    <ion-buttons start>
+      <button ion-button icon-only (click)="cancel()">
+        Cancel
+      </button>
+    </ion-buttons>
+    <ion-buttons end>
+      <button ion-button icon-only type="submit" form="teamForm">
+        Save
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <ion-list>
+    <form (ngSubmit)="save()" id="teamForm">
+      <ion-item>
+        <ion-label stacked>Team Name</ion-label>
+        <ion-input type="text" [(ngModel)]="name" [ngModelOptions]="{standalone:true}"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label stacked>Team Number</ion-label>
+        <ion-input type="tel" [(ngModel)]="number" [ngModelOptions]="{standalone:true}"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Drops Gears</ion-label>
+        <ion-toggle checked="false" [(ngModel)]="dropGears" [ngModelOptions]="{standalone:true}"></ion-toggle>
+      </ion-item>
+      <ion-item>
+        <ion-label>Collects Gears</ion-label>
+        <ion-toggle checked="false" [(ngModel)]="collectGears" [ngModelOptions]="{standalone:true}"></ion-toggle>
+      </ion-item>
+      <ion-item>
+        <ion-label>Climbs Rope</ion-label>
+        <ion-toggle checked="false" [(ngModel)]="climbRope" [ngModelOptions]="{standalone:true}"></ion-toggle>
+      </ion-item>
+      <ion-item>
+        <ion-label>High Boiler</ion-label>
+        <ion-toggle checked="false" [(ngModel)]="highBoiler" [ngModelOptions]="{standalone:true}"></ion-toggle>
+      </ion-item>
+      <ion-item>
+        <ion-label>Low Boiler</ion-label>
+        <ion-toggle checked="false" [(ngModel)]="lowBoiler" [ngModelOptions]="{standalone:true}"></ion-toggle>
+      </ion-item>
+      <ion-item>
+        <ion-label>Collect Fuel</ion-label>
+        <ion-toggle checked="false" [(ngModel)]="collectFuel" [ngModelOptions]="{standalone:true}"></ion-toggle>
+      </ion-item>
+    </form>
+  </ion-list>
+</ion-content>

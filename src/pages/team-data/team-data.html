@@ -1,0 +1,47 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>{{name}} {{number}}</ion-title>
+    <ion-buttons start>
+      <button ion-button icon-only (click)="cancel()">
+        Cancel
+      </button>
+    </ion-buttons>
+    <ion-buttons end>
+        <button ion-button icon-only (click)="editTeam()">
+          Edit
+        </button>
+      </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <ion-list>
+    <ion-item>
+      Name: {{name}}
+    </ion-item>
+    <ion-item>
+      Number: {{number}}
+    </ion-item>
+    <ion-item>
+      Drops Gear: {{dropGear}}
+    </ion-item>
+    <ion-item>
+      Collects Gear: {{collectGear}}
+    </ion-item>
+    <ion-item>
+      Climbs Rope: {{climbRope}}
+    </ion-item>
+    <ion-item>
+      High Boiler: {{highBoiler}}
+    </ion-item>
+    <ion-item>
+      Low Boiler: {{lowBoiler}}
+    </ion-item>
+    <ion-item>
+      Collects Fuel: {{collectFuel}}
+    </ion-item>
+  </ion-list>
+</ion-content>

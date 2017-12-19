@@ -1,0 +1,8 @@
+{
+  "name": "scout",
+  "app_id": "f7042342",
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  }
+}
