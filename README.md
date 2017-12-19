@@ -44,7 +44,7 @@ For those new to Ionic, you should only edit the **src/** directory (for the mos
 
 ## Credits
 
-* **Matthew Gallant** - *Initial work* - [PurpleBooth](https://github.com/MatthewGallant)
+* **Matthew Gallant** - *Initial work* - [MatthewGallant](https://github.com/MatthewGallant)
 
 ## License
 
