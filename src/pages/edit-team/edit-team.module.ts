@@ -4,7 +4,6 @@ import { EditTeamPage } from './edit-team';
 
 @NgModule({
   declarations: [
-    EditTeamPage,
   ],
   imports: [
     IonicPageModule.forChild(EditTeamPage),

@@ -4,7 +4,6 @@ import { AddTeamPage } from './add-team';
 
 @NgModule({
   declarations: [
-    AddTeamPage,
   ],
   imports: [
     IonicPageModule.forChild(AddTeamPage),

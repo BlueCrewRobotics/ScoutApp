@@ -4,7 +4,6 @@ import { TeamDataPage } from './team-data';
 
 @NgModule({
   declarations: [
-    TeamDataPage,
   ],
   imports: [
     IonicPageModule.forChild(TeamDataPage),

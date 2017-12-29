@@ -4,7 +4,6 @@ import { AddMatchPage } from './add-match';
 
 @NgModule({
   declarations: [
-    AddMatchPage,
   ],
   imports: [
     IonicPageModule.forChild(AddMatchPage),

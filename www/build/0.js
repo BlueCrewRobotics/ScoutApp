@@ -1,1 +1,40 @@
-webpackJsonp([0],{292:function(e,t,r){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),r.d(t,"TeamDataPageModule",function(){return a});var n=r(0),o=r(6),c=r(106),f=this&&this.__decorate||function(e,t,r,n){var o,c=arguments.length,f=c<3?t:null===n?n=Object.getOwnPropertyDescriptor(t,r):n;if("object"==typeof Reflect&&"function"==typeof Reflect.decorate)f=Reflect.decorate(e,t,r,n);else for(var a=e.length-1;a>=0;a--)(o=e[a])&&(f=(c<3?o(f):c>3?o(t,r,f):o(t,r))||f);return c>3&&f&&Object.defineProperty(t,r,f),f},a=function(){function e(){}return e=f([Object(n.I)({declarations:[c.a],imports:[o.f.forChild(c.a)]})],e)}()}});
+webpackJsonp([0],{
+
+/***/ 292:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TeamDataPageModule", function() { return TeamDataPageModule; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__team_data__ = __webpack_require__(105);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+
+
+var TeamDataPageModule = (function () {
+    function TeamDataPageModule() {
+    }
+    TeamDataPageModule = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
+            declarations: [],
+            imports: [
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__team_data__["a" /* TeamDataPage */]),
+            ],
+        })
+    ], TeamDataPageModule);
+    return TeamDataPageModule;
+}());
+
+//# sourceMappingURL=team-data.module.js.map
+
+/***/ })
+
+});
+//# sourceMappingURL=0.js.map
