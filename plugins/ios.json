@@ -21,6 +21,12 @@
         },
         "ionic-plugin-keyboard": {
             "PACKAGE_NAME": "io.ionic.starter"
+        },
+        "cordova-plugin-app-preferences": {
+            "PACKAGE_NAME": "org.bluecrew6153.scout"
+        },
+        "cordova-sqlite-storage": {
+            "PACKAGE_NAME": "org.bluecrew6153.scout"
         }
     },
     "dependent_plugins": {}

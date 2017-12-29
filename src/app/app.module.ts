@@ -3,15 +3,17 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
+import { IonicStorageModule } from '@ionic/storage';
 
 import { AboutPage } from '../pages/about/about';
-import { TeamsPage } from '../pages/teams/teams';
+import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
 import { SettingsPage } from '../pages/settings/settings';
-import { MatchesPage } from '../pages/matches/matches';
 import { TeamDataPage } from '../pages/team-data/team-data';
 import { AddTeamPage } from '../pages/add-team/add-team';
 import { EditTeamPage } from '../pages/edit-team/edit-team';
+import { AddMatchPage } from '../pages/add-match/add-match';
+import { SigninPage } from '../pages/signin/signin';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -21,36 +23,39 @@ import { TeamsProvider } from '../providers/teams/teams';
   declarations: [
     MyApp,
     AboutPage,
-    TeamsPage,
+    HomePage,
     TabsPage,
     SettingsPage,
-    MatchesPage,
     TeamDataPage,
     AddTeamPage,
-    EditTeamPage
+    EditTeamPage,
+    AddMatchPage,
+    SigninPage
   ],
   imports: [
     BrowserModule,
     HttpModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
     AboutPage,
-    TeamsPage,
+    HomePage,
     TabsPage,
     SettingsPage,
-    MatchesPage,
     TeamDataPage,
     AddTeamPage,
-    EditTeamPage
+    EditTeamPage,
+    AddMatchPage,
+    SigninPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    TeamsProvider,
+    TeamsProvider
   ]
 })
 export class AppModule {}

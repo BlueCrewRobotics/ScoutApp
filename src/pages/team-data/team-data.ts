@@ -21,6 +21,8 @@ export class TeamDataPage {
   highBoiler:any;
   lowBoiler:any;
   collectFuel:any;
+  wins:any;
+  losses:any;
 
   constructor(
     public navCtrl: NavController,
@@ -51,6 +53,8 @@ export class TeamDataPage {
     this.highBoiler = this.navParams.get('highBoiler');
     this.lowBoiler = this.navParams.get('lowBoiler');
     this.collectFuel = this.navParams.get('collectFuel');
+    this.wins = this.navParams.get('wins');
+    this.losses = this.navParams.get('losses');
     this.team = {
       "teamName" : this.name,
       "teamNumber" : this.number,
@@ -59,7 +63,9 @@ export class TeamDataPage {
       "climbRope" : this.climbRope,
       "highBoiler" : this.highBoiler,
       "lowBoiler" : this.lowBoiler,
-      "collectFuel" : this.collectFuel
+      "collectFuel" : this.collectFuel,
+      "wins" : this.wins,
+      "losses" : this.losses
     }
   }
 

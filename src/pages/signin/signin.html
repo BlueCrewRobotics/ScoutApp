@@ -1,0 +1,31 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Scout</ion-title>
+    <ion-buttons end>
+        <button ion-button icon-only (click)="signIn()">
+          Sign In
+        </button>
+      </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padded>
+    <ion-card>
+      <img src="assets/imgs/logo.png"/>
+      <ion-card-content>
+        <ion-card-title>
+          Blue Crew Scout
+          </ion-card-title>
+        <p>
+          Welcome to Blue Crew Scout! Please sign in below with the team key.
+        </p>
+      </ion-card-content>
+    </ion-card>
+    <ion-item>
+      <ion-label>Team Key</ion-label>
+      <ion-input type="text" [(ngModel)]="teamKey" [ngModelOptions]="{standalone:true}"></ion-input>
+    </ion-item>
+</ion-content>

@@ -1,0 +1,24 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Scout</ion-title>
+    <ion-buttons end>
+        <button ion-button icon-only (click)="addTeam()">
+          <ion-icon name="add"></ion-icon>
+        </button>
+      </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+    <ion-refresher (ionRefresh)="doRefresh($event)">
+      <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
+    <ion-list>
+      <button ion-item *ngFor="let item of teams" (click)="itemSelected(item)">
+        {{item.teamName}}
+      </button>
+    </ion-list>
+</ion-content>

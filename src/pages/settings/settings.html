@@ -2,11 +2,24 @@
 
   <ion-navbar>
     <ion-title>Scout Settings</ion-title>
+    <ion-buttons end>
+        <button ion-button icon-only (click)="save()">
+          Save
+        </button>
+      </ion-buttons>
   </ion-navbar>
 
 </ion-header>
 
 
-<ion-content padding>
-
+<ion-content>
+  <ion-list>
+      <ion-item>
+        <ion-label>Team Key</ion-label>
+        <ion-input type="text" [(ngModel)]="securityKey" [ngModelOptions]="{standalone:true}"></ion-input>
+      </ion-item>
+      <button ion-item (click)="about()">
+          About Scout
+      </button>
+  </ion-list>
 </ion-content>

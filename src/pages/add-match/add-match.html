@@ -1,0 +1,55 @@
+<!--
+  Generated template for the AddMatchPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Add Match</ion-title>
+    <ion-buttons start>
+      <button ion-button icon-only (click)="cancel()">
+        Cancel
+      </button>
+    </ion-buttons>
+    <ion-buttons end>
+      <button ion-button icon-only type="submit" form="teamForm">
+        Save
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <ion-list>
+    <form (ngSubmit)="save()" id="teamForm">
+      <ion-item>
+        <ion-label stacked>Winning Team Number</ion-label>
+        <ion-input type="tel" [(ngModel)]="winOne" [ngModelOptions]="{standalone:true}"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label stacked>Winning Team Number</ion-label>
+        <ion-input type="tel" [(ngModel)]="winTwo" [ngModelOptions]="{standalone:true}"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label stacked>Winning Team Number</ion-label>
+        <ion-input type="tel" [(ngModel)]="winThree" [ngModelOptions]="{standalone:true}"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label stacked>Losing Team Number</ion-label>
+        <ion-input type="tel" [(ngModel)]="loseOne" [ngModelOptions]="{standalone:true}"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label stacked>Losing Team Number</ion-label>
+        <ion-input type="tel" [(ngModel)]="loseTwo" [ngModelOptions]="{standalone:true}"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label stacked>Losing Team Number</ion-label>
+        <ion-input type="tel" [(ngModel)]="loseThree" [ngModelOptions]="{standalone:true}"></ion-input>
+      </ion-item>
+    </form>
+  </ion-list>
+</ion-content>

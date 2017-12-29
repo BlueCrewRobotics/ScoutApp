@@ -4,6 +4,7 @@ import { ViewController } from 'ionic-angular';
 import { Http, Headers, RequestOptions } from '@angular/http';
 import { AlertController } from 'ionic-angular';
 import { LoadingController } from 'ionic-angular';
+import { Storage } from '@ionic/storage';
 
 @IonicPage()
 @Component({
@@ -12,6 +13,7 @@ import { LoadingController } from 'ionic-angular';
 })
 export class AddTeamPage {
 
+  securityKey:any;
   name:any;
   number:any;
   dropGears:boolean;
@@ -38,7 +40,8 @@ export class AddTeamPage {
     public viewCtrl: ViewController,
     public http: Http,
     public alertCtrl: AlertController,
-    public loadingCtrl: LoadingController
+    public loadingCtrl: LoadingController,
+    public storage: Storage
     ) {
   }
 
@@ -128,24 +131,40 @@ export class AddTeamPage {
       });
       loader.present();
 
-      var headers = new Headers();
-      headers.append('Content-Type', 'application/x-www-form-urlencoded' );
-      let options = new RequestOptions({ headers: headers });
-
-      var params = 'name=' + this.name + '&number=' + this.number + '&dropGears=' + this.dg + '&collectGears=' + this.cg + '&climbRope=' + this.cr + '&highBoiler=' + this.hb + '&lowBoiler=' + this.lb + '&collectFuel=' + this.cf;    
-      this.http.post("http://bluecrew6153.org/scout/addTeam.php", params, options)
-        .subscribe(data => {
-          loader.dismiss();
-          this.viewCtrl.dismiss();
-         }, error => {
-          let alert = this.alertCtrl.create({
-            title: 'Connection Error!',
-            subTitle: 'You appear to not be connected to the internet! Scout requires access to the internet to retrive data.',
-            buttons: ['OK']
-          });
-          alert.present();
+      this.storage.get('securityKey').then((val) => {
+        var headers = new Headers();
+        headers.append('Content-Type', 'application/x-www-form-urlencoded' );
+        let options = new RequestOptions({ headers: headers });
+  
+        var params = 'securityKey=' + val + '&name=' + this.name + '&number=' + this.number + '&dropGears=' + this.dg + '&collectGears=' + this.cg + '&climbRope=' + this.cr + '&highBoiler=' + this.hb + '&lowBoiler=' + this.lb + '&collectFuel=' + this.cf;    
+        this.http.post("http://bluecrew6153.org/scout/addTeam.php", params, options)
+          .subscribe(data => {
+            loader.dismiss();
+            if (data["_body"] == "Failure") {
+              let alert = this.alertCtrl.create({
+                title: 'Error!',
+                subTitle: 'An error has occured while trying to add the team.',
+                buttons: ['OK']
+              });
+              alert.present();
+            } else if (data["_body"] == "SecurityError") {
+              let alert = this.alertCtrl.create({
+                title: 'Security Key Error!',
+                subTitle: 'You do not have a valid security key. Please change your security key in the settings tab to a valid one.',
+                buttons: ['OK']
+              });
+              alert.present();
+            }
+            this.viewCtrl.dismiss();
+           }, error => {
+            let alert = this.alertCtrl.create({
+              title: 'Connection Error!',
+              subTitle: 'You appear to not be connected to the internet! Scout requires access to the internet to retrive data.',
+              buttons: ['OK']
+            });
+            alert.present();
+        });
       });
     }
   }
-
 }
