@@ -1,6 +1,6 @@
 webpackJsonp([2],{
 
-/***/ 290:
+/***/ 288:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -18,7 +18,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var SettingsPageModule = (function () {
+var SettingsPageModule = /** @class */ (function () {
     function SettingsPageModule() {
     }
     SettingsPageModule = __decorate([

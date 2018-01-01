@@ -18,7 +18,7 @@ import { Storage } from '@ionic/storage';
 })
 export class HomePage {
 
-  teams:any;
+  teams:any[] = [];
 
   constructor(
     public navCtrl: NavController,
@@ -77,7 +77,13 @@ export class HomePage {
   doRefresh(refresher) {
     this.teamsProvider.getTeams().subscribe(
       (data) => {
-      this.teams = data;
+        this.teamsProvider.getTeams().subscribe(
+          (data) => {
+          this.storage.set("teams", data);
+          this.storage.get("teams").then((val) => {
+            this.teams = val;
+          });
+        })
       })
     setTimeout(() => {
       refresher.complete();
@@ -85,16 +91,39 @@ export class HomePage {
   }
 
   loadData() {
+    this.storage.get("teams").then((val) => {
+      this.teams = val;
+    });
+    
+    // let loader = this.loadingCtrl.create({
+    //   content: "Loading Teams...",
+    //   duration: 3000
+    // });
+    // loader.present();
+    // this.teamsProvider.getTeams().subscribe(
+    //   (data) => {
+    //   this.storage.set("teams", data);
+    //   this.storage.get("teams").then((val) => {
+    //     this.teams = val;
+    //     loader.dismiss();
+    //   });
+    // })
+  }
+
+  uploadData() {
     let loader = this.loadingCtrl.create({
-      content: "Loading Teams...",
+      content: "Uploading Teams...",
       duration: 3000
     });
     loader.present();
     this.teamsProvider.getTeams().subscribe(
       (data) => {
-      this.teams = data;
-      loader.dismiss();
-      })
+      this.storage.set("teams", data);
+      this.storage.get("teams").then((val) => {
+        this.teams = val;
+        loader.dismiss();
+      });
+    })
   }
 
   ionViewDidLoad() {
@@ -110,5 +139,4 @@ export class HomePage {
       }
     });
   }
-
 }

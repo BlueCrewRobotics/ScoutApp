@@ -1,6 +1,6 @@
 webpackJsonp([4],{
 
-/***/ 289:
+/***/ 287:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -18,7 +18,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var EditTeamPageModule = (function () {
+var EditTeamPageModule = /** @class */ (function () {
     function EditTeamPageModule() {
     }
     EditTeamPageModule = __decorate([

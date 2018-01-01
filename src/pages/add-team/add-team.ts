@@ -13,6 +13,9 @@ import { Storage } from '@ionic/storage';
 })
 export class AddTeamPage {
 
+  team:any;
+  teams:any[] = [];
+
   securityKey:any;
   name:any;
   number:any;
@@ -126,45 +129,73 @@ export class AddTeamPage {
       this.numberNotNumberError = false;
     } else {
       let loader = this.loadingCtrl.create({
-        content: "Adding Team..",
-        duration: 3000
-      });
-      loader.present();
+      content: "Adding Team..",
+      duration: 3000
+    });
+    loader.present();
 
-      this.storage.get('securityKey').then((val) => {
-        var headers = new Headers();
-        headers.append('Content-Type', 'application/x-www-form-urlencoded' );
-        let options = new RequestOptions({ headers: headers });
+
+    this.team = {
+      "teamName" : this.name,
+      "teamNumber" : this.number,
+      "dropGears" : this.dg,
+      "collectGears" : this.cg,
+      "climbRope" : this.cr,
+      "highBoiler" : this.hb,
+      "lowBoiler" : this.lb,
+      "collectFuel" : this.cf,
+      "wins" : "0",
+      "losses" : "0"
+    }
+
+    this.storage.get("teams").then((val) => {
+      var old = val[0];
+      var newTeam = JSON.stringify(this.team);
+      var combined = [];
+
+      combined.push(newTeam);
+      combined.push(old);
+      
+      this.storage.set("teams", combined);
+    });
+
+    this.viewCtrl.dismiss();
+    loader.dismiss();
+
+      // this.storage.get('securityKey').then((val) => {
+      //   var headers = new Headers();
+      //   headers.append('Content-Type', 'application/x-www-form-urlencoded' );
+      //   let options = new RequestOptions({ headers: headers });
   
-        var params = 'securityKey=' + val + '&name=' + this.name + '&number=' + this.number + '&dropGears=' + this.dg + '&collectGears=' + this.cg + '&climbRope=' + this.cr + '&highBoiler=' + this.hb + '&lowBoiler=' + this.lb + '&collectFuel=' + this.cf;    
-        this.http.post("http://bluecrew6153.org/scout/addTeam.php", params, options)
-          .subscribe(data => {
-            loader.dismiss();
-            if (data["_body"] == "Failure") {
-              let alert = this.alertCtrl.create({
-                title: 'Error!',
-                subTitle: 'An error has occured while trying to add the team.',
-                buttons: ['OK']
-              });
-              alert.present();
-            } else if (data["_body"] == "SecurityError") {
-              let alert = this.alertCtrl.create({
-                title: 'Security Key Error!',
-                subTitle: 'You do not have a valid security key. Please change your security key in the settings tab to a valid one.',
-                buttons: ['OK']
-              });
-              alert.present();
-            }
-            this.viewCtrl.dismiss();
-           }, error => {
-            let alert = this.alertCtrl.create({
-              title: 'Connection Error!',
-              subTitle: 'You appear to not be connected to the internet! Scout requires access to the internet to retrive data.',
-              buttons: ['OK']
-            });
-            alert.present();
-        });
-      });
+      //   var params = 'securityKey=' + val + '&name=' + this.name + '&number=' + this.number + '&dropGears=' + this.dg + '&collectGears=' + this.cg + '&climbRope=' + this.cr + '&highBoiler=' + this.hb + '&lowBoiler=' + this.lb + '&collectFuel=' + this.cf;    
+      //   this.http.post("http://bluecrew6153.org/scout/addTeam.php", params, options)
+      //     .subscribe(data => {
+      //       loader.dismiss();
+      //       if (data["_body"] == "Failure") {
+      //         let alert = this.alertCtrl.create({
+      //           title: 'Error!',
+      //           subTitle: 'An error has occured while trying to add the team.',
+      //           buttons: ['OK']
+      //         });
+      //         alert.present();
+      //       } else if (data["_body"] == "SecurityError") {
+      //         let alert = this.alertCtrl.create({
+      //           title: 'Security Key Error!',
+      //           subTitle: 'You do not have a valid security key. Please change your security key in the settings tab to a valid one.',
+      //           buttons: ['OK']
+      //         });
+      //         alert.present();
+      //       }
+      //       this.viewCtrl.dismiss();
+      //      }, error => {
+      //       let alert = this.alertCtrl.create({
+      //         title: 'Connection Error!',
+      //         subTitle: 'You appear to not be connected to the internet! Scout requires access to the internet to retrive data.',
+      //         buttons: ['OK']
+      //       });
+      //       alert.present();
+      //   });
+      // });
     }
   }
 }
