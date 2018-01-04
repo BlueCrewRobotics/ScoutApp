@@ -154,7 +154,7 @@ export class AddTeamPage {
         this.storage.set("teams", data);
       } else {
         var existing = val.replace("]", ", ");
-        var newData = existing + JSON.stringify(this.team) + "]"
+        var newData = existing + JSON.stringify(this.team) + "]";
         this.storage.set("teams", newData);
       }
     });

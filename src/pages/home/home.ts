@@ -77,56 +77,28 @@ export class HomePage {
   doRefresh(refresher) {
     this.teamsProvider.getTeams().subscribe(
       (data) => {
-        this.storage.set("teams", data);
-        this.storage.get("teams").then((val) => {
-          this.teams = val;
-          console.log(val);
-        })
+        this.teams = data;
+        this.storage.set("teams", JSON.stringify(data));
       })
     setTimeout(() => {
       refresher.complete();
     }, 2000);
   }
 
-  loadData() {
-
-    //var data = '[{"id":"116","teamName":"Blue Crew","teamNumber":"6153","dropGears":"Yes","collectGears":"Yes","climbRope":"Yes","highBoiler":"Yes","lowBoiler":"No","collectFuel":"No","wins":"6","losses":"5"},{"id":"117","teamName":"Infinite Loop","teamNumber":"2648","dropGears":"Yes","collectGears":"Yes","climbRope":"Yes","highBoiler":"Yes","lowBoiler":"Yes","collectFuel":"Yes","wins":"0","losses":"1"},{"id":"118","teamName":"Test","teamNumber":"1234","dropGears":"No","collectGears":"No","climbRope":"No","highBoiler":"No","lowBoiler":"No","collectFuel":"No","wins":"0","losses":"0"}]';
-    // console.log(JSON.parse(data));
-    //this.teams = JSON.parse(data);
-
-    this.storage.get("teams").then((val) => {
-      this.teams = JSON.parse(val);
-    });
-    
-    // let loader = this.loadingCtrl.create({
-    //   content: "Loading Teams...",
-    //   duration: 3000
-    // });
-    // loader.present();
-    // this.teamsProvider.getTeams().subscribe(
-    //   (data) => {
-    //   this.storage.set("teams", data);
-    //   this.storage.get("teams").then((val) => {
-    //     this.teams = val;
-    //     loader.dismiss();
-    //   });
-    // })
-  }
-
-  uploadData() {
+  loadData() {    
     let loader = this.loadingCtrl.create({
-      content: "Uploading Teams...",
+      content: "Please Wait",
       duration: 3000
     });
     loader.present();
-    this.teamsProvider.getTeams().subscribe(
-      (data) => {
-      this.storage.set("teams", data);
-      this.storage.get("teams").then((val) => {
-        this.teams = val;
-        loader.dismiss();
-      });
-    })
+    this.storage.get("teams").then((val) => {
+      this.teams = JSON.parse(val);
+      loader.dismiss();
+    });
+  }
+
+  uploadData() {
+    this.storage.clear();
   }
 
   ionViewDidLoad() {

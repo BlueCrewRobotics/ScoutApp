@@ -687,52 +687,27 @@ var HomePage = /** @class */ (function () {
     HomePage.prototype.doRefresh = function (refresher) {
         var _this = this;
         this.teamsProvider.getTeams().subscribe(function (data) {
-            _this.storage.set("teams", data);
-            _this.storage.get("teams").then(function (val) {
-                _this.teams = val;
-                console.log(val);
-            });
+            _this.teams = data;
+            _this.storage.set("teams", JSON.stringify(data));
         });
         setTimeout(function () {
             refresher.complete();
         }, 2000);
     };
     HomePage.prototype.loadData = function () {
-        //var data = '[{"id":"116","teamName":"Blue Crew","teamNumber":"6153","dropGears":"Yes","collectGears":"Yes","climbRope":"Yes","highBoiler":"Yes","lowBoiler":"No","collectFuel":"No","wins":"6","losses":"5"},{"id":"117","teamName":"Infinite Loop","teamNumber":"2648","dropGears":"Yes","collectGears":"Yes","climbRope":"Yes","highBoiler":"Yes","lowBoiler":"Yes","collectFuel":"Yes","wins":"0","losses":"1"},{"id":"118","teamName":"Test","teamNumber":"1234","dropGears":"No","collectGears":"No","climbRope":"No","highBoiler":"No","lowBoiler":"No","collectFuel":"No","wins":"0","losses":"0"}]';
-        // console.log(JSON.parse(data));
-        //this.teams = JSON.parse(data);
-        var _this = this;
-        this.storage.get("teams").then(function (val) {
-            _this.teams = JSON.parse(val);
-        });
-        // let loader = this.loadingCtrl.create({
-        //   content: "Loading Teams...",
-        //   duration: 3000
-        // });
-        // loader.present();
-        // this.teamsProvider.getTeams().subscribe(
-        //   (data) => {
-        //   this.storage.set("teams", data);
-        //   this.storage.get("teams").then((val) => {
-        //     this.teams = val;
-        //     loader.dismiss();
-        //   });
-        // })
-    };
-    HomePage.prototype.uploadData = function () {
         var _this = this;
         var loader = this.loadingCtrl.create({
-            content: "Uploading Teams...",
+            content: "Please Wait",
             duration: 3000
         });
         loader.present();
-        this.teamsProvider.getTeams().subscribe(function (data) {
-            _this.storage.set("teams", data);
-            _this.storage.get("teams").then(function (val) {
-                _this.teams = val;
-                loader.dismiss();
-            });
+        this.storage.get("teams").then(function (val) {
+            _this.teams = JSON.parse(val);
+            loader.dismiss();
         });
+    };
+    HomePage.prototype.uploadData = function () {
+        this.storage.clear();
     };
     HomePage.prototype.ionViewDidLoad = function () {
         var _this = this;
@@ -1013,7 +988,7 @@ var AboutPage = /** @class */ (function () {
     }
     AboutPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-about',template:/*ion-inline-start:"/Users/matthewgallant/Documents/GitHub/ScoutApp/src/pages/about/about.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title>\n      About\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padded>\n    <ion-card>\n        <img src="assets/imgs/logo.png"/>\n        <ion-card-content>\n            <ion-list>\n              <ion-item>\n                Blue Crew Scout\n              </ion-item>\n              <ion-item>\n                Version 1.0\n              </ion-item>\n              <ion-item>\n                &copy; 2018 Blue Crew Robotics\n              </ion-item>\n              <ion-item>\n                Developed by Matt Gallant\n              </ion-item>\n            </ion-list>\n        </ion-card-content>\n      </ion-card>\n</ion-content>\n'/*ion-inline-end:"/Users/matthewgallant/Documents/GitHub/ScoutApp/src/pages/about/about.html"*/
+            selector: 'page-about',template:/*ion-inline-start:"/Users/matthewgallant/Documents/GitHub/ScoutApp/src/pages/about/about.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title>\n      About\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padded>\n    <ion-card>\n        <img src="assets/imgs/crew.png"/>\n        <ion-card-content>\n            <ion-list>\n              <ion-item>\n                Blue Crew Scout\n              </ion-item>\n              <ion-item>\n                Version 1.0\n              </ion-item>\n              <ion-item>\n                &copy; 2018 Blue Crew Robotics\n              </ion-item>\n              <ion-item>\n                Developed by Matt Gallant\n              </ion-item>\n            </ion-list>\n        </ion-card-content>\n      </ion-card>\n</ion-content>\n'/*ion-inline-end:"/Users/matthewgallant/Documents/GitHub/ScoutApp/src/pages/about/about.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */]])
     ], AboutPage);
