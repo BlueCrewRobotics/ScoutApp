@@ -75,17 +75,17 @@ export class HomePage {
   }
 
   doRefresh(refresher) {
-    // this.teamsProvider.getTeams().subscribe(
-    //   (data) => {
-        // this.storage.set("teams", data);
+    this.teamsProvider.getTeams().subscribe(
+      (data) => {
+        this.storage.set("teams", data);
         this.storage.get("teams").then((val) => {
           this.teams = val;
           console.log(val);
         })
-      // })
-    // setTimeout(() => {
-    //   refresher.complete();
-    // }, 2000);
+      })
+    setTimeout(() => {
+      refresher.complete();
+    }, 2000);
   }
 
   loadData() {
@@ -94,16 +94,9 @@ export class HomePage {
     // console.log(JSON.parse(data));
     //this.teams = JSON.parse(data);
 
-    var data = '{\"teamName\":\"Matt\",\"teamNumber\":\"1357\",\"dropGears\":\"Yes\",\"collectGears\":\"Yes\",\"climbRope\":\"Yes\",\"highBoiler\":\"Yes\",\"lowBoiler\":\"Yes\",\"collectFuel\":\"Yes\",\"wins\":\"0\",\"losses\":\"0\"},{\"teamName\":\"Test\",\"teamNumber\":\"1234\",\"dropGears\":\"No\",\"collectGears\":\"No\",\"climbRope\":\"No\",\"highBoiler\":\"No\",\"lowBoiler\":\"No\",\"collectFuel\":\"No\",\"wins\":\"0\",\"losses\":\"0\"}';
-    console.log(JSON.parse(data));
-
-    // this.storage.get("teams").then((val) => {
-    //   console.log(val);
-    //   // for (var i = 0, len = val.length; i < len; i++) {
-    //   //   this.teams = val;
-    //   // }
-    //   //this.storage.set("teams", "");
-    // });
+    this.storage.get("teams").then((val) => {
+      this.teams = JSON.parse(val);
+    });
     
     // let loader = this.loadingCtrl.create({
     //   content: "Loading Teams...",

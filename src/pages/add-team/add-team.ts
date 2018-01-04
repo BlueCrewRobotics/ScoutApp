@@ -147,16 +147,16 @@ export class AddTeamPage {
       "wins" : "0",
       "losses" : "0"
     }
-
+    
     this.storage.get("teams").then((val) => {
-      var old = val[0];
-      var newTeam = JSON.stringify(this.team);
-      var combined = [];
-
-      combined.push(newTeam);
-      combined.push(old);
-      
-      this.storage.set("teams", combined);
+      if (val == "" || val == null) {
+        var data = "[" + JSON.stringify(this.team) + "]";
+        this.storage.set("teams", data);
+      } else {
+        var existing = val.replace("]", ", ");
+        var newData = existing + JSON.stringify(this.team) + "]"
+        this.storage.set("teams", newData);
+      }
     });
 
     this.viewCtrl.dismiss();
