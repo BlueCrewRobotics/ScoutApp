@@ -73,7 +73,7 @@ export class AddMatchPage {
         let options = new RequestOptions({ headers: headers });
 
         var params = 'securityKey=' + val + '&teamWinOneNumber=' + this.winOne + '&teamWinTwoNumber=' + this.winTwo + '&teamWinThreeNumber=' + this.winThree + '&teamLoseOneNumber=' + this.loseOne + '&teamLoseTwoNumber=' + this.loseTwo + '&teamLoseThreeNumber=' + this.loseThree;    
-        this.http.post("http://bluecrew6153.org/scout/addMatch.php", params, options)
+        this.http.post("http://scout.bluecrew6153.org/api/match.php", params, options)
           .subscribe(data => {
             if (data["_body"] == "Failure") {
               let alert = this.alertCtrl.create({

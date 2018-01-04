@@ -137,7 +137,7 @@ export class AddTeamPage {
         let options = new RequestOptions({ headers: headers });
   
         var params = 'securityKey=' + val + '&name=' + this.name + '&number=' + this.number + '&dropGears=' + this.dg + '&collectGears=' + this.cg + '&climbRope=' + this.cr + '&highBoiler=' + this.hb + '&lowBoiler=' + this.lb + '&collectFuel=' + this.cf;    
-        this.http.post("http://bluecrew6153.org/scout/addTeam.php", params, options)
+        this.http.post("http://scout.bluecrew6153.org/api/team.php", params, options)
           .subscribe(data => {
             loader.dismiss();
             if (data["_body"] == "Failure") {
