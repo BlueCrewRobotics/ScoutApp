@@ -28,6 +28,10 @@ export class SettingsPage {
     this.navCtrl.push(AboutPage);
   }
 
+  reset() {
+    this.storage.clear();
+  }
+
   ionViewDidLoad() {
     this.storage.get('securityKey').then((val) => {
       this.securityKey = val;

@@ -16,7 +16,6 @@
 
 </ion-header>
 
-
 <ion-content>
   <ion-list>
     <form (ngSubmit)="save()" id="editTeamForm">
@@ -25,28 +24,28 @@
         <ion-input type="tel" [(ngModel)]="number" [ngModelOptions]="{standalone:true}"></ion-input>
       </ion-item>
       <ion-item>
-        <ion-label>Drops Gears</ion-label>
-        <ion-toggle [(ngModel)]="dropGears" [ngModelOptions]="{standalone:true}"></ion-toggle>
+        <ion-label>Ground Cubes</ion-label>
+        <ion-toggle checked="false" [(ngModel)]="groundCubes" [ngModelOptions]="{standalone:true}"></ion-toggle>
       </ion-item>
       <ion-item>
-        <ion-label>Collects Gears</ion-label>
-        <ion-toggle checked="false" [(ngModel)]="collectGears" [ngModelOptions]="{standalone:true}"></ion-toggle>
+        <ion-label>Return Cubes</ion-label>
+        <ion-toggle checked="false" [(ngModel)]="returnCubes" [ngModelOptions]="{standalone:true}"></ion-toggle>
       </ion-item>
       <ion-item>
-        <ion-label>Climbs Rope</ion-label>
-        <ion-toggle checked="false" [(ngModel)]="climbRope" [ngModelOptions]="{standalone:true}"></ion-toggle>
+        <ion-label>Stack Cubes</ion-label>
+        <ion-toggle checked="false" [(ngModel)]="stackCubes" [ngModelOptions]="{standalone:true}"></ion-toggle>
       </ion-item>
       <ion-item>
-        <ion-label>High Boiler</ion-label>
-        <ion-toggle checked="false" [(ngModel)]="highBoiler" [ngModelOptions]="{standalone:true}"></ion-toggle>
+        <ion-label>Switch</ion-label>
+        <ion-toggle checked="false" [(ngModel)]="switch" [ngModelOptions]="{standalone:true}"></ion-toggle>
       </ion-item>
       <ion-item>
-        <ion-label>Low Boiler</ion-label>
-        <ion-toggle checked="false" [(ngModel)]="lowBoiler" [ngModelOptions]="{standalone:true}"></ion-toggle>
+        <ion-label>Scale</ion-label>
+        <ion-toggle checked="false" [(ngModel)]="scale" [ngModelOptions]="{standalone:true}"></ion-toggle>
       </ion-item>
       <ion-item>
-        <ion-label>Collect Fuel</ion-label>
-        <ion-toggle checked="false" [(ngModel)]="collectFuel" [ngModelOptions]="{standalone:true}"></ion-toggle>
+        <ion-label>Climb</ion-label>
+        <ion-toggle checked="false" [(ngModel)]="climb" [ngModelOptions]="{standalone:true}"></ion-toggle>
       </ion-item>
     </form>
   </ion-list>

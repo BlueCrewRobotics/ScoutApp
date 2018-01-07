@@ -17,21 +17,22 @@ export class AddTeamPage {
   teams:any[] = [];
 
   securityKey:any;
+
   name:any;
   number:any;
-  dropGears:boolean;
-  collectGears:boolean;
-  climbRope:boolean;
-  highBoiler:boolean;
-  lowBoiler:boolean;
-  collectFuel:boolean;
+  groundCubes:boolean;
+  returnCubes:boolean;
+  stackCubes:boolean;
+  switch:boolean;
+  scale:boolean;
+  climb:boolean;
 
-  dg:string;
-  cg:string;
-  cr:string;
-  hb:string;
-  lb:string;
-  cf:string;
+  gc:string;
+  rc:string;
+  sc:string;
+  sw:string;
+  sl:string;
+  cl:string;
 
   nameError:boolean;
   numberError:boolean;
@@ -67,40 +68,40 @@ export class AddTeamPage {
       this.numberNotNumberError = true;
     }
 
-    if (this.dropGears == true) {
-      this.dg = "Yes";
+    if (this.groundCubes == true) {
+      this.gc = "Yes";
     } else {
-      this.dg = "No";
+      this.gc = "No";
     }
 
-    if (this.collectGears == true) {
-      this.cg = "Yes";
+    if (this.returnCubes == true) {
+      this.rc = "Yes";
     } else {
-      this.cg = "No";
+      this.rc = "No";
     }
 
-    if (this.climbRope == true) {
-      this.cr = "Yes";
+    if (this.stackCubes == true) {
+      this.sc = "Yes";
     } else {
-      this.cr = "No";
+      this.sc = "No";
     }
 
-    if (this.highBoiler == true) {
-      this.hb = "Yes";
+    if (this.switch == true) {
+      this.sw = "Yes";
     } else {
-      this.hb = "No";
+      this.sw = "No";
     }
 
-    if (this.lowBoiler == true) {
-      this.lb = "Yes";
+    if (this.scale == true) {
+      this.sl = "Yes";
     } else {
-      this.lb = "No";
+      this.sl = "No";
     }
 
-    if (this.collectFuel == true) {
-      this.cf = "Yes";
+    if (this.climb == true) {
+      this.cl = "Yes";
     } else {
-      this.cf = "No";
+      this.cl = "No";
     }
 
     if (this.nameError == true) {
@@ -132,12 +133,12 @@ export class AddTeamPage {
     this.team = {
       "teamName" : this.name,
       "teamNumber" : this.number,
-      "dropGears" : this.dg,
-      "collectGears" : this.cg,
-      "climbRope" : this.cr,
-      "highBoiler" : this.hb,
-      "lowBoiler" : this.lb,
-      "collectFuel" : this.cf,
+      "groundCubes" : this.gc,
+      "returnCubes" : this.rc,
+      "stackCubes" : this.sc,
+      "switch" : this.sw,
+      "scale" : this.sl,
+      "climb" : this.cl,
       "wins" : "0",
       "losses" : "0"
     }
