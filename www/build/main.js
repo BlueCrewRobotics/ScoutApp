@@ -423,72 +423,89 @@ var EditTeamPage = /** @class */ (function () {
             this.cf = "No";
         }
         if (this.nameError == true) {
-            var alert_1 = this.alertCtrl.create({
+            var alert = this.alertCtrl.create({
                 title: 'Team Name!',
                 subTitle: 'You must enter a team name!',
                 buttons: ['OK']
             });
-            alert_1.present();
+            alert.present();
             this.nameError = false;
         }
         else if (this.numberError == true) {
-            var alert_2 = this.alertCtrl.create({
+            var alert = this.alertCtrl.create({
                 title: 'Team Number!',
                 subTitle: 'You must enter a team number!',
                 buttons: ['OK']
             });
-            alert_2.present();
+            alert.present();
             this.numberError = false;
         }
         else if (this.numberNotNumberError == true) {
-            var alert_3 = this.alertCtrl.create({
+            var alert = this.alertCtrl.create({
                 title: 'Team Number!',
                 subTitle: 'Please enter a valid number!',
                 buttons: ['OK']
             });
-            alert_3.present();
+            alert.present();
             this.numberNotNumberError = false;
         }
         else {
-            var loader_1 = this.loadingCtrl.create({
-                content: "Adding Team..",
-                duration: 3000
-            });
-            loader_1.present();
-            this.storage.get('securityKey').then(function (val) {
-                var headers = new __WEBPACK_IMPORTED_MODULE_2__angular_http__["a" /* Headers */]();
-                headers.append('Content-Type', 'application/x-www-form-urlencoded');
-                var options = new __WEBPACK_IMPORTED_MODULE_2__angular_http__["d" /* RequestOptions */]({ headers: headers });
-                var params = 'securityKey=' + val + '&name=' + _this.name + '&number=' + _this.number + '&dropGears=' + _this.dg + '&collectGears=' + _this.cg + '&climbRope=' + _this.cr + '&highBoiler=' + _this.hb + '&lowBoiler=' + _this.lb + '&collectFuel=' + _this.cf;
-                _this.http.post("http://scout.bluecrew6153.org/api/team.php", params, options)
-                    .subscribe(function (data) {
-                    loader_1.dismiss();
-                    if (data["_body"] == "Failure") {
-                        var alert_4 = _this.alertCtrl.create({
-                            title: 'Error!',
-                            subTitle: 'An error has occured while trying to add the team.',
-                            buttons: ['OK']
-                        });
-                        alert_4.present();
+            this.team = {
+                "teamName": this.name,
+                "teamNumber": this.number,
+                "dropGears": this.dg,
+                "collectGears": this.cg,
+                "climbRope": this.cr,
+                "highBoiler": this.hb,
+                "lowBoiler": this.lb,
+                "collectFuel": this.cf,
+                "wins": "0",
+                "losses": "0"
+            };
+            this.storage.get("teams").then(function (val) {
+                var teams = JSON.parse(val);
+                for (var i = 0, len = teams.length; i < len; i++) {
+                    if (teams[i]['teamNumber'] == _this.number) {
+                        teams[i] = _this.team;
                     }
-                    else if (data["_body"] == "SecurityError") {
-                        var alert_5 = _this.alertCtrl.create({
-                            title: 'Security Key Error!',
-                            subTitle: 'You do not have a valid security key. Please change your security key in the settings tab to a valid one.',
-                            buttons: ['OK']
-                        });
-                        alert_5.present();
-                    }
-                    _this.viewCtrl.dismiss();
-                }, function (error) {
-                    var alert = _this.alertCtrl.create({
-                        title: 'Connection Error!',
-                        subTitle: 'You appear to not be connected to the internet! Scout requires access to the internet to retrive data.',
-                        buttons: ['OK']
-                    });
-                    alert.present();
-                });
+                }
+                teams = JSON.stringify(teams);
+                _this.storage.set("teams", teams);
             });
+            this.viewCtrl.dismiss();
+            // this.storage.get('securityKey').then((val) => {
+            //   var headers = new Headers();
+            //   headers.append('Content-Type', 'application/x-www-form-urlencoded' );
+            //   let options = new RequestOptions({ headers: headers });
+            //   var params = 'securityKey=' + val + '&name=' + this.name + '&number=' + this.number + '&dropGears=' + this.dg + '&collectGears=' + this.cg + '&climbRope=' + this.cr + '&highBoiler=' + this.hb + '&lowBoiler=' + this.lb + '&collectFuel=' + this.cf;    
+            //   this.http.post("http://scout.bluecrew6153.org/api/team.php", params, options)
+            //     .subscribe(data => {
+            //       loader.dismiss();
+            //       if (data["_body"] == "Failure") {
+            //         let alert = this.alertCtrl.create({
+            //           title: 'Error!',
+            //           subTitle: 'An error has occured while trying to add the team.',
+            //           buttons: ['OK']
+            //         });
+            //         alert.present();
+            //       } else if (data["_body"] == "SecurityError") {
+            //         let alert = this.alertCtrl.create({
+            //           title: 'Security Key Error!',
+            //           subTitle: 'You do not have a valid security key. Please change your security key in the settings tab to a valid one.',
+            //           buttons: ['OK']
+            //         });
+            //         alert.present();
+            //       }
+            //       this.viewCtrl.dismiss();
+            //      }, error => {
+            //       let alert = this.alertCtrl.create({
+            //         title: 'Connection Error!',
+            //         subTitle: 'You appear to not be connected to the internet! Scout requires access to the internet to retrive data.',
+            //         buttons: ['OK']
+            //       });
+            //       alert.present();
+            //   });
+            // });
         }
     };
     EditTeamPage.prototype.ionViewDidLoad = function () {
@@ -535,15 +552,10 @@ var EditTeamPage = /** @class */ (function () {
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
             selector: 'page-edit-team',template:/*ion-inline-start:"/Users/matthewgallant/Documents/GitHub/ScoutApp/src/pages/edit-team/edit-team.html"*/'<ion-header>\n\n  <ion-navbar>\n    <ion-title>Edit {{name}}</ion-title>\n    <ion-buttons start>\n      <button ion-button icon-only (click)="cancel()">\n        Cancel\n      </button>\n    </ion-buttons>\n    <ion-buttons end>\n      <button ion-button icon-only type="submit" form="editTeamForm">\n        Save\n      </button>\n    </ion-buttons>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content>\n  <ion-list>\n    <form (ngSubmit)="save()" id="editTeamForm">\n      <ion-item>\n        <ion-label stacked>Team Number</ion-label>\n        <ion-input type="tel" [(ngModel)]="number" [ngModelOptions]="{standalone:true}"></ion-input>\n      </ion-item>\n      <ion-item>\n        <ion-label>Drops Gears</ion-label>\n        <ion-toggle [(ngModel)]="dropGears" [ngModelOptions]="{standalone:true}"></ion-toggle>\n      </ion-item>\n      <ion-item>\n        <ion-label>Collects Gears</ion-label>\n        <ion-toggle checked="false" [(ngModel)]="collectGears" [ngModelOptions]="{standalone:true}"></ion-toggle>\n      </ion-item>\n      <ion-item>\n        <ion-label>Climbs Rope</ion-label>\n        <ion-toggle checked="false" [(ngModel)]="climbRope" [ngModelOptions]="{standalone:true}"></ion-toggle>\n      </ion-item>\n      <ion-item>\n        <ion-label>High Boiler</ion-label>\n        <ion-toggle checked="false" [(ngModel)]="highBoiler" [ngModelOptions]="{standalone:true}"></ion-toggle>\n      </ion-item>\n      <ion-item>\n        <ion-label>Low Boiler</ion-label>\n        <ion-toggle checked="false" [(ngModel)]="lowBoiler" [ngModelOptions]="{standalone:true}"></ion-toggle>\n      </ion-item>\n      <ion-item>\n        <ion-label>Collect Fuel</ion-label>\n        <ion-toggle checked="false" [(ngModel)]="collectFuel" [ngModelOptions]="{standalone:true}"></ion-toggle>\n      </ion-item>\n    </form>\n  </ion-list>\n</ion-content>\n'/*ion-inline-end:"/Users/matthewgallant/Documents/GitHub/ScoutApp/src/pages/edit-team/edit-team.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* ViewController */],
-            __WEBPACK_IMPORTED_MODULE_2__angular_http__["b" /* Http */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* LoadingController */],
-            __WEBPACK_IMPORTED_MODULE_3__ionic_storage__["b" /* Storage */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* ViewController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* ViewController */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_2__angular_http__["b" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_http__["b" /* Http */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* LoadingController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* LoadingController */]) === "function" && _f || Object, typeof (_g = typeof __WEBPACK_IMPORTED_MODULE_3__ionic_storage__["b" /* Storage */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__ionic_storage__["b" /* Storage */]) === "function" && _g || Object])
     ], EditTeamPage);
     return EditTeamPage;
+    var _a, _b, _c, _d, _e, _f, _g;
 }());
 
 //# sourceMappingURL=edit-team.js.map
