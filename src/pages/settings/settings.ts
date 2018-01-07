@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 import { AboutPage } from '../about/about';
+import { AlertController } from 'ionic-angular';
 
 @IonicPage()
 @Component({
@@ -16,7 +17,8 @@ export class SettingsPage {
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
-    public storage: Storage
+    public storage: Storage,
+    public alertCtrl: AlertController
     ) {
   }
 
@@ -29,7 +31,23 @@ export class SettingsPage {
   }
 
   reset() {
-    this.storage.clear();
+    let alert = this.alertCtrl.create({
+      title: 'Confirm Reset',
+      message: 'Are you sure you want to reset the app? It will erase all saved teams that you have not uploaded.',
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+        },
+        {
+          text: 'Reset',
+          handler: () => {
+            this.storage.clear();
+          }
+        }
+      ]
+    });
+    alert.present();
   }
 
   ionViewDidLoad() {

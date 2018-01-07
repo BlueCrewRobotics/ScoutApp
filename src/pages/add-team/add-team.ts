@@ -20,6 +20,7 @@ export class AddTeamPage {
 
   name:any;
   number:any;
+  comments:any;
   groundCubes:boolean;
   returnCubes:boolean;
   stackCubes:boolean;
@@ -133,6 +134,7 @@ export class AddTeamPage {
     this.team = {
       "teamName" : this.name,
       "teamNumber" : this.number,
+      "comments" : this.comments,
       "groundCubes" : this.gc,
       "returnCubes" : this.rc,
       "stackCubes" : this.sc,

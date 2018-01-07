@@ -17,6 +17,7 @@ export class EditTeamPage {
 
   name:any;
   number:any;
+  comments:any;
   groundCubes:any;
   returnCubes:any;
   stackCubes:any;
@@ -130,6 +131,7 @@ export class EditTeamPage {
       this.team = {
         "teamName" : this.name,
         "teamNumber" : this.number,
+        "comments" : this.comments,
         "groundCubes" : this.gc,
         "returnCubes" : this.rc,
         "stackCubes" : this.sc,
@@ -158,6 +160,7 @@ export class EditTeamPage {
   ionViewDidLoad() {
     this.name = this.navParams.get('teamName');
     this.number = this.navParams.get('teamNumber');
+    this.comments = this.navParams.get('comments');
 
     if (this.navParams.get('groundCubes') == "Yes") {
       this.groundCubes = true;

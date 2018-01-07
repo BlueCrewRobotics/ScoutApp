@@ -15,6 +15,7 @@ export class TeamDataPage {
 
   name:any;
   number:any;
+  comments:any;
   groundCubes:any;
   returnCubes:any;
   stackCubes:any;
@@ -47,6 +48,7 @@ export class TeamDataPage {
   ionViewDidLoad() {
     this.name = this.navParams.get('teamName');
     this.number = this.navParams.get('teamNumber');
+    this.comments = this.navParams.get('comments');
     this.groundCubes = this.navParams.get('groundCubes');
     this.returnCubes = this.navParams.get('returnCubes');
     this.stackCubes = this.navParams.get('stackCubes');
@@ -58,6 +60,7 @@ export class TeamDataPage {
     this.team = {
       "teamName" : this.name,
       "teamNumber" : this.number,
+      "comments" : this.comments,
       "groundCubes" : this.groundCubes,
       "returnCubes" : this.returnCubes,
       "stackCubes" : this.stackCubes,
