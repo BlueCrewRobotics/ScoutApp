@@ -690,45 +690,61 @@ var HomePage = /** @class */ (function () {
     };
     HomePage.prototype.uploadData = function () {
         var _this = this;
-        this.storage.get('securityKey').then(function (sec) {
-            var loader = _this.loadingCtrl.create({
-                content: 'Uploading Teams...'
-            });
-            loader.present();
-            for (var i = 0, len = _this.teams.length; i < len; i++) {
-                var headers = new __WEBPACK_IMPORTED_MODULE_8__angular_http__["a" /* Headers */]();
-                headers.append('Content-Type', 'application/x-www-form-urlencoded');
-                var options = new __WEBPACK_IMPORTED_MODULE_8__angular_http__["d" /* RequestOptions */]({ headers: headers });
-                var params = 'securityKey=' + sec + '&name=' + _this.teams[i]['teamName'] + '&number=' + _this.teams[i]['teamNumber'] + '&dropGears=' + _this.teams[i]['dropGears'] + '&collectGears=' + _this.teams[i]['collectGears'] + '&climbRope=' + _this.teams[i]['climbRope'] + '&highBoiler=' + _this.teams[i]['highBoiler'] + '&lowBoiler=' + _this.teams[i]['lowBoiler'] + '&collectFuel=' + _this.teams[i]['collectFuel'] + '&wins=' + _this.teams[i]['wins'] + '&losses=' + _this.teams[i]['losses'];
-                _this.http.post("http://scout.bluecrew6153.org/api/team.php", params, options)
-                    .subscribe(function (data) {
-                    if (data["_body"] == "Failure") {
-                        var alert = _this.alertCtrl.create({
-                            title: 'Error!',
-                            subTitle: 'An error has occured while trying to add the team.',
-                            buttons: ['OK']
+        var alert = this.alertCtrl.create({
+            title: 'Confirm Upload',
+            message: 'Are you sure you want to upload your teams?',
+            buttons: [
+                {
+                    text: 'Cancel',
+                    role: 'cancel',
+                },
+                {
+                    text: 'Upload',
+                    handler: function () {
+                        _this.storage.get('securityKey').then(function (sec) {
+                            var loader = _this.loadingCtrl.create({
+                                content: 'Uploading Teams...'
+                            });
+                            loader.present();
+                            for (var i = 0, len = _this.teams.length; i < len; i++) {
+                                var headers = new __WEBPACK_IMPORTED_MODULE_8__angular_http__["a" /* Headers */]();
+                                headers.append('Content-Type', 'application/x-www-form-urlencoded');
+                                var options = new __WEBPACK_IMPORTED_MODULE_8__angular_http__["d" /* RequestOptions */]({ headers: headers });
+                                var params = 'securityKey=' + sec + '&name=' + _this.teams[i]['teamName'] + '&number=' + _this.teams[i]['teamNumber'] + '&dropGears=' + _this.teams[i]['dropGears'] + '&collectGears=' + _this.teams[i]['collectGears'] + '&climbRope=' + _this.teams[i]['climbRope'] + '&highBoiler=' + _this.teams[i]['highBoiler'] + '&lowBoiler=' + _this.teams[i]['lowBoiler'] + '&collectFuel=' + _this.teams[i]['collectFuel'] + '&wins=' + _this.teams[i]['wins'] + '&losses=' + _this.teams[i]['losses'];
+                                _this.http.post("http://scout.bluecrew6153.org/api/team.php", params, options)
+                                    .subscribe(function (data) {
+                                    if (data["_body"] == "Failure") {
+                                        var alert_1 = _this.alertCtrl.create({
+                                            title: 'Error!',
+                                            subTitle: 'An error has occured while trying to add the team.',
+                                            buttons: ['OK']
+                                        });
+                                        alert_1.present();
+                                    }
+                                    else if (data["_body"] == "SecurityError") {
+                                        var alert_2 = _this.alertCtrl.create({
+                                            title: 'Security Key Error!',
+                                            subTitle: 'You do not have a valid security key. Please change your security key in the settings tab to a valid one.',
+                                            buttons: ['OK']
+                                        });
+                                        alert_2.present();
+                                    }
+                                }, function (error) {
+                                    var alert = _this.alertCtrl.create({
+                                        title: 'Connection Error!',
+                                        subTitle: 'You appear to not be connected to the internet! Scout requires access to the internet to retrive data.',
+                                        buttons: ['OK']
+                                    });
+                                    alert.present();
+                                });
+                            }
+                            loader.dismiss();
                         });
-                        alert.present();
                     }
-                    else if (data["_body"] == "SecurityError") {
-                        var alert = _this.alertCtrl.create({
-                            title: 'Security Key Error!',
-                            subTitle: 'You do not have a valid security key. Please change your security key in the settings tab to a valid one.',
-                            buttons: ['OK']
-                        });
-                        alert.present();
-                    }
-                }, function (error) {
-                    var alert = _this.alertCtrl.create({
-                        title: 'Connection Error!',
-                        subTitle: 'You appear to not be connected to the internet! Scout requires access to the internet to retrive data.',
-                        buttons: ['OK']
-                    });
-                    alert.present();
-                });
-            }
-            loader.dismiss();
+                }
+            ]
         });
+        alert.present();
     };
     HomePage.prototype.ionViewDidLoad = function () {
         var _this = this;
