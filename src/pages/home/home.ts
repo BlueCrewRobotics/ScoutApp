@@ -10,6 +10,7 @@ import { LoadingController } from 'ionic-angular';
 import { ModalController } from 'ionic-angular';
 import { ActionSheetController } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
+import { Http, Headers, RequestOptions } from '@angular/http';
 
 @IonicPage()
 @Component({
@@ -19,6 +20,7 @@ import { Storage } from '@ionic/storage';
 export class HomePage {
 
   teams:any[] = [];
+  team:any;
 
   constructor(
     public navCtrl: NavController,
@@ -28,7 +30,8 @@ export class HomePage {
     public loadingCtrl: LoadingController, 
     public modalCtrl: ModalController,
     public actionSheetCtrl: ActionSheetController,
-    public storage: Storage
+    public storage: Storage,
+    public http: Http
     ) {
   }
 
@@ -111,7 +114,45 @@ export class HomePage {
   }
 
   uploadData() {
-    this.storage.clear();
+    this.storage.get('securityKey').then((sec) => {
+      let loader = this.loadingCtrl.create({
+        content: 'Uploading Teams...'
+      });
+      loader.present();
+      for (var i = 0, len = this.teams.length; i < len; i++) {
+        var headers = new Headers();
+        headers.append('Content-Type', 'application/x-www-form-urlencoded' );
+        let options = new RequestOptions({ headers: headers });
+  
+        var params = 'securityKey=' + sec + '&name=' + this.teams[i]['teamName'] + '&number=' + this.teams[i]['teamNumber'] + '&dropGears=' + this.teams[i]['dropGears'] + '&collectGears=' + this.teams[i]['collectGears'] + '&climbRope=' + this.teams[i]['climbRope'] + '&highBoiler=' + this.teams[i]['highBoiler'] + '&lowBoiler=' + this.teams[i]['lowBoiler'] + '&collectFuel=' + this.teams[i]['collectFuel'] + '&wins=' + this.teams[i]['wins'] + '&losses=' + this.teams[i]['losses'];    
+        this.http.post("http://scout.bluecrew6153.org/api/team.php", params, options)
+          .subscribe(data => {
+            if (data["_body"] == "Failure") {
+              let alert = this.alertCtrl.create({
+                title: 'Error!',
+                subTitle: 'An error has occured while trying to add the team.',
+                buttons: ['OK']
+              });
+              alert.present();
+            } else if (data["_body"] == "SecurityError") {
+              let alert = this.alertCtrl.create({
+                title: 'Security Key Error!',
+                subTitle: 'You do not have a valid security key. Please change your security key in the settings tab to a valid one.',
+                buttons: ['OK']
+              });
+              alert.present();
+            }
+          }, error => {
+            let alert = this.alertCtrl.create({
+              title: 'Connection Error!',
+              subTitle: 'You appear to not be connected to the internet! Scout requires access to the internet to retrive data.',
+              buttons: ['OK']
+            });
+            alert.present();
+        });
+      }
+      loader.dismiss();
+    });
   }
 
   ionViewDidLoad() {
