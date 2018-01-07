@@ -38,7 +38,7 @@ export class HomePage {
       buttons: [
         {
           text: 'Add Team',
-          icon: "add",
+          icon: "people",
           handler: () => {
             let modal = this.modalCtrl.create(AddTeamPage);
             modal.onDidDismiss(data => {
@@ -48,7 +48,7 @@ export class HomePage {
           }
         },{
           text: 'Add Match',
-          icon: "add",
+          icon: "flag",
           handler: () => {
             let modal = this.modalCtrl.create(AddMatchPage);
             modal.onDidDismiss(data => {
@@ -86,14 +86,8 @@ export class HomePage {
   }
 
   loadData() {    
-    let loader = this.loadingCtrl.create({
-      content: "Please Wait",
-      duration: 3000
-    });
-    loader.present();
     this.storage.get("teams").then((val) => {
       this.teams = JSON.parse(val);
-      loader.dismiss();
     });
   }
 

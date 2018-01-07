@@ -128,12 +128,6 @@ export class AddTeamPage {
       alert.present();
       this.numberNotNumberError = false;
     } else {
-      let loader = this.loadingCtrl.create({
-      content: "Adding Team..",
-      duration: 3000
-    });
-    loader.present();
-
 
     this.team = {
       "teamName" : this.name,
@@ -160,7 +154,6 @@ export class AddTeamPage {
     });
 
     this.viewCtrl.dismiss();
-    loader.dismiss();
 
       // this.storage.get('securityKey').then((val) => {
       //   var headers = new Headers();
