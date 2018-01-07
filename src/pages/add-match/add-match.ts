@@ -89,40 +89,6 @@ export class AddMatchPage {
       });
 
       this.viewCtrl.dismiss();
-
-      // this.storage.get('securityKey').then((val) => {
-      //   var headers = new Headers();
-      //   headers.append('Content-Type', 'application/x-www-form-urlencoded' );
-      //   let options = new RequestOptions({ headers: headers });
-
-      //   var params = 'securityKey=' + val + '&teamWinOneNumber=' + this.winOne + '&teamWinTwoNumber=' + this.winTwo + '&teamWinThreeNumber=' + this.winThree + '&teamLoseOneNumber=' + this.loseOne + '&teamLoseTwoNumber=' + this.loseTwo + '&teamLoseThreeNumber=' + this.loseThree;    
-      //   this.http.post("http://scout.bluecrew6153.org/api/match.php", params, options)
-      //     .subscribe(data => {
-      //       if (data["_body"] == "Failure") {
-      //         let alert = this.alertCtrl.create({
-      //           title: 'Error!',
-      //           subTitle: 'An error has occured while trying to add the team.',
-      //           buttons: ['OK']
-      //         });
-      //         alert.present();
-      //       } else if (data["_body"] == "SecurityError") {
-      //         let alert = this.alertCtrl.create({
-      //           title: 'Security Key Error!',
-      //           subTitle: 'You do not have a valid security key. Please change your security key in the settings tab to a valid one.',
-      //           buttons: ['OK']
-      //         });
-      //         alert.present();
-      //       }
-      //       this.viewCtrl.dismiss();
-      //     }, error => {
-      //       let alert = this.alertCtrl.create({
-      //         title: 'Connection Error!',
-      //         subTitle: 'You appear to not be connected to the internet! Scout requires access to the internet to retrive data.',
-      //         buttons: ['OK']
-      //       });
-      //       alert.present();
-      //   });
-      // });
     }
   }
 }

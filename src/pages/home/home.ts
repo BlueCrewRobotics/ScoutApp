@@ -37,7 +37,6 @@ export class HomePage {
 
   addTeam() {
     let actionSheet = this.actionSheetCtrl.create({
-      title: 'Add Data',
       buttons: [
         {
           text: 'Add Team',
@@ -96,6 +95,7 @@ export class HomePage {
               (data) => {
                 this.teams = data;
                 this.storage.set("teams", JSON.stringify(data));
+                refresher.complete();
               })
             setTimeout(() => {
               refresher.complete();

@@ -7,8 +7,8 @@ webpackJsonp([7],{
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AddMatchPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_http__ = __webpack_require__(32);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_storage__ = __webpack_require__(30);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_http__ = __webpack_require__(28);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_storage__ = __webpack_require__(31);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -94,38 +94,6 @@ var AddMatchPage = /** @class */ (function () {
                 _this.storage.set("teams", teams);
             });
             this.viewCtrl.dismiss();
-            // this.storage.get('securityKey').then((val) => {
-            //   var headers = new Headers();
-            //   headers.append('Content-Type', 'application/x-www-form-urlencoded' );
-            //   let options = new RequestOptions({ headers: headers });
-            //   var params = 'securityKey=' + val + '&teamWinOneNumber=' + this.winOne + '&teamWinTwoNumber=' + this.winTwo + '&teamWinThreeNumber=' + this.winThree + '&teamLoseOneNumber=' + this.loseOne + '&teamLoseTwoNumber=' + this.loseTwo + '&teamLoseThreeNumber=' + this.loseThree;    
-            //   this.http.post("http://scout.bluecrew6153.org/api/match.php", params, options)
-            //     .subscribe(data => {
-            //       if (data["_body"] == "Failure") {
-            //         let alert = this.alertCtrl.create({
-            //           title: 'Error!',
-            //           subTitle: 'An error has occured while trying to add the team.',
-            //           buttons: ['OK']
-            //         });
-            //         alert.present();
-            //       } else if (data["_body"] == "SecurityError") {
-            //         let alert = this.alertCtrl.create({
-            //           title: 'Security Key Error!',
-            //           subTitle: 'You do not have a valid security key. Please change your security key in the settings tab to a valid one.',
-            //           buttons: ['OK']
-            //         });
-            //         alert.present();
-            //       }
-            //       this.viewCtrl.dismiss();
-            //     }, error => {
-            //       let alert = this.alertCtrl.create({
-            //         title: 'Connection Error!',
-            //         subTitle: 'You appear to not be connected to the internet! Scout requires access to the internet to retrive data.',
-            //         buttons: ['OK']
-            //       });
-            //       alert.present();
-            //   });
-            // });
         }
     };
     AddMatchPage = __decorate([
@@ -149,8 +117,8 @@ var AddMatchPage = /** @class */ (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AddTeamPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_http__ = __webpack_require__(32);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_storage__ = __webpack_require__(30);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_http__ = __webpack_require__(28);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_storage__ = __webpack_require__(31);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -284,39 +252,6 @@ var AddTeamPage = /** @class */ (function () {
                 }
             });
             this.viewCtrl.dismiss();
-            // this.storage.get('securityKey').then((val) => {
-            //   var headers = new Headers();
-            //   headers.append('Content-Type', 'application/x-www-form-urlencoded' );
-            //   let options = new RequestOptions({ headers: headers });
-            //   var params = 'securityKey=' + val + '&name=' + this.name + '&number=' + this.number + '&dropGears=' + this.dg + '&collectGears=' + this.cg + '&climbRope=' + this.cr + '&highBoiler=' + this.hb + '&lowBoiler=' + this.lb + '&collectFuel=' + this.cf;    
-            //   this.http.post("http://scout.bluecrew6153.org/api/team.php", params, options)
-            //     .subscribe(data => {
-            //       loader.dismiss();
-            //       if (data["_body"] == "Failure") {
-            //         let alert = this.alertCtrl.create({
-            //           title: 'Error!',
-            //           subTitle: 'An error has occured while trying to add the team.',
-            //           buttons: ['OK']
-            //         });
-            //         alert.present();
-            //       } else if (data["_body"] == "SecurityError") {
-            //         let alert = this.alertCtrl.create({
-            //           title: 'Security Key Error!',
-            //           subTitle: 'You do not have a valid security key. Please change your security key in the settings tab to a valid one.',
-            //           buttons: ['OK']
-            //         });
-            //         alert.present();
-            //       }
-            //       this.viewCtrl.dismiss();
-            //      }, error => {
-            //       let alert = this.alertCtrl.create({
-            //         title: 'Connection Error!',
-            //         subTitle: 'You appear to not be connected to the internet! Scout requires access to the internet to retrive data.',
-            //         buttons: ['OK']
-            //       });
-            //       alert.present();
-            //   });
-            // });
         }
     };
     AddTeamPage = __decorate([
@@ -340,8 +275,8 @@ var AddTeamPage = /** @class */ (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return EditTeamPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_http__ = __webpack_require__(32);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_storage__ = __webpack_require__(30);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_http__ = __webpack_require__(28);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_storage__ = __webpack_require__(31);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -473,39 +408,6 @@ var EditTeamPage = /** @class */ (function () {
                 _this.storage.set("teams", teams);
             });
             this.viewCtrl.dismiss();
-            // this.storage.get('securityKey').then((val) => {
-            //   var headers = new Headers();
-            //   headers.append('Content-Type', 'application/x-www-form-urlencoded' );
-            //   let options = new RequestOptions({ headers: headers });
-            //   var params = 'securityKey=' + val + '&name=' + this.name + '&number=' + this.number + '&dropGears=' + this.dg + '&collectGears=' + this.cg + '&climbRope=' + this.cr + '&highBoiler=' + this.hb + '&lowBoiler=' + this.lb + '&collectFuel=' + this.cf;    
-            //   this.http.post("http://scout.bluecrew6153.org/api/team.php", params, options)
-            //     .subscribe(data => {
-            //       loader.dismiss();
-            //       if (data["_body"] == "Failure") {
-            //         let alert = this.alertCtrl.create({
-            //           title: 'Error!',
-            //           subTitle: 'An error has occured while trying to add the team.',
-            //           buttons: ['OK']
-            //         });
-            //         alert.present();
-            //       } else if (data["_body"] == "SecurityError") {
-            //         let alert = this.alertCtrl.create({
-            //           title: 'Security Key Error!',
-            //           subTitle: 'You do not have a valid security key. Please change your security key in the settings tab to a valid one.',
-            //           buttons: ['OK']
-            //         });
-            //         alert.present();
-            //       }
-            //       this.viewCtrl.dismiss();
-            //      }, error => {
-            //       let alert = this.alertCtrl.create({
-            //         title: 'Connection Error!',
-            //         subTitle: 'You appear to not be connected to the internet! Scout requires access to the internet to retrive data.',
-            //         buttons: ['OK']
-            //       });
-            //       alert.present();
-            //   });
-            // });
         }
     };
     EditTeamPage.prototype.ionViewDidLoad = function () {
@@ -574,8 +476,8 @@ var EditTeamPage = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__add_team_add_team__ = __webpack_require__(103);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__add_match_add_match__ = __webpack_require__(102);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__signin_signin__ = __webpack_require__(107);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__ionic_storage__ = __webpack_require__(30);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__angular_http__ = __webpack_require__(32);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__ionic_storage__ = __webpack_require__(31);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__angular_http__ = __webpack_require__(28);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -614,7 +516,6 @@ var HomePage = /** @class */ (function () {
     HomePage.prototype.addTeam = function () {
         var _this = this;
         var actionSheet = this.actionSheetCtrl.create({
-            title: 'Add Data',
             buttons: [
                 {
                     text: 'Add Team',
@@ -672,6 +573,7 @@ var HomePage = /** @class */ (function () {
                         _this.teamsProvider.getTeams().subscribe(function (data) {
                             _this.teams = data;
                             _this.storage.set("teams", JSON.stringify(data));
+                            refresher.complete();
                         });
                         setTimeout(function () {
                             refresher.complete();
@@ -862,8 +764,8 @@ var TeamDataPage = /** @class */ (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SigninPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_http__ = __webpack_require__(32);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_storage__ = __webpack_require__(30);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_http__ = __webpack_require__(28);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_storage__ = __webpack_require__(31);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -942,7 +844,7 @@ var SigninPage = /** @class */ (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SettingsPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_storage__ = __webpack_require__(30);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_storage__ = __webpack_require__(31);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__about_about__ = __webpack_require__(161);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -1028,15 +930,15 @@ var map = {
 		3
 	],
 	"../pages/settings/settings.module": [
-		290,
+		288,
 		2
 	],
 	"../pages/signin/signin.module": [
-		288,
+		289,
 		1
 	],
 	"../pages/team-data/team-data.module": [
-		289,
+		290,
 		0
 	]
 };
@@ -1061,7 +963,7 @@ module.exports = webpackAsyncContext;
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TeamsProvider; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_http__ = __webpack_require__(32);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_http__ = __webpack_require__(28);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__ = __webpack_require__(257);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__);
@@ -1189,10 +1091,10 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser__ = __webpack_require__(27);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_http__ = __webpack_require__(32);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_http__ = __webpack_require__(28);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ionic_angular__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__app_component__ = __webpack_require__(275);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_storage__ = __webpack_require__(30);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_storage__ = __webpack_require__(31);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__pages_about_about__ = __webpack_require__(161);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__pages_home_home__ = __webpack_require__(105);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__pages_tabs_tabs__ = __webpack_require__(205);
@@ -1255,9 +1157,9 @@ var AppModule = /** @class */ (function () {
                         { loadChildren: '../pages/add-team/add-team.module#AddTeamPageModule', name: 'AddTeamPage', segment: 'add-team', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/edit-team/edit-team.module#EditTeamPageModule', name: 'EditTeamPage', segment: 'edit-team', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/home/home.module#HomePageModule', name: 'HomePage', segment: 'home', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/settings/settings.module#SettingsPageModule', name: 'SettingsPage', segment: 'settings', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/signin/signin.module#SigninPageModule', name: 'SigninPage', segment: 'signin', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/team-data/team-data.module#TeamDataPageModule', name: 'TeamDataPage', segment: 'team-data', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/settings/settings.module#SettingsPageModule', name: 'SettingsPage', segment: 'settings', priority: 'low', defaultHistory: [] }
+                        { loadChildren: '../pages/team-data/team-data.module#TeamDataPageModule', name: 'TeamDataPage', segment: 'team-data', priority: 'low', defaultHistory: [] }
                     ]
                 }),
                 __WEBPACK_IMPORTED_MODULE_5__ionic_storage__["a" /* IonicStorageModule */].forRoot()
