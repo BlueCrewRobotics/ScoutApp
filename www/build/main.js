@@ -640,13 +640,32 @@ var HomePage = /** @class */ (function () {
     };
     HomePage.prototype.doRefresh = function (refresher) {
         var _this = this;
-        this.teamsProvider.getTeams().subscribe(function (data) {
-            _this.teams = data;
-            _this.storage.set("teams", JSON.stringify(data));
+        var alert = this.alertCtrl.create({
+            title: 'Confirm Download',
+            message: 'Are you sure you want to download the current teams? It will erase all saved teams that you have not uploaded.',
+            buttons: [
+                {
+                    text: 'Cancel',
+                    role: 'cancel',
+                    handler: function () {
+                        refresher.complete();
+                    }
+                },
+                {
+                    text: 'Download',
+                    handler: function () {
+                        _this.teamsProvider.getTeams().subscribe(function (data) {
+                            _this.teams = data;
+                            _this.storage.set("teams", JSON.stringify(data));
+                        });
+                        setTimeout(function () {
+                            refresher.complete();
+                        }, 2000);
+                    }
+                }
+            ]
         });
-        setTimeout(function () {
-            refresher.complete();
-        }, 2000);
+        alert.present();
     };
     HomePage.prototype.loadData = function () {
         var _this = this;

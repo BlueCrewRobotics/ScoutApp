@@ -75,14 +75,33 @@ export class HomePage {
   }
 
   doRefresh(refresher) {
-    this.teamsProvider.getTeams().subscribe(
-      (data) => {
-        this.teams = data;
-        this.storage.set("teams", JSON.stringify(data));
-      })
-    setTimeout(() => {
-      refresher.complete();
-    }, 2000);
+    let alert = this.alertCtrl.create({
+      title: 'Confirm Download',
+      message: 'Are you sure you want to download the current teams? It will erase all saved teams that you have not uploaded.',
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          handler: () => {
+            refresher.complete();
+          }
+        },
+        {
+          text: 'Download',
+          handler: () => {
+            this.teamsProvider.getTeams().subscribe(
+              (data) => {
+                this.teams = data;
+                this.storage.set("teams", JSON.stringify(data));
+              })
+            setTimeout(() => {
+              refresher.complete();
+            }, 2000);
+          }
+        }
+      ]
+    });
+    alert.present();
   }
 
   loadData() {    
