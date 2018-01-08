@@ -1,5 +1,3 @@
-NOTE: THIS BRANCH DOES NOT CURRENTLY WORK!
-
 # Scout App
 
 Scouting at FRC events made easy.
@@ -15,11 +13,11 @@ Scout is supposed to make scouting dead simple at competitions. You can see all 
 - View Team Data
 - Add Team Data
 - Edit Team Data
+- Add Match Data
+- Offline Support
 
 ## Features in the Future
 
-- Add Match Data
-- View Match Data
 - Team Analysis
 
 ## Getting Started
