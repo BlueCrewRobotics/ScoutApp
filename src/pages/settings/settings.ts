@@ -3,6 +3,9 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 import { AboutPage } from '../about/about';
 import { AlertController } from 'ionic-angular';
+import { SigninPage } from '../signin/signin';
+import { InitialTutorialPage } from '../initial-tutorial/initial-tutorial';
+import { ModalController } from 'ionic-angular';
 
 @IonicPage()
 @Component({
@@ -18,7 +21,8 @@ export class SettingsPage {
     public navCtrl: NavController,
     public navParams: NavParams,
     public storage: Storage,
-    public alertCtrl: AlertController
+    public alertCtrl: AlertController,
+    public modalCtrl: ModalController,
     ) {
   }
 
@@ -43,6 +47,12 @@ export class SettingsPage {
           text: 'Reset',
           handler: () => {
             this.storage.clear();
+            let modal = this.modalCtrl.create(SigninPage);
+            modal.onDidDismiss(data => {
+              let tutorial = this.modalCtrl.create(InitialTutorialPage);
+              tutorial.present();
+            });
+            modal.present();
           }
         }
       ]

@@ -4,6 +4,7 @@ import { TeamsProvider } from '../../providers/teams/teams';
 import { TeamDataPage } from '../team-data/team-data';
 import { AddTeamPage } from '../add-team/add-team';
 import { AddMatchPage } from '../add-match/add-match';
+import { InitialTutorialPage } from '../initial-tutorial/initial-tutorial';
 import { SigninPage } from '../signin/signin';
 import { AlertController } from 'ionic-angular';
 import { LoadingController } from 'ionic-angular';
@@ -176,7 +177,11 @@ export class HomePage {
       if (val == null || val == "") {
         let modal = this.modalCtrl.create(SigninPage);
         modal.onDidDismiss(data => {
-          this.loadData();
+          let tutorial = this.modalCtrl.create(InitialTutorialPage);
+          tutorial.onDidDismiss(data => {
+            this.loadData();
+          });
+          tutorial.present();
         });
         modal.present();
       } else {
