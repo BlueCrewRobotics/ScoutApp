@@ -329,10 +329,9 @@ var EditTeamPage = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__team_data_team_data__ = __webpack_require__(106);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__add_team_add_team__ = __webpack_require__(107);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__add_match_add_match__ = __webpack_require__(103);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__initial_tutorial_initial_tutorial__ = __webpack_require__(206);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__signin_signin__ = __webpack_require__(52);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__ionic_storage__ = __webpack_require__(31);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__angular_http__ = __webpack_require__(28);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__signin_signin__ = __webpack_require__(52);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__ionic_storage__ = __webpack_require__(31);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__angular_http__ = __webpack_require__(28);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -342,7 +341,6 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-
 
 
 
@@ -465,9 +463,9 @@ var HomePage = /** @class */ (function () {
                             });
                             loader.present();
                             for (var i = 0, len = _this.teams.length; i < len; i++) {
-                                var headers = new __WEBPACK_IMPORTED_MODULE_9__angular_http__["a" /* Headers */]();
+                                var headers = new __WEBPACK_IMPORTED_MODULE_8__angular_http__["a" /* Headers */]();
                                 headers.append('Content-Type', 'application/x-www-form-urlencoded');
-                                var options = new __WEBPACK_IMPORTED_MODULE_9__angular_http__["d" /* RequestOptions */]({ headers: headers });
+                                var options = new __WEBPACK_IMPORTED_MODULE_8__angular_http__["d" /* RequestOptions */]({ headers: headers });
                                 var params = 'securityKey=' + sec + '&name=' + _this.teams[i]['teamName'] + '&number=' + _this.teams[i]['teamNumber'] + '&comments=' + _this.teams[i]['comments'] + '&groundCubes=' + _this.teams[i]['groundCubes'] + '&returnCubes=' + _this.teams[i]['returnCubes'] + '&stackCubes=' + _this.teams[i]['stackCubes'] + '&switch=' + _this.teams[i]['switch'] + '&scale=' + _this.teams[i]['scale'] + '&climb=' + _this.teams[i]['climb'] + '&wins=' + _this.teams[i]['wins'] + '&losses=' + _this.teams[i]['losses'];
                                 _this.http.post("http://scout.bluecrew6153.org/api/team.php", params, options)
                                     .subscribe(function (data) {
@@ -508,13 +506,9 @@ var HomePage = /** @class */ (function () {
         var _this = this;
         this.storage.get('securityKey').then(function (val) {
             if (val == null || val == "") {
-                var modal = _this.modalCtrl.create(__WEBPACK_IMPORTED_MODULE_7__signin_signin__["a" /* SigninPage */]);
+                var modal = _this.modalCtrl.create(__WEBPACK_IMPORTED_MODULE_6__signin_signin__["a" /* SigninPage */]);
                 modal.onDidDismiss(function (data) {
-                    var tutorial = _this.modalCtrl.create(__WEBPACK_IMPORTED_MODULE_6__initial_tutorial_initial_tutorial__["a" /* InitialTutorialPage */]);
-                    tutorial.onDidDismiss(function (data) {
-                        _this.loadData();
-                    });
-                    tutorial.present();
+                    _this.loadData();
                 });
                 modal.present();
             }
@@ -527,10 +521,17 @@ var HomePage = /** @class */ (function () {
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
             selector: 'page-teams',template:/*ion-inline-start:"/Users/matthewgallant/Documents/GitHub/ScoutApp/src/pages/home/home.html"*/'<ion-header>\n\n  <ion-navbar>\n    <ion-title>Scout</ion-title>\n    <ion-buttons end>\n      <button ion-button icon-only (click)="addTeam()">\n        <ion-icon name="add-circle"></ion-icon>\n      </button>\n    </ion-buttons>\n    <ion-buttons start>\n      <button ion-button icon-only (click)="uploadData()">\n        <ion-icon name="cloud-upload"></ion-icon>\n      </button>\n    </ion-buttons>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content>\n    <ion-refresher (ionRefresh)="doRefresh($event)">\n      <ion-refresher-content></ion-refresher-content>\n    </ion-refresher>\n    <ion-list>\n      <button ion-item *ngFor="let item of teams" (click)="itemSelected(item)">\n        {{item.teamName}}\n      </button>\n    </ion-list>\n</ion-content>\n'/*ion-inline-end:"/Users/matthewgallant/Documents/GitHub/ScoutApp/src/pages/home/home.html"*/,
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__providers_teams_teams__["a" /* TeamsProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__providers_teams_teams__["a" /* TeamsProvider */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* LoadingController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* LoadingController */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* ModalController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* ModalController */]) === "function" && _f || Object, typeof (_g = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* ActionSheetController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* ActionSheetController */]) === "function" && _g || Object, typeof (_h = typeof __WEBPACK_IMPORTED_MODULE_8__ionic_storage__["b" /* Storage */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_8__ionic_storage__["b" /* Storage */]) === "function" && _h || Object, typeof (_j = typeof __WEBPACK_IMPORTED_MODULE_9__angular_http__["b" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_9__angular_http__["b" /* Http */]) === "function" && _j || Object])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */],
+            __WEBPACK_IMPORTED_MODULE_2__providers_teams_teams__["a" /* TeamsProvider */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* LoadingController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* ModalController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* ActionSheetController */],
+            __WEBPACK_IMPORTED_MODULE_7__ionic_storage__["b" /* Storage */],
+            __WEBPACK_IMPORTED_MODULE_8__angular_http__["b" /* Http */]])
     ], HomePage);
     return HomePage;
-    var _a, _b, _c, _d, _e, _f, _g, _h, _j;
 }());
 
 //# sourceMappingURL=home.js.map
@@ -793,7 +794,6 @@ var AddTeamPage = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_storage__ = __webpack_require__(31);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__about_about__ = __webpack_require__(161);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__signin_signin__ = __webpack_require__(52);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__initial_tutorial_initial_tutorial__ = __webpack_require__(206);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -803,7 +803,6 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-
 
 
 
@@ -840,10 +839,6 @@ var SettingsPage = /** @class */ (function () {
                     handler: function () {
                         _this.storage.clear();
                         var modal = _this.modalCtrl.create(__WEBPACK_IMPORTED_MODULE_4__signin_signin__["a" /* SigninPage */]);
-                        modal.onDidDismiss(function (data) {
-                            var tutorial = _this.modalCtrl.create(__WEBPACK_IMPORTED_MODULE_5__initial_tutorial_initial_tutorial__["a" /* InitialTutorialPage */]);
-                            tutorial.present();
-                        });
                         modal.present();
                     }
                 }
@@ -861,10 +856,13 @@ var SettingsPage = /** @class */ (function () {
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
             selector: 'page-settings',template:/*ion-inline-start:"/Users/matthewgallant/Documents/GitHub/ScoutApp/src/pages/settings/settings.html"*/'<ion-header>\n\n  <ion-navbar>\n    <ion-title>Scout Settings</ion-title>\n    <ion-buttons end>\n        <button ion-button icon-only (click)="save()">\n          Save\n        </button>\n      </ion-buttons>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content>\n  <ion-list>\n      <ion-item>\n        <ion-label>Team Key</ion-label>\n        <ion-input type="text" [(ngModel)]="securityKey" [ngModelOptions]="{standalone:true}"></ion-input>\n      </ion-item>\n      <button ion-item (click)="reset()">\n        Reset\n      </button>\n      <button ion-item (click)="about()">\n        About Scout\n      </button>\n  </ion-list>\n</ion-content>\n'/*ion-inline-end:"/Users/matthewgallant/Documents/GitHub/ScoutApp/src/pages/settings/settings.html"*/,
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__ionic_storage__["b" /* Storage */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__ionic_storage__["b" /* Storage */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* ModalController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* ModalController */]) === "function" && _e || Object])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */],
+            __WEBPACK_IMPORTED_MODULE_2__ionic_storage__["b" /* Storage */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* ModalController */]])
     ], SettingsPage);
     return SettingsPage;
-    var _a, _b, _c, _d, _e;
 }());
 
 //# sourceMappingURL=settings.js.map
@@ -1071,33 +1069,27 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
+/**
+ * Generated class for the InitialTutorialPage page.
+ *
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
+ */
 var InitialTutorialPage = /** @class */ (function () {
-    function InitialTutorialPage(viewCtrl) {
-        this.viewCtrl = viewCtrl;
-        this.slides = [
-            {
-                title: "Welcome to Scout!",
-                description: "<b>Scout</b> allows you to easily scout FRC teams, add live match scoring, and more! Gone are the days of paper scouting!",
-                image: "assets/imgs/crew.png",
-            },
-            {
-                title: "How do I use Scout?",
-                description: "Simply add teams and match data by tapping the plus in the righthand corner. When you have an internet connection, tap the cloud icon to upload your data for the whole team to see.",
-                image: "assets/imgs/cloud.png",
-            }
-        ];
+    function InitialTutorialPage(navCtrl, navParams) {
+        this.navCtrl = navCtrl;
+        this.navParams = navParams;
     }
-    InitialTutorialPage.prototype.close = function () {
-        this.viewCtrl.dismiss();
+    InitialTutorialPage.prototype.ionViewDidLoad = function () {
+        console.log('ionViewDidLoad InitialTutorialPage');
     };
     InitialTutorialPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
             selector: 'page-initial-tutorial',template:/*ion-inline-start:"/Users/matthewgallant/Documents/GitHub/ScoutApp/src/pages/initial-tutorial/initial-tutorial.html"*/'<ion-header>\n</ion-header>\n\n\n<ion-content  class="tutorial-page">\n  <ion-slides pager>\n    <ion-slide *ngFor="let slide of slides">\n      <ion-toolbar>\n        <ion-buttons end>\n          <button ion-button color="primary" (click)="close()">Skip</button>\n        </ion-buttons>\n      </ion-toolbar>\n      <img [src]="slide.image" class="slide-image"/>\n      <h2 class="slide-title" [innerHTML]="slide.title"></h2>\n      <p [innerHTML]="slide.description"></p>\n    </ion-slide>\n    <ion-slide>\n      <ion-toolbar>\n      </ion-toolbar>\n      <img src="assets/imgs/crew.png" class="slide-image"/>\n      <h2 class="slide-title">Ready to Scout?</h2>\n      <button ion-button large clear icon-end color="primary" (click)="close()">\n        Continue\n        <ion-icon name="arrow-forward"></ion-icon>\n      </button>\n    </ion-slide>\n  </ion-slides>\n</ion-content>\n'/*ion-inline-end:"/Users/matthewgallant/Documents/GitHub/ScoutApp/src/pages/initial-tutorial/initial-tutorial.html"*/,
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* ViewController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* ViewController */]) === "function" && _a || Object])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */]])
     ], InitialTutorialPage);
     return InitialTutorialPage;
-    var _a;
 }());
 
 //# sourceMappingURL=initial-tutorial.js.map
