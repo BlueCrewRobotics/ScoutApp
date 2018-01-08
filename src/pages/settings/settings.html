@@ -18,8 +18,11 @@
         <ion-label>Team Key</ion-label>
         <ion-input type="text" [(ngModel)]="securityKey" [ngModelOptions]="{standalone:true}"></ion-input>
       </ion-item>
+      <button ion-item (click)="reset()">
+        Reset
+      </button>
       <button ion-item (click)="about()">
-          About Scout
+        About Scout
       </button>
   </ion-list>
 </ion-content>

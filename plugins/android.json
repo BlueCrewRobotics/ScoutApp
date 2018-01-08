@@ -7,26 +7,26 @@
         "files": {}
     },
     "installed_plugins": {
+        "cordova-plugin-app-preferences": {
+            "PACKAGE_NAME": "org.bluecrew6153.scout"
+        },
         "cordova-plugin-device": {
-            "PACKAGE_NAME": "io.ionic.starter"
+            "PACKAGE_NAME": "org.bluecrew6153.scout"
         },
         "cordova-plugin-ionic-webview": {
-            "PACKAGE_NAME": "io.ionic.starter"
+            "PACKAGE_NAME": "org.bluecrew6153.scout"
         },
         "cordova-plugin-splashscreen": {
-            "PACKAGE_NAME": "io.ionic.starter"
+            "PACKAGE_NAME": "org.bluecrew6153.scout"
         },
         "cordova-plugin-whitelist": {
-            "PACKAGE_NAME": "io.ionic.starter"
-        },
-        "ionic-plugin-keyboard": {
-            "PACKAGE_NAME": "io.ionic.starter"
-        },
-        "cordova-plugin-app-preferences": {
-            "PACKAGE_NAME": "io.ionic.starter"
+            "PACKAGE_NAME": "org.bluecrew6153.scout"
         },
         "cordova-sqlite-storage": {
-            "PACKAGE_NAME": "io.ionic.starter"
+            "PACKAGE_NAME": "org.bluecrew6153.scout"
+        },
+        "ionic-plugin-keyboard": {
+            "PACKAGE_NAME": "org.bluecrew6153.scout"
         }
     },
     "dependent_plugins": {}

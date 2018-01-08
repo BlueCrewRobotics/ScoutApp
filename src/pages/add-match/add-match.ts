@@ -61,45 +61,34 @@ export class AddMatchPage {
       alert.present();
       this.numberNotNumberError = false;
     } else {
-      let loader = this.loadingCtrl.create({
-        content: "Adding Match...",
-        duration: 3000
-      });
-      loader.present();
 
-      this.storage.get('securityKey').then((val) => {
-        var headers = new Headers();
-        headers.append('Content-Type', 'application/x-www-form-urlencoded' );
-        let options = new RequestOptions({ headers: headers });
-
-        var params = 'securityKey=' + val + '&teamWinOneNumber=' + this.winOne + '&teamWinTwoNumber=' + this.winTwo + '&teamWinThreeNumber=' + this.winThree + '&teamLoseOneNumber=' + this.loseOne + '&teamLoseTwoNumber=' + this.loseTwo + '&teamLoseThreeNumber=' + this.loseThree;    
-        this.http.post("http://scout.bluecrew6153.org/api/match.php", params, options)
-          .subscribe(data => {
-            if (data["_body"] == "Failure") {
-              let alert = this.alertCtrl.create({
-                title: 'Error!',
-                subTitle: 'An error has occured while trying to add the team.',
-                buttons: ['OK']
-              });
-              alert.present();
-            } else if (data["_body"] == "SecurityError") {
-              let alert = this.alertCtrl.create({
-                title: 'Security Key Error!',
-                subTitle: 'You do not have a valid security key. Please change your security key in the settings tab to a valid one.',
-                buttons: ['OK']
-              });
-              alert.present();
-            }
-            this.viewCtrl.dismiss();
-          }, error => {
-            let alert = this.alertCtrl.create({
-              title: 'Connection Error!',
-              subTitle: 'You appear to not be connected to the internet! Scout requires access to the internet to retrive data.',
-              buttons: ['OK']
-            });
-            alert.present();
-        });
+      this.storage.get("teams").then((val) => {
+        var teams = JSON.parse(val);
+        for (var i = 0, len = teams.length; i < len; i++) {
+          if (teams[i]['teamNumber'] == this.winOne) {
+            teams[i]['wins'] = (parseInt(teams[i]['wins']) + 1).toString();
+          }
+          if (teams[i]['teamNumber'] == this.winTwo) {
+            teams[i]['wins'] = (parseInt(teams[i]['wins']) + 1).toString();
+          }
+          if (teams[i]['teamNumber'] == this.winThree) {
+            teams[i]['wins'] = (parseInt(teams[i]['wins']) + 1).toString();
+          }
+          if (teams[i]['teamNumber'] == this.loseOne) {
+            teams[i]['losses'] = (parseInt(teams[i]['losses']) + 1).toString();
+          }
+          if (teams[i]['teamNumber'] == this.loseTwo) {
+            teams[i]['losses'] = (parseInt(teams[i]['losses']) + 1).toString();
+          }
+          if (teams[i]['teamNumber'] == this.loseThree) {
+            teams[i]['losses'] = (parseInt(teams[i]['losses']) + 1).toString();
+          }
+        }
+        teams = JSON.stringify(teams);
+        this.storage.set("teams", teams);
       });
+
+      this.viewCtrl.dismiss();
     }
   }
 }

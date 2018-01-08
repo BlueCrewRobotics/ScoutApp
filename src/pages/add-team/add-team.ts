@@ -13,22 +13,27 @@ import { Storage } from '@ionic/storage';
 })
 export class AddTeamPage {
 
+  team:any;
+  teams:any[] = [];
+
   securityKey:any;
+
   name:any;
   number:any;
-  dropGears:boolean;
-  collectGears:boolean;
-  climbRope:boolean;
-  highBoiler:boolean;
-  lowBoiler:boolean;
-  collectFuel:boolean;
+  comments:any;
+  groundCubes:boolean;
+  returnCubes:boolean;
+  stackCubes:boolean;
+  switch:boolean;
+  scale:boolean;
+  climb:boolean;
 
-  dg:string;
-  cg:string;
-  cr:string;
-  hb:string;
-  lb:string;
-  cf:string;
+  gc:string;
+  rc:string;
+  sc:string;
+  sw:string;
+  sl:string;
+  cl:string;
 
   nameError:boolean;
   numberError:boolean;
@@ -64,40 +69,40 @@ export class AddTeamPage {
       this.numberNotNumberError = true;
     }
 
-    if (this.dropGears == true) {
-      this.dg = "Yes";
+    if (this.groundCubes == true) {
+      this.gc = "Yes";
     } else {
-      this.dg = "No";
+      this.gc = "No";
     }
 
-    if (this.collectGears == true) {
-      this.cg = "Yes";
+    if (this.returnCubes == true) {
+      this.rc = "Yes";
     } else {
-      this.cg = "No";
+      this.rc = "No";
     }
 
-    if (this.climbRope == true) {
-      this.cr = "Yes";
+    if (this.stackCubes == true) {
+      this.sc = "Yes";
     } else {
-      this.cr = "No";
+      this.sc = "No";
     }
 
-    if (this.highBoiler == true) {
-      this.hb = "Yes";
+    if (this.switch == true) {
+      this.sw = "Yes";
     } else {
-      this.hb = "No";
+      this.sw = "No";
     }
 
-    if (this.lowBoiler == true) {
-      this.lb = "Yes";
+    if (this.scale == true) {
+      this.sl = "Yes";
     } else {
-      this.lb = "No";
+      this.sl = "No";
     }
 
-    if (this.collectFuel == true) {
-      this.cf = "Yes";
+    if (this.climb == true) {
+      this.cl = "Yes";
     } else {
-      this.cf = "No";
+      this.cl = "No";
     }
 
     if (this.nameError == true) {
@@ -125,46 +130,33 @@ export class AddTeamPage {
       alert.present();
       this.numberNotNumberError = false;
     } else {
-      let loader = this.loadingCtrl.create({
-        content: "Adding Team..",
-        duration: 3000
-      });
-      loader.present();
 
-      this.storage.get('securityKey').then((val) => {
-        var headers = new Headers();
-        headers.append('Content-Type', 'application/x-www-form-urlencoded' );
-        let options = new RequestOptions({ headers: headers });
-  
-        var params = 'securityKey=' + val + '&name=' + this.name + '&number=' + this.number + '&dropGears=' + this.dg + '&collectGears=' + this.cg + '&climbRope=' + this.cr + '&highBoiler=' + this.hb + '&lowBoiler=' + this.lb + '&collectFuel=' + this.cf;    
-        this.http.post("http://scout.bluecrew6153.org/api/team.php", params, options)
-          .subscribe(data => {
-            loader.dismiss();
-            if (data["_body"] == "Failure") {
-              let alert = this.alertCtrl.create({
-                title: 'Error!',
-                subTitle: 'An error has occured while trying to add the team.',
-                buttons: ['OK']
-              });
-              alert.present();
-            } else if (data["_body"] == "SecurityError") {
-              let alert = this.alertCtrl.create({
-                title: 'Security Key Error!',
-                subTitle: 'You do not have a valid security key. Please change your security key in the settings tab to a valid one.',
-                buttons: ['OK']
-              });
-              alert.present();
-            }
-            this.viewCtrl.dismiss();
-           }, error => {
-            let alert = this.alertCtrl.create({
-              title: 'Connection Error!',
-              subTitle: 'You appear to not be connected to the internet! Scout requires access to the internet to retrive data.',
-              buttons: ['OK']
-            });
-            alert.present();
-        });
-      });
+    this.team = {
+      "teamName" : this.name,
+      "teamNumber" : this.number,
+      "comments" : this.comments,
+      "groundCubes" : this.gc,
+      "returnCubes" : this.rc,
+      "stackCubes" : this.sc,
+      "switch" : this.sw,
+      "scale" : this.sl,
+      "climb" : this.cl,
+      "wins" : "0",
+      "losses" : "0"
+    }
+    
+    this.storage.get("teams").then((val) => {
+      if (val == "" || val == null) {
+        var data = "[" + JSON.stringify(this.team) + "]";
+        this.storage.set("teams", data);
+      } else {
+        var existing = val.replace("]", ", ");
+        var newData = existing + JSON.stringify(this.team) + "]";
+        this.storage.set("teams", newData);
+      }
+    });
+
+    this.viewCtrl.dismiss();
     }
   }
 }
