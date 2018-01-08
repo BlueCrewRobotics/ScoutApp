@@ -18,7 +18,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var EditTeamPageModule = (function () {
+var EditTeamPageModule = /** @class */ (function () {
     function EditTeamPageModule() {
     }
     EditTeamPageModule = __decorate([

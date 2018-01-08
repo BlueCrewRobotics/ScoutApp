@@ -15,12 +15,13 @@ export class TeamDataPage {
 
   name:any;
   number:any;
-  dropGear:any;
-  collectGear:any;
-  climbRope:any;
-  highBoiler:any;
-  lowBoiler:any;
-  collectFuel:any;
+  comments:any;
+  groundCubes:any;
+  returnCubes:any;
+  stackCubes:any;
+  switch:any;
+  scale:any;
+  climb:any;
   wins:any;
   losses:any;
 
@@ -47,23 +48,25 @@ export class TeamDataPage {
   ionViewDidLoad() {
     this.name = this.navParams.get('teamName');
     this.number = this.navParams.get('teamNumber');
-    this.dropGear = this.navParams.get('dropGears');
-    this.collectGear = this.navParams.get('collectGears');
-    this.climbRope = this.navParams.get('climbRope');
-    this.highBoiler = this.navParams.get('highBoiler');
-    this.lowBoiler = this.navParams.get('lowBoiler');
-    this.collectFuel = this.navParams.get('collectFuel');
+    this.comments = this.navParams.get('comments');
+    this.groundCubes = this.navParams.get('groundCubes');
+    this.returnCubes = this.navParams.get('returnCubes');
+    this.stackCubes = this.navParams.get('stackCubes');
+    this.switch = this.navParams.get('switch');
+    this.scale = this.navParams.get('scale');
+    this.climb = this.navParams.get('climb');
     this.wins = this.navParams.get('wins');
     this.losses = this.navParams.get('losses');
     this.team = {
       "teamName" : this.name,
       "teamNumber" : this.number,
-      "dropGears" : this.dropGear,
-      "collectGears" : this.collectGear,
-      "climbRope" : this.climbRope,
-      "highBoiler" : this.highBoiler,
-      "lowBoiler" : this.lowBoiler,
-      "collectFuel" : this.collectFuel,
+      "comments" : this.comments,
+      "groundCubes" : this.groundCubes,
+      "returnCubes" : this.returnCubes,
+      "stackCubes" : this.stackCubes,
+      "switch" : this.switch,
+      "scale" : this.scale,
+      "climb" : this.climb,
       "wins" : this.wins,
       "losses" : this.losses
     }

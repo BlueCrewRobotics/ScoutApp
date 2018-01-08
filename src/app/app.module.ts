@@ -14,6 +14,7 @@ import { AddTeamPage } from '../pages/add-team/add-team';
 import { EditTeamPage } from '../pages/edit-team/edit-team';
 import { AddMatchPage } from '../pages/add-match/add-match';
 import { SigninPage } from '../pages/signin/signin';
+import { InitialTutorialPage } from '../pages/initial-tutorial/initial-tutorial';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -30,7 +31,8 @@ import { TeamsProvider } from '../providers/teams/teams';
     AddTeamPage,
     EditTeamPage,
     AddMatchPage,
-    SigninPage
+    SigninPage,
+    InitialTutorialPage
   ],
   imports: [
     BrowserModule,
@@ -49,7 +51,8 @@ import { TeamsProvider } from '../providers/teams/teams';
     AddTeamPage,
     EditTeamPage,
     AddMatchPage,
-    SigninPage
+    SigninPage,
+    InitialTutorialPage
   ],
   providers: [
     StatusBar,

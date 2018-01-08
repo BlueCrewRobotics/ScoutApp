@@ -1,3 +1,5 @@
+NOTE: THIS BRANCH DOES NOT CURRENTLY WORK!
+
 # Scout App
 
 Scouting at FRC events made easy.

@@ -1,14 +1,23 @@
 webpackJsonp([3],{
 
+<<<<<<< HEAD
+/***/ 287:
+=======
 /***/ 289:
+>>>>>>> master
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "HomePageModule", function() { return HomePageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "InitialTutorialPageModule", function() { return InitialTutorialPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+<<<<<<< HEAD
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__initial_tutorial__ = __webpack_require__(206);
+=======
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__home__ = __webpack_require__(105);
+>>>>>>> master
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,21 +27,21 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var HomePageModule = (function () {
-    function HomePageModule() {
+var InitialTutorialPageModule = /** @class */ (function () {
+    function InitialTutorialPageModule() {
     }
-    HomePageModule = __decorate([
+    InitialTutorialPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
             declarations: [],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__home__["a" /* HomePage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__initial_tutorial__["a" /* InitialTutorialPage */]),
             ],
         })
-    ], HomePageModule);
-    return HomePageModule;
+    ], InitialTutorialPageModule);
+    return InitialTutorialPageModule;
 }());
 
-//# sourceMappingURL=home.module.js.map
+//# sourceMappingURL=initial-tutorial.module.js.map
 
 /***/ })
 
