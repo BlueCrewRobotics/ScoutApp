@@ -24,6 +24,8 @@ export class HomePage {
   teams:any[] = [];
   team:any;
 
+  connection:number = 0;
+
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
@@ -99,7 +101,10 @@ export class HomePage {
                 this.teams = data;
                 this.storage.set("teams", JSON.stringify(data));
                 refresher.complete();
-              })
+              }, error => {
+                this.connection = this.connection + 1;
+                this.connectionError();
+            })
             setTimeout(() => {
               refresher.complete();
             }, 2000);
@@ -132,12 +137,26 @@ export class HomePage {
             (data) => {
               this.teams = data;
               this.storage.set("teams", JSON.stringify(data));
-            })
+            }, error => {
+              this.connection = this.connection + 1;
+              this.connectionError();
+          })
           }
         }
       ]
     });
     alert.present();
+  }
+
+  connectionError() {
+    if (this.connection == 1) {
+      let alert = this.alertCtrl.create({
+        title: 'Connection Error!',
+        subTitle: 'You appear to not be connected to the internet! Scout requires access to the internet to upload data.',
+        buttons: ['OK']
+      });
+      alert.present();
+    }
   }
 
   uploadData() {
@@ -181,12 +200,8 @@ export class HomePage {
                       alert.present();
                     }
                   }, error => {
-                    let alert = this.alertCtrl.create({
-                      title: 'Connection Error!',
-                      subTitle: 'You appear to not be connected to the internet! Scout requires access to the internet to retrive data.',
-                      buttons: ['OK']
-                    });
-                    alert.present();
+                    this.connection = this.connection + 1;
+                    this.connectionError();
                 });
               }
               loader.dismiss();
@@ -196,9 +211,8 @@ export class HomePage {
       ]
     });
     alert.present();
+    this.connection = 0;
   }
-
-  
 
   ionViewDidLoad() {
     this.events.subscribe('functionCall:tabSelected', eventData => { 

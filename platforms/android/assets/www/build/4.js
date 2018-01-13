@@ -1,1 +1,40 @@
-webpackJsonp([4],{272:function(a,e,n){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var _=n(0),o=(n(3),n(9),n(112)),r=function(){return function(){}}(),t=n(207),u=n(208),c=n(209),i=n(210),b=n(211),d=n(212),f=n(213),s=n(214),l=n(215),m=n(220),p=n(15),v=n(17),g=n(149),j=n(57);n.d(e,"HomePageModuleNgFactory",function(){return k});var k=_.W(r,[],function(a){return _._8([_._9(512,_.i,_.S,[[8,[t.a,u.a,c.a,i.a,b.a,d.a,f.a,s.a,l.a,m.a]],[3,_.i],_.s]),_._9(4608,p.k,p.j,[_.r,[2,p.s]]),_._9(4608,v.o,v.o,[]),_._9(4608,v.d,v.d,[]),_._9(512,p.b,p.b,[]),_._9(512,v.m,v.m,[]),_._9(512,v.e,v.e,[]),_._9(512,v.l,v.l,[]),_._9(512,g.a,g.a,[]),_._9(512,g.b,g.b,[]),_._9(512,r,r,[]),_._9(256,j.a,o.a,[])])})}});
+webpackJsonp([4],{
+
+/***/ 289:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "HomePageModule", function() { return HomePageModule; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__home__ = __webpack_require__(107);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+
+
+var HomePageModule = /** @class */ (function () {
+    function HomePageModule() {
+    }
+    HomePageModule = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
+            declarations: [],
+            imports: [
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__home__["a" /* HomePage */]),
+            ],
+        })
+    ], HomePageModule);
+    return HomePageModule;
+}());
+
+//# sourceMappingURL=home.module.js.map
+
+/***/ })
+
+});
+//# sourceMappingURL=4.js.map
