@@ -4,6 +4,7 @@ import { HttpModule } from '@angular/http';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { IonicStorageModule } from '@ionic/storage';
+import { InAppBrowser } from '@ionic-native/in-app-browser';
 
 import { AboutPage } from '../pages/about/about';
 import { HomePage } from '../pages/home/home';
@@ -15,6 +16,7 @@ import { EditTeamPage } from '../pages/edit-team/edit-team';
 import { AddMatchPage } from '../pages/add-match/add-match';
 import { SigninPage } from '../pages/signin/signin';
 import { InitialTutorialPage } from '../pages/initial-tutorial/initial-tutorial';
+import { CreditsPage } from '../pages/credits/credits';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -32,7 +34,8 @@ import { TeamsProvider } from '../providers/teams/teams';
     EditTeamPage,
     AddMatchPage,
     SigninPage,
-    InitialTutorialPage
+    InitialTutorialPage,
+    CreditsPage
   ],
   imports: [
     BrowserModule,
@@ -52,13 +55,15 @@ import { TeamsProvider } from '../providers/teams/teams';
     EditTeamPage,
     AddMatchPage,
     SigninPage,
-    InitialTutorialPage
+    InitialTutorialPage,
+    CreditsPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    TeamsProvider
+    TeamsProvider,
+    InAppBrowser
   ]
 })
 export class AppModule {}

@@ -6,6 +6,7 @@ import { AlertController } from 'ionic-angular';
 import { SigninPage } from '../signin/signin';
 import { InitialTutorialPage } from '../initial-tutorial/initial-tutorial';
 import { ModalController } from 'ionic-angular';
+import { Events } from 'ionic-angular';
 
 @IonicPage()
 @Component({
@@ -23,6 +24,7 @@ export class SettingsPage {
     public storage: Storage,
     public alertCtrl: AlertController,
     public modalCtrl: ModalController,
+    public events: Events
     ) {
   }
 
@@ -51,6 +53,10 @@ export class SettingsPage {
             modal.onDidDismiss(data => {
               let tutorial = this.modalCtrl.create(InitialTutorialPage);
               tutorial.present();
+              tutorial.onDidDismiss(data => {
+                this.events.publish('functionCall:tabSelected');
+                this.navCtrl.parent.select(0);
+              })
             });
             modal.present();
           }

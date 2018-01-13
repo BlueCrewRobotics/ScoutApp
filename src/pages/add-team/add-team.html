@@ -54,7 +54,23 @@
       </ion-item-group>
 
       <ion-item-group>
-        <ion-item-divider color="dark">Functions</ion-item-divider>
+        <ion-item-divider color="dark">Robot</ion-item-divider>
+        <ion-item>
+          <ion-label>Drive Train Type</ion-label>
+          <ion-select [(ngModel)]="driveTrainType"  [ngModelOptions]="{standalone:true}">
+            <ion-option value="Kit of Parts">Kit of Parts</ion-option>
+            <ion-option value="Mecanum">Mecanum</ion-option>
+            <ion-option value="Omni">Omni</ion-option>
+            <ion-option value="Treads">Treads</ion-option>
+            <ion-option value="West Coast">West Coast</ion-option>
+            <ion-option value="Swerve">Swerve</ion-option>
+            <ion-option value="Hybrid">Hybrid</ion-option>
+            <ion-option value="Butterfly">Butterfly</ion-option>
+            <ion-option value="Kiwi">Kiwi</ion-option>
+            <ion-option value="Custom">Custom</ion-option>
+            <ion-option value="Unknown">Unknown</ion-option>
+          </ion-select>
+        </ion-item>
         <ion-item>
           <ion-label>Switch</ion-label>
           <ion-toggle checked="false" [(ngModel)]="switch" [ngModelOptions]="{standalone:true}"></ion-toggle>
@@ -66,6 +82,10 @@
         <ion-item>
           <ion-label>Climb</ion-label>
           <ion-toggle checked="false" [(ngModel)]="climb" [ngModelOptions]="{standalone:true}"></ion-toggle>
+        </ion-item>
+        <ion-item>
+          <ion-label>Lift Other Robots</ion-label>
+          <ion-toggle checked="false" [(ngModel)]="liftOthers" [ngModelOptions]="{standalone:true}"></ion-toggle>
         </ion-item>
       </ion-item-group>
 

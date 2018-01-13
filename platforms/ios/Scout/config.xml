@@ -107,4 +107,7 @@
     <preference name="SplashScreen" value="screen" />
     <preference name="SplashScreenDelay" value="0" />
     <preference name="ShowSplashScreenSpinner" value="false" />
+    <feature name="InAppBrowser">
+        <param name="ios-package" value="CDVInAppBrowser" />
+    </feature>
 </widget>

@@ -27,6 +27,9 @@
         },
         "cordova-sqlite-storage": {
             "PACKAGE_NAME": "org.bluecrew6153.scout"
+        },
+        "cordova-plugin-inappbrowser": {
+            "PACKAGE_NAME": "org.bluecrew6153.scout"
         }
     },
     "dependent_plugins": {}

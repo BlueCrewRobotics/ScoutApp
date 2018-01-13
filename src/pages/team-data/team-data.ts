@@ -29,6 +29,8 @@ export class TeamDataPage {
   levitates:any;
   timeScale:any;
   timeSwitch:any;
+  driveTrainType:any;
+  liftOthers:any;
 
   constructor(
     public navCtrl: NavController,
@@ -67,6 +69,8 @@ export class TeamDataPage {
     this.levitates = this.navParams.get('levitates');
     this.timeScale = this.navParams.get('timeScale');
     this.timeSwitch = this.navParams.get('timeSwitch');
+    this.driveTrainType = this.navParams.get('driveTrainType');
+    this.liftOthers = this.navParams.get('liftOthers');
 
     this.team = {
       "teamName" : this.name,
@@ -84,7 +88,9 @@ export class TeamDataPage {
       "boosts" : this.boosts,
       "levitates" : this.levitates,
       "timeScale" : this.timeScale,
-      "timeSwitch" : this.timeSwitch
+      "timeSwitch" : this.timeSwitch,
+      "driveTrainType" : this.driveTrainType,
+      "liftOthers" : this.liftOthers
     }
   }
 

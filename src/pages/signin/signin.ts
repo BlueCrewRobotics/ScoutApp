@@ -46,7 +46,7 @@ export class SigninPage {
       }, error => {
         let alert = this.alertCtrl.create({
           title: 'Connection Error!',
-          subTitle: 'You appear to not be connected to the internet! Scout requires access to the internet to retrive data.',
+          subTitle: 'You appear to not be connected to the internet! Scout requires access to the internet to sign in for the first time.',
           buttons: ['OK']
         });
         alert.present();

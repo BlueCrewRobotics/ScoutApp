@@ -40,6 +40,7 @@
 		F8FDF561C43F4DE9BD7C9E2D /* SQLitePlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = C0248F56994247B0B2185290 /* SQLitePlugin.m */; };
 		FA8DF282FC1E47898BD3E9C8 /* CDVSplashScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = 47523A3073D6410BA9175FFE /* CDVSplashScreen.m */; };
 		FAD3770290BF4F7A9E3A1E39 /* GCDWebServerConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = D607272AB49848BAA36D069C /* GCDWebServerConnection.m */; };
+		B4EB91DA206B4E12AE8256E6 /* CDVInAppBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FCDB534FBCA4EB09A13ED45 /* CDVInAppBrowser.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -140,6 +141,8 @@
 		F840E1F0165FE0F500CFE078 /* config.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = config.xml; path = Scout/config.xml; sourceTree = "<group>"; };
 		F88A369DEB1E48079B4B92A5 /* GCDWebServerFileRequest.m */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.objc; name = GCDWebServerFileRequest.m; path = "cordova-plugin-ionic-webview/GCDWebServerFileRequest.m"; sourceTree = "<group>"; };
 		FC6B8E5054B14DFF92128E92 /* CDVDevice.m */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.objc; name = CDVDevice.m; path = "cordova-plugin-device/CDVDevice.m"; sourceTree = "<group>"; };
+		7FCDB534FBCA4EB09A13ED45 /* CDVInAppBrowser.m */ = {isa = PBXFileReference; name = "CDVInAppBrowser.m"; path = "cordova-plugin-inappbrowser/CDVInAppBrowser.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
+		2BF067B155AF4B8B84D4E44E /* CDVInAppBrowser.h */ = {isa = PBXFileReference; name = "CDVInAppBrowser.h"; path = "cordova-plugin-inappbrowser/CDVInAppBrowser.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -299,6 +302,8 @@
 				EF194D4B26A64CADA1CDDE3E /* SQLitePlugin.h */,
 				080FAAA87B214244BBA1A851 /* PSPDFThreadSafeMutableDictionary.h */,
 				97D9346BD8AC4E80BE2F0512 /* sqlite3.h */,
+				7FCDB534FBCA4EB09A13ED45 /* CDVInAppBrowser.m */,
+				2BF067B155AF4B8B84D4E44E /* CDVInAppBrowser.h */,
 			);
 			name = Plugins;
 			path = Scout/Plugins;
@@ -451,6 +456,7 @@
 				F8FDF561C43F4DE9BD7C9E2D /* SQLitePlugin.m in Sources */,
 				73B5C437A03741D9854022C3 /* PSPDFThreadSafeMutableDictionary.m in Sources */,
 				702B8B34E55D464A9F1B1C8A /* sqlite3.c in Sources */,
+				B4EB91DA206B4E12AE8256E6 /* CDVInAppBrowser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

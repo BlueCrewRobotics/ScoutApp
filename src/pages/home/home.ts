@@ -12,6 +12,7 @@ import { ModalController } from 'ionic-angular';
 import { ActionSheetController } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 import { Http, Headers, RequestOptions } from '@angular/http';
+import { Events } from 'ionic-angular';
 
 @IonicPage()
 @Component({
@@ -32,7 +33,8 @@ export class HomePage {
     public modalCtrl: ModalController,
     public actionSheetCtrl: ActionSheetController,
     public storage: Storage,
-    public http: Http
+    public http: Http,
+    public events: Events
     ) {
   }
 
@@ -114,6 +116,30 @@ export class HomePage {
     });
   }
 
+  loadDataFromServer() {    
+    let alert = this.alertCtrl.create({
+      title: 'Download Teams',
+      message: 'Would you like to download the current index of teams now?',
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+        },
+        {
+          text: 'Download',
+          handler: () => {
+          this.teamsProvider.getTeams().subscribe(
+            (data) => {
+              this.teams = data;
+              this.storage.set("teams", JSON.stringify(data));
+            })
+          }
+        }
+      ]
+    });
+    alert.present();
+  }
+
   uploadData() {
     let alert = this.alertCtrl.create({
       title: 'Confirm Upload',
@@ -136,7 +162,7 @@ export class HomePage {
                 headers.append('Content-Type', 'application/x-www-form-urlencoded' );
                 let options = new RequestOptions({ headers: headers });
           
-                var params = 'securityKey=' + sec + '&name=' + this.teams[i]['teamName'] + '&number=' + this.teams[i]['teamNumber'] + '&comments=' + this.teams[i]['comments'] + '&groundCubes=' + this.teams[i]['groundCubes'] + '&returnCubes=' + this.teams[i]['returnCubes'] + '&stackCubes=' + this.teams[i]['stackCubes'] + '&switch=' + this.teams[i]['switch'] + '&scale=' + this.teams[i]['scale'] + '&climb=' + this.teams[i]['climb'] + '&wins=' + this.teams[i]['wins'] + '&losses=' + this.teams[i]['losses'] + '&boosts=' + this.teams[i]['boosts'] + '&forces=' + this.teams[i]['forces'] + '&levitates=' + this.teams[i]['levitates'] + '&timeScale=' + this.teams[i]['timeScale'] + '&timeSwitch=' + this.teams[i]['timeSwitch'];    
+                var params = 'securityKey=' + sec + '&name=' + this.teams[i]['teamName'] + '&number=' + this.teams[i]['teamNumber'] + '&comments=' + this.teams[i]['comments'] + '&groundCubes=' + this.teams[i]['groundCubes'] + '&returnCubes=' + this.teams[i]['returnCubes'] + '&stackCubes=' + this.teams[i]['stackCubes'] + '&switch=' + this.teams[i]['switch'] + '&scale=' + this.teams[i]['scale'] + '&climb=' + this.teams[i]['climb'] + '&wins=' + this.teams[i]['wins'] + '&losses=' + this.teams[i]['losses'] + '&boosts=' + this.teams[i]['boosts'] + '&forces=' + this.teams[i]['forces'] + '&levitates=' + this.teams[i]['levitates'] + '&timeScale=' + this.teams[i]['timeScale'] + '&timeSwitch=' + this.teams[i]['timeSwitch']  + '&driveTrainType=' + this.teams[i]['driveTrainType']  + '&liftOthers=' + this.teams[i]['liftOthers'];    
                 this.http.post("http://scout.bluecrew6153.org/api/team.php", params, options)
                   .subscribe(data => {
                     if (data["_body"] == "Failure") {
@@ -172,14 +198,20 @@ export class HomePage {
     alert.present();
   }
 
+  
+
   ionViewDidLoad() {
+    this.events.subscribe('functionCall:tabSelected', eventData => { 
+      this.loadDataFromServer();
+    });
+
     this.storage.get('securityKey').then((val) => {
       if (val == null || val == "") {
         let modal = this.modalCtrl.create(SigninPage);
         modal.onDidDismiss(data => {
           let tutorial = this.modalCtrl.create(InitialTutorialPage);
           tutorial.onDidDismiss(data => {
-            this.loadData();
+            this.loadDataFromServer();
           });
           tutorial.present();
         });

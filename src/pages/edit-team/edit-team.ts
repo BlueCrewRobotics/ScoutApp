@@ -24,6 +24,15 @@ export class EditTeamPage {
   switch:any;
   scale:any;
   climb:any;
+  wins:any;
+  losses:any;
+  forces:any;
+  boosts:any;
+  levitates:any;
+  timeScale:any;
+  timeSwitch:any;
+  driveTrainType:any;
+  liftOthers:any;
 
   gc:string;
   rc:string;
@@ -31,6 +40,7 @@ export class EditTeamPage {
   sw:string;
   sl:string;
   cl:string;
+  lo:any;
 
   nameError:boolean;
   numberError:boolean;
@@ -102,6 +112,12 @@ export class EditTeamPage {
       this.cl = "No";
     }
 
+    if (this.liftOthers == true) {
+      this.lo = "Yes";
+    } else {
+      this.lo = "No";
+    }
+
     if (this.nameError == true) {
       let alert = this.alertCtrl.create({
         title: 'Team Name!',
@@ -138,8 +154,15 @@ export class EditTeamPage {
         "switch" : this.sw,
         "scale" : this.sl,
         "climb" : this.cl,
-        "wins" : "0",
-        "losses" : "0"
+        "wins" : this.wins,
+        "losses" : this.losses,
+        "forces" : this.forces,
+        "boosts" : this.boosts,
+        "levitates" : this.levitates,
+        "timeScale" : this.timeScale,
+        "timeSwitch" : this.timeSwitch,
+        "driveTrainType" : this.driveTrainType,
+        "liftOthers" : this.lo
       }
       
       this.storage.get("teams").then((val) => {
@@ -161,6 +184,13 @@ export class EditTeamPage {
     this.name = this.navParams.get('teamName');
     this.number = this.navParams.get('teamNumber');
     this.comments = this.navParams.get('comments');
+    this.wins = this.navParams.get('wins');
+    this.losses = this.navParams.get('losses');
+    this.forces = this.navParams.get('forces');
+    this.boosts = this.navParams.get('boosts');
+    this.levitates = this.navParams.get('levitates');
+    this.timeScale = this.navParams.get('timeScale');
+    this.timeSwitch = this.navParams.get('timeSwitch');
 
     if (this.navParams.get('groundCubes') == "Yes") {
       this.groundCubes = true;
@@ -196,6 +226,16 @@ export class EditTeamPage {
       this.climb = true;
     } else {
       this.climb = false;
+    }
+
+    if (this.navParams.get('liftOthers') == "Yes") {
+      this.liftOthers = true;
+    } else {
+      this.liftOthers = false;
+    }
+
+    if (this.navParams.get('driveTrainType')) {
+      this.driveTrainType = this.navParams.get('driveTrainType');
     }
   }
 

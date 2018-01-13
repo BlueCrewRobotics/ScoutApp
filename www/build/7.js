@@ -1,1 +1,40 @@
-webpackJsonp([7],{264:function(a,e,n){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var _=n(0),t=(n(4),n(10),n(104)),r=function(){return function(){}}(),o=n(204),u=n(205),c=n(206),i=n(207),d=n(208),b=n(209),f=n(210),s=n(211),l=n(212),p=n(213),v=n(15),M=n(17),g=n(145),j=n(57);n.d(e,"AddMatchPageModuleNgFactory",function(){return k});var k=_.W(r,[],function(a){return _._8([_._9(512,_.i,_.S,[[8,[o.a,u.a,c.a,i.a,d.a,b.a,f.a,s.a,l.a,p.a]],[3,_.i],_.s]),_._9(4608,v.k,v.j,[_.r,[2,v.s]]),_._9(4608,M.o,M.o,[]),_._9(4608,M.d,M.d,[]),_._9(512,v.b,v.b,[]),_._9(512,M.m,M.m,[]),_._9(512,M.e,M.e,[]),_._9(512,M.l,M.l,[]),_._9(512,g.a,g.a,[]),_._9(512,g.b,g.b,[]),_._9(512,r,r,[]),_._9(256,j.a,t.a,[])])})}});
+webpackJsonp([7],{
+
+/***/ 290:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AddTeamPageModule", function() { return AddTeamPageModule; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__add_team__ = __webpack_require__(108);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+
+
+var AddTeamPageModule = /** @class */ (function () {
+    function AddTeamPageModule() {
+    }
+    AddTeamPageModule = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
+            declarations: [],
+            imports: [
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__add_team__["a" /* AddTeamPage */]),
+            ],
+        })
+    ], AddTeamPageModule);
+    return AddTeamPageModule;
+}());
+
+//# sourceMappingURL=add-team.module.js.map
+
+/***/ })
+
+});
+//# sourceMappingURL=7.js.map

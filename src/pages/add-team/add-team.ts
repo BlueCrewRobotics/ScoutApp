@@ -28,16 +28,21 @@ export class AddTeamPage {
   scale:boolean;
   climb:boolean;
 
+  liftOthers:any;
+  driveTrainType:any;
+
   gc:string;
   rc:string;
   sc:string;
   sw:string;
   sl:string;
   cl:string;
+  lo:string;
 
   nameError:boolean;
   numberError:boolean;
   numberNotNumberError:boolean;
+  driveTrainError:boolean;
 
   constructor(
     public navCtrl: NavController,
@@ -52,6 +57,10 @@ export class AddTeamPage {
 
   cancel() {
     this.viewCtrl.dismiss();
+  }
+
+  selectDriveTrain() {
+
   }
 
   save() {
@@ -105,6 +114,16 @@ export class AddTeamPage {
       this.cl = "No";
     }
 
+    if (this.driveTrainType == "" || this.driveTrainType == null) {
+      this.driveTrainError = true;
+    }
+
+    if (this.liftOthers == true) {
+      this.lo = "Yes";
+    } else {
+      this.lo = "No";
+    }
+
     if (this.nameError == true) {
       let alert = this.alertCtrl.create({
         title: 'Team Name!',
@@ -129,6 +148,14 @@ export class AddTeamPage {
       });
       alert.present();
       this.numberNotNumberError = false;
+    } else if (this.driveTrainError == true) {
+      let alert = this.alertCtrl.create({
+        title: 'Drive Train!',
+        subTitle: 'Please select a drive train! If you do not know what type it is, select \'Unknown\'.',
+        buttons: ['OK']
+      });
+      alert.present();
+      this.driveTrainError = false;
     } else {
 
     this.team = {
@@ -141,6 +168,8 @@ export class AddTeamPage {
       "switch" : this.sw,
       "scale" : this.sl,
       "climb" : this.cl,
+      "driveTrainType" : this.driveTrainType,
+      "liftOthers" : this.lo,
       "wins" : "0",
       "losses" : "0",
       "forces" : "0",
