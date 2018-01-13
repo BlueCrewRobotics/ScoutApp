@@ -142,7 +142,12 @@ export class AddTeamPage {
       "scale" : this.sl,
       "climb" : this.cl,
       "wins" : "0",
-      "losses" : "0"
+      "losses" : "0",
+      "forces" : "0",
+      "boosts" : "0",
+      "levitates" : "0",
+      "timeScale" : "0",
+      "timeSwitch" : "0"
     }
     
     this.storage.get("teams").then((val) => {

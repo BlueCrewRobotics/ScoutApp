@@ -4,6 +4,177 @@ webpackJsonp([8],{
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AddMatchPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_http__ = __webpack_require__(28);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_storage__ = __webpack_require__(31);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+
+
+var AddMatchPage = /** @class */ (function () {
+    function AddMatchPage(navCtrl, navParams, viewCtrl, http, alertCtrl, loadingCtrl, storage) {
+        this.navCtrl = navCtrl;
+        this.navParams = navParams;
+        this.viewCtrl = viewCtrl;
+        this.http = http;
+        this.alertCtrl = alertCtrl;
+        this.loadingCtrl = loadingCtrl;
+        this.storage = storage;
+    }
+    AddMatchPage.prototype.cancel = function () {
+        this.viewCtrl.dismiss();
+    };
+    AddMatchPage.prototype.save = function () {
+        var _this = this;
+        if (isNaN(this.teamOne) == true) {
+            this.numberNotNumberError = true;
+        }
+        else if (isNaN(this.teamTwo) == true) {
+            this.numberNotNumberError = true;
+        }
+        else if (isNaN(this.teamThree) == true) {
+            this.numberNotNumberError = true;
+        }
+        if (isNaN(this.scaleTime) == true) {
+            this.timeError = true;
+        }
+        else if (isNaN(this.switchTime) == true) {
+            this.timeError = true;
+        }
+        if (this.numberNotNumberError == true) {
+            var alert = this.alertCtrl.create({
+                title: 'Team Error!',
+                subTitle: 'Please enter only team numbers in the team fields!',
+                buttons: ['OK']
+            });
+            alert.present();
+            this.numberNotNumberError = false;
+        }
+        else if (this.timeError == true) {
+            var alert = this.alertCtrl.create({
+                title: 'Time Error!',
+                subTitle: 'Please enter the amount of time that a team controlled their switch/scale!',
+                buttons: ['OK']
+            });
+            alert.present();
+            this.timeError = false;
+        }
+        else {
+            this.storage.get("teams").then(function (val) {
+                var teams = JSON.parse(val);
+                for (var i = 0, len = teams.length; i < len; i++) {
+                    if (_this.win == true) {
+                        if (teams[i]['teamNumber'] == _this.teamOne) {
+                            teams[i]['wins'] = (parseInt(teams[i]['wins']) + 1).toString();
+                        }
+                        if (teams[i]['teamNumber'] == _this.teamTwo) {
+                            teams[i]['wins'] = (parseInt(teams[i]['wins']) + 1).toString();
+                        }
+                        if (teams[i]['teamNumber'] == _this.teamThree) {
+                            teams[i]['wins'] = (parseInt(teams[i]['wins']) + 1).toString();
+                        }
+                    }
+                    else {
+                        if (teams[i]['teamNumber'] == _this.teamOne) {
+                            teams[i]['losses'] = (parseInt(teams[i]['losses']) + 1).toString();
+                        }
+                        if (teams[i]['teamNumber'] == _this.teamTwo) {
+                            teams[i]['losses'] = (parseInt(teams[i]['losses']) + 1).toString();
+                        }
+                        if (teams[i]['teamNumber'] == _this.teamThree) {
+                            teams[i]['losses'] = (parseInt(teams[i]['losses']) + 1).toString();
+                        }
+                    }
+                    if (teams[i]['teamNumber'] == _this.teamOne) {
+                        if (_this.force == true) {
+                            teams[i]['forces'] = (parseInt(teams[i]['forces']) + 1).toString();
+                        }
+                        if (_this.boost == true) {
+                            teams[i]['boosts'] = (parseInt(teams[i]['boosts']) + 1).toString();
+                        }
+                        if (_this.levitate == true) {
+                            teams[i]['levitates'] = (parseInt(teams[i]['levitates']) + 1).toString();
+                        }
+                        if (_this.scaleTime) {
+                            teams[i]['timeScale'] = (parseInt(teams[i]['timeScale']) + parseInt(_this.scaleTime)).toString();
+                        }
+                        if (_this.switchTime) {
+                            teams[i]['timeSwitch'] = (parseInt(teams[i]['timeSwitch']) + parseInt(_this.switchTime)).toString();
+                        }
+                    }
+                    if (teams[i]['teamNumber'] == _this.teamTwo) {
+                        if (_this.force == true) {
+                            teams[i]['forces'] = (parseInt(teams[i]['forces']) + 1).toString();
+                        }
+                        if (_this.boost == true) {
+                            teams[i]['boosts'] = (parseInt(teams[i]['boosts']) + 1).toString();
+                        }
+                        if (_this.levitate == true) {
+                            teams[i]['levitates'] = (parseInt(teams[i]['levitates']) + 1).toString();
+                        }
+                        if (_this.scaleTime) {
+                            teams[i]['timeScale'] = (parseInt(teams[i]['timeScale']) + parseInt(_this.scaleTime)).toString();
+                        }
+                        if (_this.switchTime) {
+                            teams[i]['timeSwitch'] = (parseInt(teams[i]['timeSwitch']) + parseInt(_this.switchTime)).toString();
+                        }
+                    }
+                    if (teams[i]['teamNumber'] == _this.teamThree) {
+                        if (_this.force == true) {
+                            teams[i]['forces'] = (parseInt(teams[i]['forces']) + 1).toString();
+                        }
+                        if (_this.boost == true) {
+                            teams[i]['boosts'] = (parseInt(teams[i]['boosts']) + 1).toString();
+                        }
+                        if (_this.levitate == true) {
+                            teams[i]['levitates'] = (parseInt(teams[i]['levitates']) + 1).toString();
+                        }
+                        if (_this.scaleTime) {
+                            teams[i]['timeScale'] = (parseInt(teams[i]['timeScale']) + parseInt(_this.scaleTime)).toString();
+                        }
+                        if (_this.switchTime) {
+                            teams[i]['timeSwitch'] = (parseInt(teams[i]['timeSwitch']) + parseInt(_this.switchTime)).toString();
+                        }
+                    }
+                }
+                teams = JSON.stringify(teams);
+                _this.storage.set("teams", teams);
+            });
+            this.viewCtrl.dismiss();
+        }
+    };
+    AddMatchPage = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
+            selector: 'page-add-match',template:/*ion-inline-start:"/Users/matthewgallant/Documents/GitHub/ScoutApp/src/pages/add-match/add-match.html"*/'<ion-header>\n\n  <ion-navbar>\n    <ion-title>Add Match</ion-title>\n    <ion-buttons start>\n      <button ion-button icon-only (click)="cancel()">\n        Cancel\n      </button>\n    </ion-buttons>\n    <ion-buttons end>\n      <button ion-button icon-only type="submit" form="teamForm">\n        Save\n      </button>\n    </ion-buttons>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content>\n  <ion-list>\n    <form (ngSubmit)="save()" id="teamForm">\n\n      <ion-item-group>\n          <ion-item-divider color="dark">Team Numbers</ion-item-divider>\n        <ion-item>\n          <ion-label fixed>Team One</ion-label>\n          <ion-input type="tel" [(ngModel)]="teamOne" [ngModelOptions]="{standalone:true}"></ion-input>\n        </ion-item>\n        <ion-item>\n          <ion-label fixed>Team Two</ion-label>\n          <ion-input type="tel" [(ngModel)]="teamTwo" [ngModelOptions]="{standalone:true}"></ion-input>\n        </ion-item>\n        <ion-item>\n          <ion-label fixed>Team Three</ion-label>\n          <ion-input type="tel" [(ngModel)]="teamThree" [ngModelOptions]="{standalone:true}"></ion-input>\n        </ion-item>\n      </ion-item-group>\n\n      <ion-item-group>\n        <ion-item-divider color="dark">Stats</ion-item-divider>\n        <ion-item>\n          <ion-label>Winning Alliance</ion-label>\n          <ion-toggle checked="false" [(ngModel)]="win" [ngModelOptions]="{standalone:true}"></ion-toggle>\n        </ion-item>\n      </ion-item-group>\n    \n      <ion-item-group>\n        <ion-item-divider color="dark">Power Ups</ion-item-divider>\n        <ion-item>\n          <ion-label>Force</ion-label>\n          <ion-toggle checked="false" [(ngModel)]="force" [ngModelOptions]="{standalone:true}"></ion-toggle>\n        </ion-item>\n        <ion-item>\n          <ion-label>Boost</ion-label>\n          <ion-toggle checked="false" [(ngModel)]="boost" [ngModelOptions]="{standalone:true}"></ion-toggle>\n        </ion-item>\n        <ion-item>\n          <ion-label>Levitate</ion-label>\n          <ion-toggle checked="false" [(ngModel)]="levitate" [ngModelOptions]="{standalone:true}"></ion-toggle>\n        </ion-item>\n      </ion-item-group>\n\n      <ion-item-group>\n        <ion-item-divider color="dark">Control Time</ion-item-divider>\n        <ion-item>\n          <ion-label fixed>Scale</ion-label>\n          <ion-input type="tel" [(ngModel)]="scaleTime" [ngModelOptions]="{standalone:true}"></ion-input>\n        </ion-item>\n        <ion-item>\n          <ion-label fixed>Switch</ion-label>\n          <ion-input type="tel" [(ngModel)]="switchTime" [ngModelOptions]="{standalone:true}"></ion-input>\n        </ion-item>\n      </ion-item-group>\n\n      <!-- <ion-item>\n        <ion-label stacked>Losing Team Number</ion-label>\n        <ion-input type="tel" [(ngModel)]="loseOne" [ngModelOptions]="{standalone:true}"></ion-input>\n      </ion-item>\n      <ion-item>\n        <ion-label stacked>Losing Team Number</ion-label>\n        <ion-input type="tel" [(ngModel)]="loseTwo" [ngModelOptions]="{standalone:true}"></ion-input>\n      </ion-item>\n      <ion-item>\n        <ion-label stacked>Losing Team Number</ion-label>\n        <ion-input type="tel" [(ngModel)]="loseThree" [ngModelOptions]="{standalone:true}"></ion-input>\n      </ion-item> -->\n    </form>\n  </ion-list>\n</ion-content>'/*ion-inline-end:"/Users/matthewgallant/Documents/GitHub/ScoutApp/src/pages/add-match/add-match.html"*/,
+        }),
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* ViewController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* ViewController */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_2__angular_http__["b" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_http__["b" /* Http */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* LoadingController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* LoadingController */]) === "function" && _f || Object, typeof (_g = typeof __WEBPACK_IMPORTED_MODULE_3__ionic_storage__["b" /* Storage */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__ionic_storage__["b" /* Storage */]) === "function" && _g || Object])
+    ], AddMatchPage);
+    return AddMatchPage;
+    var _a, _b, _c, _d, _e, _f, _g;
+}());
+
+//# sourceMappingURL=add-match.js.map
+
+/***/ }),
+
+/***/ 105:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AddTeamPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(5);
@@ -91,30 +262,30 @@ var AddTeamPage = /** @class */ (function () {
             this.cl = "No";
         }
         if (this.nameError == true) {
-            var alert_1 = this.alertCtrl.create({
+            var alert = this.alertCtrl.create({
                 title: 'Team Name!',
                 subTitle: 'You must enter a team name!',
                 buttons: ['OK']
             });
-            alert_1.present();
+            alert.present();
             this.nameError = false;
         }
         else if (this.numberError == true) {
-            var alert_2 = this.alertCtrl.create({
+            var alert = this.alertCtrl.create({
                 title: 'Team Number!',
                 subTitle: 'You must enter a team number!',
                 buttons: ['OK']
             });
-            alert_2.present();
+            alert.present();
             this.numberError = false;
         }
         else if (this.numberNotNumberError == true) {
-            var alert_3 = this.alertCtrl.create({
+            var alert = this.alertCtrl.create({
                 title: 'Team Number!',
                 subTitle: 'Please enter a valid number!',
                 buttons: ['OK']
             });
-            alert_3.present();
+            alert.present();
             this.numberNotNumberError = false;
         }
         else {
@@ -129,7 +300,12 @@ var AddTeamPage = /** @class */ (function () {
                 "scale": this.sl,
                 "climb": this.cl,
                 "wins": "0",
-                "losses": "0"
+                "losses": "0",
+                "forces": "0",
+                "boosts": "0",
+                "levitates": "0",
+                "timeScale": "0",
+                "timeSwitch": "0"
             };
             this.storage.get("teams").then(function (val) {
                 if (val == "" || val == null) {
@@ -149,22 +325,17 @@ var AddTeamPage = /** @class */ (function () {
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
             selector: 'page-add-team',template:/*ion-inline-start:"/Users/matthewgallant/Documents/GitHub/ScoutApp/src/pages/add-team/add-team.html"*/'<ion-header>\n\n  <ion-navbar>\n    <ion-title>Add Team</ion-title>\n    <ion-buttons start>\n      <button ion-button icon-only (click)="cancel()">\n        Cancel\n      </button>\n    </ion-buttons>\n    <ion-buttons end>\n      <button ion-button icon-only type="submit" form="teamForm">\n        Save\n      </button>\n    </ion-buttons>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content>\n  <ion-list>\n    <form (ngSubmit)="save()" id="teamForm">\n      <ion-item>\n        <ion-label stacked>Team Name</ion-label>\n        <ion-input type="text" [(ngModel)]="name" [ngModelOptions]="{standalone:true}"></ion-input>\n      </ion-item>\n      <ion-item>\n        <ion-label stacked>Team Number</ion-label>\n        <ion-input type="tel" [(ngModel)]="number" [ngModelOptions]="{standalone:true}"></ion-input>\n      </ion-item>\n      <ion-item>\n        <ion-label stacked>Comments</ion-label>\n        <ion-textarea type="tel" [(ngModel)]="comments" [ngModelOptions]="{standalone:true}"></ion-textarea>\n      </ion-item>\n      <ion-item>\n        <ion-label>Collects Ground Cubes</ion-label>\n        <ion-toggle checked="false" [(ngModel)]="groundCubes" [ngModelOptions]="{standalone:true}"></ion-toggle>\n      </ion-item>\n      <ion-item>\n        <ion-label>Collects Cubes from Return</ion-label>\n        <ion-toggle checked="false" [(ngModel)]="returnCubes" [ngModelOptions]="{standalone:true}"></ion-toggle>\n      </ion-item>\n      <ion-item>\n        <ion-label>Collects Cubes from Stacks</ion-label>\n        <ion-toggle checked="false" [(ngModel)]="stackCubes" [ngModelOptions]="{standalone:true}"></ion-toggle>\n      </ion-item>\n      <ion-item>\n        <ion-label>Switch</ion-label>\n        <ion-toggle checked="false" [(ngModel)]="switch" [ngModelOptions]="{standalone:true}"></ion-toggle>\n      </ion-item>\n      <ion-item>\n        <ion-label>Scale</ion-label>\n        <ion-toggle checked="false" [(ngModel)]="scale" [ngModelOptions]="{standalone:true}"></ion-toggle>\n      </ion-item>\n      <ion-item>\n        <ion-label>Climb</ion-label>\n        <ion-toggle checked="false" [(ngModel)]="climb" [ngModelOptions]="{standalone:true}"></ion-toggle>\n      </ion-item>\n    </form>\n  </ion-list>\n</ion-content>\n'/*ion-inline-end:"/Users/matthewgallant/Documents/GitHub/ScoutApp/src/pages/add-team/add-team.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* ViewController */],
-            __WEBPACK_IMPORTED_MODULE_2__angular_http__["b" /* Http */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* LoadingController */],
-            __WEBPACK_IMPORTED_MODULE_3__ionic_storage__["b" /* Storage */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* ViewController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* ViewController */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_2__angular_http__["b" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_http__["b" /* Http */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* LoadingController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* LoadingController */]) === "function" && _f || Object, typeof (_g = typeof __WEBPACK_IMPORTED_MODULE_3__ionic_storage__["b" /* Storage */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__ionic_storage__["b" /* Storage */]) === "function" && _g || Object])
     ], AddTeamPage);
     return AddTeamPage;
+    var _a, _b, _c, _d, _e, _f, _g;
 }());
 
 //# sourceMappingURL=add-team.js.map
 
 /***/ }),
 
-/***/ 105:
+/***/ 106:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -350,7 +521,7 @@ var EditTeamPage = /** @class */ (function () {
     };
     EditTeamPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-edit-team',template:/*ion-inline-start:"/Users/matthewgallant/Documents/GitHub/ScoutApp/src/pages/edit-team/edit-team.html"*/'<ion-header>\n\n  <ion-navbar>\n    <ion-title>Edit {{name}}</ion-title>\n    <ion-buttons start>\n      <button ion-button icon-only (click)="cancel()">\n        Cancel\n      </button>\n    </ion-buttons>\n    <ion-buttons end>\n      <button ion-button icon-only type="submit" form="editTeamForm">\n        Save\n      </button>\n    </ion-buttons>\n  </ion-navbar>\n\n</ion-header>\n\n<ion-content>\n  <ion-list>\n    <form (ngSubmit)="save()" id="editTeamForm">\n      <ion-item>\n        <ion-label stacked>Team Number</ion-label>\n        <ion-input type="tel" [(ngModel)]="number" [ngModelOptions]="{standalone:true}"></ion-input>\n      </ion-item>\n      <ion-item>\n        <ion-label stacked>Comments</ion-label>\n        <ion-textarea type="tel" [(ngModel)]="comments" [ngModelOptions]="{standalone:true}"></ion-textarea>\n      </ion-item>\n      <ion-item>\n        <ion-label>Ground Cubes</ion-label>\n        <ion-toggle checked="false" [(ngModel)]="groundCubes" [ngModelOptions]="{standalone:true}"></ion-toggle>\n      </ion-item>\n      <ion-item>\n        <ion-label>Return Cubes</ion-label>\n        <ion-toggle checked="false" [(ngModel)]="returnCubes" [ngModelOptions]="{standalone:true}"></ion-toggle>\n      </ion-item>\n      <ion-item>\n        <ion-label>Stack Cubes</ion-label>\n        <ion-toggle checked="false" [(ngModel)]="stackCubes" [ngModelOptions]="{standalone:true}"></ion-toggle>\n      </ion-item>\n      <ion-item>\n        <ion-label>Switch</ion-label>\n        <ion-toggle checked="false" [(ngModel)]="switch" [ngModelOptions]="{standalone:true}"></ion-toggle>\n      </ion-item>\n      <ion-item>\n        <ion-label>Scale</ion-label>\n        <ion-toggle checked="false" [(ngModel)]="scale" [ngModelOptions]="{standalone:true}"></ion-toggle>\n      </ion-item>\n      <ion-item>\n        <ion-label>Climb</ion-label>\n        <ion-toggle checked="false" [(ngModel)]="climb" [ngModelOptions]="{standalone:true}"></ion-toggle>\n      </ion-item>\n    </form>\n  </ion-list>\n</ion-content>\n'/*ion-inline-end:"/Users/matthewgallant/Documents/GitHub/ScoutApp/src/pages/edit-team/edit-team.html"*/,
+            selector: 'page-edit-team',template:/*ion-inline-start:"/Users/matthewgallant/Documents/GitHub/ScoutApp/src/pages/edit-team/edit-team.html"*/'<ion-header>\n\n  <ion-navbar>\n    <ion-title>Edit {{name}}</ion-title>\n    <ion-buttons start>\n      <button ion-button icon-only (click)="cancel()">\n        Cancel\n      </button>\n    </ion-buttons>\n    <ion-buttons end>\n      <button ion-button icon-only type="submit" form="editTeamForm">\n        Save\n      </button>\n    </ion-buttons>\n  </ion-navbar>\n\n</ion-header>\n\n<ion-content>\n  <ion-list>\n    <form (ngSubmit)="save()" id="editTeamForm">\n      <ion-item-group>\n        <ion-item-divider color="dark">General Information</ion-item-divider>\n        <ion-item>\n          <ion-label stacked>Team Number</ion-label>\n          <ion-input type="tel" [(ngModel)]="number" [ngModelOptions]="{standalone:true}"></ion-input>\n        </ion-item>\n        <ion-item>\n          <ion-label stacked>Comments</ion-label>\n          <ion-textarea type="tel" [(ngModel)]="comments" [ngModelOptions]="{standalone:true}"></ion-textarea>\n        </ion-item>\n      </ion-item-group>\n\n      <ion-item-group>\n        <ion-item-divider color="dark">Cubes</ion-item-divider>\n        <ion-item>\n          <ion-label>Ground Cubes</ion-label>\n          <ion-toggle checked="false" [(ngModel)]="groundCubes" [ngModelOptions]="{standalone:true}"></ion-toggle>\n        </ion-item>\n        <ion-item>\n          <ion-label>Return Cubes</ion-label>\n          <ion-toggle checked="false" [(ngModel)]="returnCubes" [ngModelOptions]="{standalone:true}"></ion-toggle>\n        </ion-item>\n        <ion-item>\n          <ion-label>Stack Cubes</ion-label>\n          <ion-toggle checked="false" [(ngModel)]="stackCubes" [ngModelOptions]="{standalone:true}"></ion-toggle>\n        </ion-item>\n      </ion-item-group>\n\n      <ion-item-group>\n        <ion-item-divider color="dark">Functions</ion-item-divider>\n        <ion-item>\n          <ion-label>Switch</ion-label>\n          <ion-toggle checked="false" [(ngModel)]="switch" [ngModelOptions]="{standalone:true}"></ion-toggle>\n        </ion-item>\n        <ion-item>\n          <ion-label>Scale</ion-label>\n          <ion-toggle checked="false" [(ngModel)]="scale" [ngModelOptions]="{standalone:true}"></ion-toggle>\n        </ion-item>\n        <ion-item>\n          <ion-label>Climb</ion-label>\n          <ion-toggle checked="false" [(ngModel)]="climb" [ngModelOptions]="{standalone:true}"></ion-toggle>\n        </ion-item>\n      </ion-item-group>\n      \n    </form>\n  </ion-list>\n</ion-content>\n'/*ion-inline-end:"/Users/matthewgallant/Documents/GitHub/ScoutApp/src/pages/edit-team/edit-team.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */],
@@ -367,121 +538,6 @@ var EditTeamPage = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 106:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AddMatchPage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_http__ = __webpack_require__(28);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_storage__ = __webpack_require__(31);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-
-
-
-
-var AddMatchPage = /** @class */ (function () {
-    function AddMatchPage(navCtrl, navParams, viewCtrl, http, alertCtrl, loadingCtrl, storage) {
-        this.navCtrl = navCtrl;
-        this.navParams = navParams;
-        this.viewCtrl = viewCtrl;
-        this.http = http;
-        this.alertCtrl = alertCtrl;
-        this.loadingCtrl = loadingCtrl;
-        this.storage = storage;
-    }
-    AddMatchPage.prototype.cancel = function () {
-        this.viewCtrl.dismiss();
-    };
-    AddMatchPage.prototype.save = function () {
-        var _this = this;
-        if (isNaN(this.winOne) == true) {
-            this.numberNotNumberError = true;
-        }
-        else if (isNaN(this.winTwo) == true) {
-            this.numberNotNumberError = true;
-        }
-        else if (isNaN(this.winThree) == true) {
-            this.numberNotNumberError = true;
-        }
-        else if (isNaN(this.loseOne) == true) {
-            this.numberNotNumberError = true;
-        }
-        else if (isNaN(this.loseTwo) == true) {
-            this.numberNotNumberError = true;
-        }
-        else if (isNaN(this.loseThree) == true) {
-            this.numberNotNumberError = true;
-        }
-        if (this.numberNotNumberError == true) {
-            var alert_1 = this.alertCtrl.create({
-                title: 'Team Number!',
-                subTitle: 'Please enter all of the team\'s number\'s!',
-                buttons: ['OK']
-            });
-            alert_1.present();
-            this.numberNotNumberError = false;
-        }
-        else {
-            this.storage.get("teams").then(function (val) {
-                var teams = JSON.parse(val);
-                for (var i = 0, len = teams.length; i < len; i++) {
-                    if (teams[i]['teamNumber'] == _this.winOne) {
-                        teams[i]['wins'] = (parseInt(teams[i]['wins']) + 1).toString();
-                    }
-                    if (teams[i]['teamNumber'] == _this.winTwo) {
-                        teams[i]['wins'] = (parseInt(teams[i]['wins']) + 1).toString();
-                    }
-                    if (teams[i]['teamNumber'] == _this.winThree) {
-                        teams[i]['wins'] = (parseInt(teams[i]['wins']) + 1).toString();
-                    }
-                    if (teams[i]['teamNumber'] == _this.loseOne) {
-                        teams[i]['losses'] = (parseInt(teams[i]['losses']) + 1).toString();
-                    }
-                    if (teams[i]['teamNumber'] == _this.loseTwo) {
-                        teams[i]['losses'] = (parseInt(teams[i]['losses']) + 1).toString();
-                    }
-                    if (teams[i]['teamNumber'] == _this.loseThree) {
-                        teams[i]['losses'] = (parseInt(teams[i]['losses']) + 1).toString();
-                    }
-                }
-                teams = JSON.stringify(teams);
-                _this.storage.set("teams", teams);
-            });
-            this.viewCtrl.dismiss();
-        }
-    };
-    AddMatchPage = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-add-match',template:/*ion-inline-start:"/Users/matthewgallant/Documents/GitHub/ScoutApp/src/pages/add-match/add-match.html"*/'<!--\n  Generated template for the AddMatchPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>Add Match</ion-title>\n    <ion-buttons start>\n      <button ion-button icon-only (click)="cancel()">\n        Cancel\n      </button>\n    </ion-buttons>\n    <ion-buttons end>\n      <button ion-button icon-only type="submit" form="teamForm">\n        Save\n      </button>\n    </ion-buttons>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content>\n  <ion-list>\n    <form (ngSubmit)="save()" id="teamForm">\n      <ion-item>\n        <ion-label stacked>Winning Team Number</ion-label>\n        <ion-input type="tel" [(ngModel)]="winOne" [ngModelOptions]="{standalone:true}"></ion-input>\n      </ion-item>\n      <ion-item>\n        <ion-label stacked>Winning Team Number</ion-label>\n        <ion-input type="tel" [(ngModel)]="winTwo" [ngModelOptions]="{standalone:true}"></ion-input>\n      </ion-item>\n      <ion-item>\n        <ion-label stacked>Winning Team Number</ion-label>\n        <ion-input type="tel" [(ngModel)]="winThree" [ngModelOptions]="{standalone:true}"></ion-input>\n      </ion-item>\n      <ion-item>\n        <ion-label stacked>Losing Team Number</ion-label>\n        <ion-input type="tel" [(ngModel)]="loseOne" [ngModelOptions]="{standalone:true}"></ion-input>\n      </ion-item>\n      <ion-item>\n        <ion-label stacked>Losing Team Number</ion-label>\n        <ion-input type="tel" [(ngModel)]="loseTwo" [ngModelOptions]="{standalone:true}"></ion-input>\n      </ion-item>\n      <ion-item>\n        <ion-label stacked>Losing Team Number</ion-label>\n        <ion-input type="tel" [(ngModel)]="loseThree" [ngModelOptions]="{standalone:true}"></ion-input>\n      </ion-item>\n    </form>\n  </ion-list>\n</ion-content>'/*ion-inline-end:"/Users/matthewgallant/Documents/GitHub/ScoutApp/src/pages/add-match/add-match.html"*/,
-        }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* ViewController */],
-            __WEBPACK_IMPORTED_MODULE_2__angular_http__["b" /* Http */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* LoadingController */],
-            __WEBPACK_IMPORTED_MODULE_3__ionic_storage__["b" /* Storage */]])
-    ], AddMatchPage);
-    return AddMatchPage;
-}());
-
-//# sourceMappingURL=add-match.js.map
-
-/***/ }),
-
 /***/ 107:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -491,8 +547,8 @@ var AddMatchPage = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_teams_teams__ = __webpack_require__(161);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__team_data_team_data__ = __webpack_require__(108);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__add_team_add_team__ = __webpack_require__(104);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__add_match_add_match__ = __webpack_require__(106);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__add_team_add_team__ = __webpack_require__(105);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__add_match_add_match__ = __webpack_require__(104);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__initial_tutorial_initial_tutorial__ = __webpack_require__(52);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__signin_signin__ = __webpack_require__(53);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__ionic_storage__ = __webpack_require__(31);
@@ -632,7 +688,7 @@ var HomePage = /** @class */ (function () {
                                 var headers = new __WEBPACK_IMPORTED_MODULE_9__angular_http__["a" /* Headers */]();
                                 headers.append('Content-Type', 'application/x-www-form-urlencoded');
                                 var options = new __WEBPACK_IMPORTED_MODULE_9__angular_http__["d" /* RequestOptions */]({ headers: headers });
-                                var params = 'securityKey=' + sec + '&name=' + _this.teams[i]['teamName'] + '&number=' + _this.teams[i]['teamNumber'] + '&comments=' + _this.teams[i]['comments'] + '&groundCubes=' + _this.teams[i]['groundCubes'] + '&returnCubes=' + _this.teams[i]['returnCubes'] + '&stackCubes=' + _this.teams[i]['stackCubes'] + '&switch=' + _this.teams[i]['switch'] + '&scale=' + _this.teams[i]['scale'] + '&climb=' + _this.teams[i]['climb'] + '&wins=' + _this.teams[i]['wins'] + '&losses=' + _this.teams[i]['losses'];
+                                var params = 'securityKey=' + sec + '&name=' + _this.teams[i]['teamName'] + '&number=' + _this.teams[i]['teamNumber'] + '&comments=' + _this.teams[i]['comments'] + '&groundCubes=' + _this.teams[i]['groundCubes'] + '&returnCubes=' + _this.teams[i]['returnCubes'] + '&stackCubes=' + _this.teams[i]['stackCubes'] + '&switch=' + _this.teams[i]['switch'] + '&scale=' + _this.teams[i]['scale'] + '&climb=' + _this.teams[i]['climb'] + '&wins=' + _this.teams[i]['wins'] + '&losses=' + _this.teams[i]['losses'] + '&boosts=' + _this.teams[i]['boosts'] + '&forces=' + _this.teams[i]['forces'] + '&levitates=' + _this.teams[i]['levitates'] + '&timeScale=' + _this.teams[i]['timeScale'] + '&timeSwitch=' + _this.teams[i]['timeSwitch'];
                                 _this.http.post("http://scout.bluecrew6153.org/api/team.php", params, options)
                                     .subscribe(function (data) {
                                     if (data["_body"] == "Failure") {
@@ -691,17 +747,10 @@ var HomePage = /** @class */ (function () {
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
             selector: 'page-teams',template:/*ion-inline-start:"/Users/matthewgallant/Documents/GitHub/ScoutApp/src/pages/home/home.html"*/'<ion-header>\n\n  <ion-navbar>\n    <ion-title>Scout</ion-title>\n    <ion-buttons end>\n      <button ion-button icon-only (click)="addTeam()">\n        <ion-icon name="add-circle"></ion-icon>\n      </button>\n    </ion-buttons>\n    <ion-buttons start>\n      <button ion-button icon-only (click)="uploadData()">\n        <ion-icon name="cloud-upload"></ion-icon>\n      </button>\n    </ion-buttons>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content>\n    <ion-refresher (ionRefresh)="doRefresh($event)">\n      <ion-refresher-content></ion-refresher-content>\n    </ion-refresher>\n    <ion-list>\n      <button ion-item *ngFor="let item of teams" (click)="itemSelected(item)">\n        {{item.teamName}}\n      </button>\n    </ion-list>\n</ion-content>\n'/*ion-inline-end:"/Users/matthewgallant/Documents/GitHub/ScoutApp/src/pages/home/home.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */],
-            __WEBPACK_IMPORTED_MODULE_2__providers_teams_teams__["a" /* TeamsProvider */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* LoadingController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* ModalController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* ActionSheetController */],
-            __WEBPACK_IMPORTED_MODULE_8__ionic_storage__["b" /* Storage */],
-            __WEBPACK_IMPORTED_MODULE_9__angular_http__["b" /* Http */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__providers_teams_teams__["a" /* TeamsProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__providers_teams_teams__["a" /* TeamsProvider */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* LoadingController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* LoadingController */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* ModalController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* ModalController */]) === "function" && _f || Object, typeof (_g = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* ActionSheetController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* ActionSheetController */]) === "function" && _g || Object, typeof (_h = typeof __WEBPACK_IMPORTED_MODULE_8__ionic_storage__["b" /* Storage */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_8__ionic_storage__["b" /* Storage */]) === "function" && _h || Object, typeof (_j = typeof __WEBPACK_IMPORTED_MODULE_9__angular_http__["b" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_9__angular_http__["b" /* Http */]) === "function" && _j || Object])
     ], HomePage);
     return HomePage;
+    var _a, _b, _c, _d, _e, _f, _g, _h, _j;
 }());
 
 //# sourceMappingURL=home.js.map
@@ -715,7 +764,7 @@ var HomePage = /** @class */ (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TeamDataPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__edit_team_edit_team__ = __webpack_require__(105);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__edit_team_edit_team__ = __webpack_require__(106);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -760,6 +809,11 @@ var TeamDataPage = /** @class */ (function () {
         this.climb = this.navParams.get('climb');
         this.wins = this.navParams.get('wins');
         this.losses = this.navParams.get('losses');
+        this.forces = this.navParams.get('forces');
+        this.boosts = this.navParams.get('boosts');
+        this.levitates = this.navParams.get('levitates');
+        this.timeScale = this.navParams.get('timeScale');
+        this.timeSwitch = this.navParams.get('timeSwitch');
         this.team = {
             "teamName": this.name,
             "teamNumber": this.number,
@@ -771,19 +825,22 @@ var TeamDataPage = /** @class */ (function () {
             "scale": this.scale,
             "climb": this.climb,
             "wins": this.wins,
-            "losses": this.losses
+            "losses": this.losses,
+            "forces": this.forces,
+            "boosts": this.boosts,
+            "levitates": this.levitates,
+            "timeScale": this.timeScale,
+            "timeSwitch": this.timeSwitch
         };
     };
     TeamDataPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-team-data',template:/*ion-inline-start:"/Users/matthewgallant/Documents/GitHub/ScoutApp/src/pages/team-data/team-data.html"*/'<ion-header>\n\n  <ion-navbar>\n    <ion-title>{{name}} {{number}}</ion-title>\n    <ion-buttons start>\n      <button ion-button icon-only (click)="cancel()">\n        Cancel\n      </button>\n    </ion-buttons>\n    <ion-buttons end>\n        <button ion-button icon-only (click)="editTeam()">\n          Edit\n        </button>\n      </ion-buttons>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content>\n  <ion-list>\n    <ion-item>\n      Name: {{name}}\n    </ion-item>\n    <ion-item>\n      Number: {{number}}\n    </ion-item>\n    <ion-item>\n      Comments: {{comments}}\n    </ion-item>\n    <ion-item>\n      Ground Cubes: {{groundCubes}}\n    </ion-item>\n    <ion-item>\n      Return Cubes: {{returnCubes}}\n    </ion-item>\n    <ion-item>\n      Stack Cubes: {{stackCubes}}\n    </ion-item>\n    <ion-item>\n      Switch: {{switch}}\n    </ion-item>\n    <ion-item>\n      Scale: {{scale}}\n    </ion-item>\n    <ion-item>\n      Climb: {{climb}}\n    </ion-item>\n    <ion-item>\n      Wins: {{wins}}\n    </ion-item>\n    <ion-item>\n      Losses: {{losses}}\n    </ion-item>\n  </ion-list>\n</ion-content>\n'/*ion-inline-end:"/Users/matthewgallant/Documents/GitHub/ScoutApp/src/pages/team-data/team-data.html"*/,
+            selector: 'page-team-data',template:/*ion-inline-start:"/Users/matthewgallant/Documents/GitHub/ScoutApp/src/pages/team-data/team-data.html"*/'<ion-header>\n\n  <ion-navbar>\n    <ion-title>{{name}} {{number}}</ion-title>\n    <ion-buttons start>\n      <button ion-button icon-only (click)="cancel()">\n        Cancel\n      </button>\n    </ion-buttons>\n    <ion-buttons end>\n        <button ion-button icon-only (click)="editTeam()">\n          Edit\n        </button>\n      </ion-buttons>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content>\n  <ion-list>\n\n    <ion-item-group>\n      <ion-item-divider color="dark">General Information</ion-item-divider>\n      <ion-item>\n        Name: {{name}}\n      </ion-item>\n      <ion-item>\n        Number: {{number}}\n      </ion-item>\n      <ion-item>\n        Comments: {{comments}}\n      </ion-item>\n    </ion-item-group>\n\n    <ion-item-group>\n      <ion-item-divider color="dark">Cubes</ion-item-divider>\n      <ion-item>\n        Ground Cubes: {{groundCubes}}\n      </ion-item>\n      <ion-item>\n        Return Cubes: {{returnCubes}}\n      </ion-item>\n      <ion-item>\n        Stack Cubes: {{stackCubes}}\n      </ion-item>\n    </ion-item-group>\n\n    <ion-item-group>\n      <ion-item-divider color="dark">Functions</ion-item-divider>\n      <ion-item>\n        Switch: {{switch}}\n      </ion-item>\n      <ion-item>\n        Scale: {{scale}}\n      </ion-item>\n      <ion-item>\n        Climb: {{climb}}\n      </ion-item>\n    </ion-item-group>\n\n    <ion-item-group>\n      <ion-item-divider color="dark">Stats</ion-item-divider>\n      <ion-item>\n        Wins: {{wins}}\n      </ion-item>\n      <ion-item>\n        Losses: {{losses}}\n      </ion-item>\n      <ion-item>\n        Forces Used: {{forces}}\n      </ion-item>\n      <ion-item>\n        Boosts Used: {{boosts}}\n      </ion-item>\n      <ion-item>\n        Levitates Used: {{levitates}}\n      </ion-item>\n      <ion-item>\n        Scale Ownership: {{timeScale}} Seconds\n      </ion-item>\n      <ion-item>\n        Switch Ownership: {{timeSwitch}} Seconds\n      </ion-item>\n    </ion-item-group>\n  </ion-list>\n</ion-content>\n'/*ion-inline-end:"/Users/matthewgallant/Documents/GitHub/ScoutApp/src/pages/team-data/team-data.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* ModalController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* ViewController */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* ModalController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* ModalController */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* ViewController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* ViewController */]) === "function" && _d || Object])
     ], TeamDataPage);
     return TeamDataPage;
+    var _a, _b, _c, _d;
 }());
 
 //# sourceMappingURL=team-data.js.map
@@ -903,15 +960,15 @@ webpackEmptyAsyncContext.id = 118;
 
 var map = {
 	"../pages/add-match/add-match.module": [
-		287,
+		285,
 		7
 	],
 	"../pages/add-team/add-team.module": [
-		285,
+		286,
 		6
 	],
 	"../pages/edit-team/edit-team.module": [
-		286,
+		287,
 		5
 	],
 	"../pages/home/home.module": [
@@ -919,7 +976,7 @@ var map = {
 		4
 	],
 	"../pages/initial-tutorial/initial-tutorial.module": [
-		289,
+		291,
 		3
 	],
 	"../pages/settings/settings.module": [
@@ -927,7 +984,7 @@ var map = {
 		2
 	],
 	"../pages/signin/signin.module": [
-		291,
+		289,
 		1
 	],
 	"../pages/team-data/team-data.module": [
@@ -1015,7 +1072,7 @@ var AboutPage = /** @class */ (function () {
     }
     AboutPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-about',template:/*ion-inline-start:"/Users/matthewgallant/Documents/GitHub/ScoutApp/src/pages/about/about.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title>\n      About\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padded>\n    <ion-card>\n        <img src="assets/imgs/crew.png"/>\n        <ion-card-content>\n            <ion-list>\n              <ion-item>\n                Blue Crew Scout\n              </ion-item>\n              <ion-item>\n                Version 1.0\n              </ion-item>\n              <ion-item>\n                &copy; 2018 Blue Crew Robotics\n              </ion-item>\n              <ion-item>\n                Developed by Matt Gallant\n              </ion-item>\n            </ion-list>\n        </ion-card-content>\n      </ion-card>\n</ion-content>\n'/*ion-inline-end:"/Users/matthewgallant/Documents/GitHub/ScoutApp/src/pages/about/about.html"*/
+            selector: 'page-about',template:/*ion-inline-start:"/Users/matthewgallant/Documents/GitHub/ScoutApp/src/pages/about/about.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title>\n      About\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padded>\n    <ion-card>\n        <img src="assets/imgs/crew.png"/>\n        <ion-card-content>\n            <ion-list>\n              <ion-item>\n                Blue Crew Scout\n              </ion-item>\n              <ion-item>\n                Version 1.0\n              </ion-item>\n              <ion-item>\n                2018 FIRST Power Up\n              </ion-item>\n              <ion-item>\n                &copy; 2018 Blue Crew Robotics\n              </ion-item>\n              <button ion-item (click)="credits()">\n                Show Credits\n              </button>\n            </ion-list>\n        </ion-card-content>\n      </ion-card>\n</ion-content>\n'/*ion-inline-end:"/Users/matthewgallant/Documents/GitHub/ScoutApp/src/pages/about/about.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */]])
     ], AboutPage);
@@ -1093,9 +1150,9 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__pages_tabs_tabs__ = __webpack_require__(206);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__pages_settings_settings__ = __webpack_require__(109);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__pages_team_data_team_data__ = __webpack_require__(108);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__pages_add_team_add_team__ = __webpack_require__(104);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__pages_edit_team_edit_team__ = __webpack_require__(105);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__pages_add_match_add_match__ = __webpack_require__(106);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__pages_add_team_add_team__ = __webpack_require__(105);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__pages_edit_team_edit_team__ = __webpack_require__(106);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__pages_add_match_add_match__ = __webpack_require__(104);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__pages_signin_signin__ = __webpack_require__(53);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__pages_initial_tutorial_initial_tutorial__ = __webpack_require__(52);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__ionic_native_status_bar__ = __webpack_require__(202);
@@ -1149,13 +1206,13 @@ var AppModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_2__angular_http__["c" /* HttpModule */],
                 __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["e" /* IonicModule */].forRoot(__WEBPACK_IMPORTED_MODULE_4__app_component__["a" /* MyApp */], {}, {
                     links: [
+                        { loadChildren: '../pages/add-match/add-match.module#AddMatchPageModule', name: 'AddMatchPage', segment: 'add-match', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/add-team/add-team.module#AddTeamPageModule', name: 'AddTeamPage', segment: 'add-team', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/edit-team/edit-team.module#EditTeamPageModule', name: 'EditTeamPage', segment: 'edit-team', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/add-match/add-match.module#AddMatchPageModule', name: 'AddMatchPage', segment: 'add-match', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/home/home.module#HomePageModule', name: 'HomePage', segment: 'home', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/initial-tutorial/initial-tutorial.module#InitialTutorialPageModule', name: 'InitialTutorialPage', segment: 'initial-tutorial', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/settings/settings.module#SettingsPageModule', name: 'SettingsPage', segment: 'settings', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/signin/signin.module#SigninPageModule', name: 'SigninPage', segment: 'signin', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/settings/settings.module#SettingsPageModule', name: 'SettingsPage', segment: 'settings', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/initial-tutorial/initial-tutorial.module#InitialTutorialPageModule', name: 'InitialTutorialPage', segment: 'initial-tutorial', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/team-data/team-data.module#TeamDataPageModule', name: 'TeamDataPage', segment: 'team-data', priority: 'low', defaultHistory: [] }
                     ]
                 }),

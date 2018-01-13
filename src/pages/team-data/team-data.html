@@ -19,38 +19,69 @@
 
 <ion-content>
   <ion-list>
-    <ion-item>
-      Name: {{name}}
-    </ion-item>
-    <ion-item>
-      Number: {{number}}
-    </ion-item>
-    <ion-item>
-      Comments: {{comments}}
-    </ion-item>
-    <ion-item>
-      Ground Cubes: {{groundCubes}}
-    </ion-item>
-    <ion-item>
-      Return Cubes: {{returnCubes}}
-    </ion-item>
-    <ion-item>
-      Stack Cubes: {{stackCubes}}
-    </ion-item>
-    <ion-item>
-      Switch: {{switch}}
-    </ion-item>
-    <ion-item>
-      Scale: {{scale}}
-    </ion-item>
-    <ion-item>
-      Climb: {{climb}}
-    </ion-item>
-    <ion-item>
-      Wins: {{wins}}
-    </ion-item>
-    <ion-item>
-      Losses: {{losses}}
-    </ion-item>
+
+    <ion-item-group>
+      <ion-item-divider color="dark">General Information</ion-item-divider>
+      <ion-item>
+        Name: {{name}}
+      </ion-item>
+      <ion-item>
+        Number: {{number}}
+      </ion-item>
+      <ion-item>
+        Comments: {{comments}}
+      </ion-item>
+    </ion-item-group>
+
+    <ion-item-group>
+      <ion-item-divider color="dark">Cubes</ion-item-divider>
+      <ion-item>
+        Ground Cubes: {{groundCubes}}
+      </ion-item>
+      <ion-item>
+        Return Cubes: {{returnCubes}}
+      </ion-item>
+      <ion-item>
+        Stack Cubes: {{stackCubes}}
+      </ion-item>
+    </ion-item-group>
+
+    <ion-item-group>
+      <ion-item-divider color="dark">Functions</ion-item-divider>
+      <ion-item>
+        Switch: {{switch}}
+      </ion-item>
+      <ion-item>
+        Scale: {{scale}}
+      </ion-item>
+      <ion-item>
+        Climb: {{climb}}
+      </ion-item>
+    </ion-item-group>
+
+    <ion-item-group>
+      <ion-item-divider color="dark">Stats</ion-item-divider>
+      <ion-item>
+        Wins: {{wins}}
+      </ion-item>
+      <ion-item>
+        Losses: {{losses}}
+      </ion-item>
+      <ion-item>
+        Forces Used: {{forces}}
+      </ion-item>
+      <ion-item>
+        Boosts Used: {{boosts}}
+      </ion-item>
+      <ion-item>
+        Levitates Used: {{levitates}}
+      </ion-item>
+      <ion-item>
+        Scale Ownership: {{timeScale}} Seconds
+      </ion-item>
+      <ion-item>
+        Switch Ownership: {{timeSwitch}} Seconds
+      </ion-item>
+    </ion-item-group>
   </ion-list>
 </ion-content>

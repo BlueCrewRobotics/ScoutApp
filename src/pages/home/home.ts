@@ -136,7 +136,7 @@ export class HomePage {
                 headers.append('Content-Type', 'application/x-www-form-urlencoded' );
                 let options = new RequestOptions({ headers: headers });
           
-                var params = 'securityKey=' + sec + '&name=' + this.teams[i]['teamName'] + '&number=' + this.teams[i]['teamNumber'] + '&comments=' + this.teams[i]['comments'] + '&groundCubes=' + this.teams[i]['groundCubes'] + '&returnCubes=' + this.teams[i]['returnCubes'] + '&stackCubes=' + this.teams[i]['stackCubes'] + '&switch=' + this.teams[i]['switch'] + '&scale=' + this.teams[i]['scale'] + '&climb=' + this.teams[i]['climb'] + '&wins=' + this.teams[i]['wins'] + '&losses=' + this.teams[i]['losses'];    
+                var params = 'securityKey=' + sec + '&name=' + this.teams[i]['teamName'] + '&number=' + this.teams[i]['teamNumber'] + '&comments=' + this.teams[i]['comments'] + '&groundCubes=' + this.teams[i]['groundCubes'] + '&returnCubes=' + this.teams[i]['returnCubes'] + '&stackCubes=' + this.teams[i]['stackCubes'] + '&switch=' + this.teams[i]['switch'] + '&scale=' + this.teams[i]['scale'] + '&climb=' + this.teams[i]['climb'] + '&wins=' + this.teams[i]['wins'] + '&losses=' + this.teams[i]['losses'] + '&boosts=' + this.teams[i]['boosts'] + '&forces=' + this.teams[i]['forces'] + '&levitates=' + this.teams[i]['levitates'] + '&timeScale=' + this.teams[i]['timeScale'] + '&timeSwitch=' + this.teams[i]['timeSwitch'];    
                 this.http.post("http://scout.bluecrew6153.org/api/team.php", params, options)
                   .subscribe(data => {
                     if (data["_body"] == "Failure") {

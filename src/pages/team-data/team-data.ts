@@ -24,6 +24,11 @@ export class TeamDataPage {
   climb:any;
   wins:any;
   losses:any;
+  forces:any;
+  boosts:any;
+  levitates:any;
+  timeScale:any;
+  timeSwitch:any;
 
   constructor(
     public navCtrl: NavController,
@@ -57,6 +62,12 @@ export class TeamDataPage {
     this.climb = this.navParams.get('climb');
     this.wins = this.navParams.get('wins');
     this.losses = this.navParams.get('losses');
+    this.forces = this.navParams.get('forces');
+    this.boosts = this.navParams.get('boosts');
+    this.levitates = this.navParams.get('levitates');
+    this.timeScale = this.navParams.get('timeScale');
+    this.timeSwitch = this.navParams.get('timeSwitch');
+
     this.team = {
       "teamName" : this.name,
       "teamNumber" : this.number,
@@ -68,7 +79,12 @@ export class TeamDataPage {
       "scale" : this.scale,
       "climb" : this.climb,
       "wins" : this.wins,
-      "losses" : this.losses
+      "losses" : this.losses,
+      "forces" : this.forces,
+      "boosts" : this.boosts,
+      "levitates" : this.levitates,
+      "timeScale" : this.timeScale,
+      "timeSwitch" : this.timeSwitch
     }
   }
 

@@ -13,14 +13,18 @@ import { Storage } from '@ionic/storage';
 })
 export class AddMatchPage {
 
-  winOne:any;
-  winTwo:any;
-  winThree:any;
-  loseOne:any;
-  loseTwo:any;
-  loseThree:any;
+  teamOne:any;
+  teamTwo:any;
+  teamThree:any;
+  win:any;
+  force:any;
+  boost:any;
+  levitate:any;
+  scaleTime:any;
+  switchTime:any;
 
   numberNotNumberError:boolean;
+  timeError:boolean;
 
   constructor(
     public navCtrl: NavController,
@@ -38,51 +42,116 @@ export class AddMatchPage {
   }
 
   save() {
-    if (isNaN(this.winOne) == true) {
+    if (isNaN(this.teamOne) == true) {
       this.numberNotNumberError = true;
-    } else if (isNaN(this.winTwo) == true) {
+    } else if (isNaN(this.teamTwo) == true) {
       this.numberNotNumberError = true;
-    } else if (isNaN(this.winThree) == true) {
+    } else if (isNaN(this.teamThree) == true) {
       this.numberNotNumberError = true;
-    } else if (isNaN(this.loseOne) == true) {
-      this.numberNotNumberError = true;
-    } else if (isNaN(this.loseTwo) == true) {
-      this.numberNotNumberError = true;
-    } else if (isNaN(this.loseThree) == true) {
-      this.numberNotNumberError = true;
+    }
+    
+    if (isNaN(this.scaleTime) == true) {
+      this.timeError = true;
+    } else if (isNaN(this.switchTime) == true) {
+      this.timeError = true;
     }
 
     if (this.numberNotNumberError == true) {
       let alert = this.alertCtrl.create({
-        title: 'Team Number!',
-        subTitle: 'Please enter all of the team\'s number\'s!',
+        title: 'Team Error!',
+        subTitle: 'Please enter only team numbers in the team fields!',
         buttons: ['OK']
       });
       alert.present();
       this.numberNotNumberError = false;
+    } else if (this.timeError == true) {
+      let alert = this.alertCtrl.create({
+        title: 'Time Error!',
+        subTitle: 'Please enter the amount of time that a team controlled their switch/scale!',
+        buttons: ['OK']
+      });
+      alert.present();
+      this.timeError = false;
     } else {
-
       this.storage.get("teams").then((val) => {
         var teams = JSON.parse(val);
         for (var i = 0, len = teams.length; i < len; i++) {
-          if (teams[i]['teamNumber'] == this.winOne) {
-            teams[i]['wins'] = (parseInt(teams[i]['wins']) + 1).toString();
+          if (this.win == true) {
+            if (teams[i]['teamNumber'] == this.teamOne) {
+              teams[i]['wins'] = (parseInt(teams[i]['wins']) + 1).toString();
+            }
+            if (teams[i]['teamNumber'] == this.teamTwo) {
+              teams[i]['wins'] = (parseInt(teams[i]['wins']) + 1).toString();
+            }
+            if (teams[i]['teamNumber'] == this.teamThree) {
+              teams[i]['wins'] = (parseInt(teams[i]['wins']) + 1).toString();
+            }
+          } else {
+            if (teams[i]['teamNumber'] == this.teamOne) {
+              teams[i]['losses'] = (parseInt(teams[i]['losses']) + 1).toString();
+            }
+            if (teams[i]['teamNumber'] == this.teamTwo) {
+              teams[i]['losses'] = (parseInt(teams[i]['losses']) + 1).toString();
+            }
+            if (teams[i]['teamNumber'] == this.teamThree) {
+              teams[i]['losses'] = (parseInt(teams[i]['losses']) + 1).toString();
+            }
           }
-          if (teams[i]['teamNumber'] == this.winTwo) {
-            teams[i]['wins'] = (parseInt(teams[i]['wins']) + 1).toString();
+
+          if (teams[i]['teamNumber'] == this.teamOne) {
+            if (this.force == true) {
+              teams[i]['forces'] = (parseInt(teams[i]['forces']) + 1).toString();
+            }
+            if (this.boost == true) {
+              teams[i]['boosts'] = (parseInt(teams[i]['boosts']) + 1).toString();
+            }
+            if (this.levitate == true) {
+              teams[i]['levitates'] = (parseInt(teams[i]['levitates']) + 1).toString();
+            }
+            if (this.scaleTime) {
+              teams[i]['timeScale'] = (parseInt(teams[i]['timeScale']) + parseInt(this.scaleTime)).toString();
+            }
+            if (this.switchTime) {
+              teams[i]['timeSwitch'] = (parseInt(teams[i]['timeSwitch']) + parseInt(this.switchTime)).toString();
+            }
           }
-          if (teams[i]['teamNumber'] == this.winThree) {
-            teams[i]['wins'] = (parseInt(teams[i]['wins']) + 1).toString();
+
+          if (teams[i]['teamNumber'] == this.teamTwo) {
+            if (this.force == true) {
+              teams[i]['forces'] = (parseInt(teams[i]['forces']) + 1).toString();
+            }
+            if (this.boost == true) {
+              teams[i]['boosts'] = (parseInt(teams[i]['boosts']) + 1).toString();
+            }
+            if (this.levitate == true) {
+              teams[i]['levitates'] = (parseInt(teams[i]['levitates']) + 1).toString();
+            }
+            if (this.scaleTime) {
+              teams[i]['timeScale'] = (parseInt(teams[i]['timeScale']) + parseInt(this.scaleTime)).toString();
+            }
+            if (this.switchTime) {
+              teams[i]['timeSwitch'] = (parseInt(teams[i]['timeSwitch']) + parseInt(this.switchTime)).toString();
+            }
           }
-          if (teams[i]['teamNumber'] == this.loseOne) {
-            teams[i]['losses'] = (parseInt(teams[i]['losses']) + 1).toString();
+
+          if (teams[i]['teamNumber'] == this.teamThree) {
+            if (this.force == true) {
+              teams[i]['forces'] = (parseInt(teams[i]['forces']) + 1).toString();
+            }
+            if (this.boost == true) {
+              teams[i]['boosts'] = (parseInt(teams[i]['boosts']) + 1).toString();
+            }
+            if (this.levitate == true) {
+              teams[i]['levitates'] = (parseInt(teams[i]['levitates']) + 1).toString();
+            }
+            if (this.scaleTime) {
+              teams[i]['timeScale'] = (parseInt(teams[i]['timeScale']) + parseInt(this.scaleTime)).toString();
+            }
+            if (this.switchTime) {
+              teams[i]['timeSwitch'] = (parseInt(teams[i]['timeSwitch']) + parseInt(this.switchTime)).toString();
+            }
           }
-          if (teams[i]['teamNumber'] == this.loseTwo) {
-            teams[i]['losses'] = (parseInt(teams[i]['losses']) + 1).toString();
-          }
-          if (teams[i]['teamNumber'] == this.loseThree) {
-            teams[i]['losses'] = (parseInt(teams[i]['losses']) + 1).toString();
-          }
+
         }
         teams = JSON.stringify(teams);
         this.storage.set("teams", teams);

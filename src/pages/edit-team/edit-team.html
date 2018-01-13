@@ -19,38 +19,50 @@
 <ion-content>
   <ion-list>
     <form (ngSubmit)="save()" id="editTeamForm">
-      <ion-item>
-        <ion-label stacked>Team Number</ion-label>
-        <ion-input type="tel" [(ngModel)]="number" [ngModelOptions]="{standalone:true}"></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label stacked>Comments</ion-label>
-        <ion-textarea type="tel" [(ngModel)]="comments" [ngModelOptions]="{standalone:true}"></ion-textarea>
-      </ion-item>
-      <ion-item>
-        <ion-label>Ground Cubes</ion-label>
-        <ion-toggle checked="false" [(ngModel)]="groundCubes" [ngModelOptions]="{standalone:true}"></ion-toggle>
-      </ion-item>
-      <ion-item>
-        <ion-label>Return Cubes</ion-label>
-        <ion-toggle checked="false" [(ngModel)]="returnCubes" [ngModelOptions]="{standalone:true}"></ion-toggle>
-      </ion-item>
-      <ion-item>
-        <ion-label>Stack Cubes</ion-label>
-        <ion-toggle checked="false" [(ngModel)]="stackCubes" [ngModelOptions]="{standalone:true}"></ion-toggle>
-      </ion-item>
-      <ion-item>
-        <ion-label>Switch</ion-label>
-        <ion-toggle checked="false" [(ngModel)]="switch" [ngModelOptions]="{standalone:true}"></ion-toggle>
-      </ion-item>
-      <ion-item>
-        <ion-label>Scale</ion-label>
-        <ion-toggle checked="false" [(ngModel)]="scale" [ngModelOptions]="{standalone:true}"></ion-toggle>
-      </ion-item>
-      <ion-item>
-        <ion-label>Climb</ion-label>
-        <ion-toggle checked="false" [(ngModel)]="climb" [ngModelOptions]="{standalone:true}"></ion-toggle>
-      </ion-item>
+      <ion-item-group>
+        <ion-item-divider color="dark">General Information</ion-item-divider>
+        <ion-item>
+          <ion-label stacked>Team Number</ion-label>
+          <ion-input type="tel" [(ngModel)]="number" [ngModelOptions]="{standalone:true}"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label stacked>Comments</ion-label>
+          <ion-textarea type="tel" [(ngModel)]="comments" [ngModelOptions]="{standalone:true}"></ion-textarea>
+        </ion-item>
+      </ion-item-group>
+
+      <ion-item-group>
+        <ion-item-divider color="dark">Cubes</ion-item-divider>
+        <ion-item>
+          <ion-label>Ground Cubes</ion-label>
+          <ion-toggle checked="false" [(ngModel)]="groundCubes" [ngModelOptions]="{standalone:true}"></ion-toggle>
+        </ion-item>
+        <ion-item>
+          <ion-label>Return Cubes</ion-label>
+          <ion-toggle checked="false" [(ngModel)]="returnCubes" [ngModelOptions]="{standalone:true}"></ion-toggle>
+        </ion-item>
+        <ion-item>
+          <ion-label>Stack Cubes</ion-label>
+          <ion-toggle checked="false" [(ngModel)]="stackCubes" [ngModelOptions]="{standalone:true}"></ion-toggle>
+        </ion-item>
+      </ion-item-group>
+
+      <ion-item-group>
+        <ion-item-divider color="dark">Functions</ion-item-divider>
+        <ion-item>
+          <ion-label>Switch</ion-label>
+          <ion-toggle checked="false" [(ngModel)]="switch" [ngModelOptions]="{standalone:true}"></ion-toggle>
+        </ion-item>
+        <ion-item>
+          <ion-label>Scale</ion-label>
+          <ion-toggle checked="false" [(ngModel)]="scale" [ngModelOptions]="{standalone:true}"></ion-toggle>
+        </ion-item>
+        <ion-item>
+          <ion-label>Climb</ion-label>
+          <ion-toggle checked="false" [(ngModel)]="climb" [ngModelOptions]="{standalone:true}"></ion-toggle>
+        </ion-item>
+      </ion-item-group>
+      
     </form>
   </ion-list>
 </ion-content>
