@@ -60,7 +60,7 @@ export class AddMatchPage {
       this.zeroTimeError = true;
     }
 
-    if (this.scaleTime + this.switchTime > 150) {
+    if (parseInt(this.scaleTime) + parseInt(this.switchTime) > 150) {
       this.longTimeError = true;
     }
 

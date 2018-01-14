@@ -4,197 +4,6 @@ webpackJsonp([9],{
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AddTeamPage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_http__ = __webpack_require__(28);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_storage__ = __webpack_require__(31);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-
-
-
-
-var AddTeamPage = /** @class */ (function () {
-    function AddTeamPage(navCtrl, navParams, viewCtrl, http, alertCtrl, loadingCtrl, storage) {
-        this.navCtrl = navCtrl;
-        this.navParams = navParams;
-        this.viewCtrl = viewCtrl;
-        this.http = http;
-        this.alertCtrl = alertCtrl;
-        this.loadingCtrl = loadingCtrl;
-        this.storage = storage;
-        this.teams = [];
-    }
-    AddTeamPage.prototype.cancel = function () {
-        this.viewCtrl.dismiss();
-    };
-    AddTeamPage.prototype.selectDriveTrain = function () {
-    };
-    AddTeamPage.prototype.save = function () {
-        var _this = this;
-        if (this.name) {
-        }
-        else {
-            this.nameError = true;
-        }
-        if (this.number) {
-        }
-        else {
-            this.numberError = true;
-        }
-        if (isNaN(this.number) == true) {
-            this.numberNotNumberError = true;
-        }
-        if (this.groundCubes == true) {
-            this.gc = "Yes";
-        }
-        else {
-            this.gc = "No";
-        }
-        if (this.returnCubes == true) {
-            this.rc = "Yes";
-        }
-        else {
-            this.rc = "No";
-        }
-        if (this.stackCubes == true) {
-            this.sc = "Yes";
-        }
-        else {
-            this.sc = "No";
-        }
-        if (this.switch == true) {
-            this.sw = "Yes";
-        }
-        else {
-            this.sw = "No";
-        }
-        if (this.scale == true) {
-            this.sl = "Yes";
-        }
-        else {
-            this.sl = "No";
-        }
-        if (this.climb == true) {
-            this.cl = "Yes";
-        }
-        else {
-            this.cl = "No";
-        }
-        if (this.driveTrainType == "" || this.driveTrainType == null) {
-            this.driveTrainError = true;
-        }
-        if (this.liftOthers == true) {
-            this.lo = "Yes";
-        }
-        else {
-            this.lo = "No";
-        }
-        if (this.nameError == true) {
-            var alert_1 = this.alertCtrl.create({
-                title: 'Team Name!',
-                subTitle: 'You must enter a team name!',
-                buttons: ['OK']
-            });
-            alert_1.present();
-            this.nameError = false;
-        }
-        else if (this.numberError == true) {
-            var alert_2 = this.alertCtrl.create({
-                title: 'Team Number!',
-                subTitle: 'You must enter a team number!',
-                buttons: ['OK']
-            });
-            alert_2.present();
-            this.numberError = false;
-        }
-        else if (this.numberNotNumberError == true) {
-            var alert_3 = this.alertCtrl.create({
-                title: 'Team Number!',
-                subTitle: 'Please enter a valid number!',
-                buttons: ['OK']
-            });
-            alert_3.present();
-            this.numberNotNumberError = false;
-        }
-        else if (this.driveTrainError == true) {
-            var alert_4 = this.alertCtrl.create({
-                title: 'Drive Train!',
-                subTitle: 'Please select a drive train! If you do not know what type it is, select \'Unknown\'.',
-                buttons: ['OK']
-            });
-            alert_4.present();
-            this.driveTrainError = false;
-        }
-        else {
-            this.team = {
-                "teamName": this.name,
-                "teamNumber": this.number,
-                "comments": this.comments,
-                "groundCubes": this.gc,
-                "returnCubes": this.rc,
-                "stackCubes": this.sc,
-                "switch": this.sw,
-                "scale": this.sl,
-                "climb": this.cl,
-                "driveTrainType": this.driveTrainType,
-                "liftOthers": this.lo,
-                "wins": "0",
-                "losses": "0",
-                "forces": "0",
-                "boosts": "0",
-                "levitates": "0",
-                "timeScale": "0",
-                "timeSwitch": "0"
-            };
-            this.storage.get("teams").then(function (val) {
-                if (val == "" || val == null) {
-                    var data = "[" + JSON.stringify(_this.team) + "]";
-                    _this.storage.set("teams", data);
-                }
-                else {
-                    var existing = val.replace("]", ", ");
-                    var newData = existing + JSON.stringify(_this.team) + "]";
-                    _this.storage.set("teams", newData);
-                }
-            });
-            this.viewCtrl.dismiss();
-        }
-    };
-    AddTeamPage = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-add-team',template:/*ion-inline-start:"/Users/matthewgallant/Documents/GitHub/ScoutApp/src/pages/add-team/add-team.html"*/'<ion-header>\n\n  <ion-navbar>\n    <ion-title>Add Team</ion-title>\n    <ion-buttons start>\n      <button ion-button icon-only (click)="cancel()">\n        Cancel\n      </button>\n    </ion-buttons>\n    <ion-buttons end>\n      <button ion-button icon-only type="submit" form="teamForm">\n        Save\n      </button>\n    </ion-buttons>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content>\n  <ion-list>\n    <form (ngSubmit)="save()" id="teamForm">\n\n      <ion-item-group>\n        <ion-item-divider color="dark">General Information</ion-item-divider>\n        <ion-item>\n          <ion-label fixed>Name:</ion-label>\n          <ion-input type="text" [(ngModel)]="name" [ngModelOptions]="{standalone:true}"></ion-input>\n        </ion-item>\n        <ion-item>\n          <ion-label fixed>Number:</ion-label>\n          <ion-input type="tel" [(ngModel)]="number" [ngModelOptions]="{standalone:true}"></ion-input>\n        </ion-item>\n        <ion-item>\n          <ion-label fixed>Comments:</ion-label>\n          <ion-textarea type="tel" [(ngModel)]="comments" [ngModelOptions]="{standalone:true}"></ion-textarea>\n        </ion-item>\n      </ion-item-group>\n\n      <ion-item-group>\n        <ion-item-divider color="dark">Cubes</ion-item-divider>\n        <ion-item>\n          <ion-label>Collects Ground Cubes</ion-label>\n          <ion-toggle checked="false" [(ngModel)]="groundCubes" [ngModelOptions]="{standalone:true}"></ion-toggle>\n        </ion-item>\n        <ion-item>\n          <ion-label>Collects Cubes from Return</ion-label>\n          <ion-toggle checked="false" [(ngModel)]="returnCubes" [ngModelOptions]="{standalone:true}"></ion-toggle>\n        </ion-item>\n        <ion-item>\n          <ion-label>Collects Cubes from Stacks</ion-label>\n          <ion-toggle checked="false" [(ngModel)]="stackCubes" [ngModelOptions]="{standalone:true}"></ion-toggle>\n        </ion-item>\n      </ion-item-group>\n\n      <ion-item-group>\n        <ion-item-divider color="dark">Robot</ion-item-divider>\n        <ion-item>\n          <ion-label>Drive Train Type</ion-label>\n          <ion-select [(ngModel)]="driveTrainType"  [ngModelOptions]="{standalone:true}">\n            <ion-option value="Kit of Parts">Kit of Parts</ion-option>\n            <ion-option value="Mecanum">Mecanum</ion-option>\n            <ion-option value="Omni">Omni</ion-option>\n            <ion-option value="Treads">Treads</ion-option>\n            <ion-option value="West Coast">West Coast</ion-option>\n            <ion-option value="Swerve">Swerve</ion-option>\n            <ion-option value="Hybrid">Hybrid</ion-option>\n            <ion-option value="Butterfly">Butterfly</ion-option>\n            <ion-option value="Kiwi">Kiwi</ion-option>\n            <ion-option value="Custom">Custom</ion-option>\n            <ion-option value="Unknown">Unknown</ion-option>\n          </ion-select>\n        </ion-item>\n        <ion-item>\n          <ion-label>Switch</ion-label>\n          <ion-toggle checked="false" [(ngModel)]="switch" [ngModelOptions]="{standalone:true}"></ion-toggle>\n        </ion-item>\n        <ion-item>\n          <ion-label>Scale</ion-label>\n          <ion-toggle checked="false" [(ngModel)]="scale" [ngModelOptions]="{standalone:true}"></ion-toggle>\n        </ion-item>\n        <ion-item>\n          <ion-label>Climb</ion-label>\n          <ion-toggle checked="false" [(ngModel)]="climb" [ngModelOptions]="{standalone:true}"></ion-toggle>\n        </ion-item>\n        <ion-item>\n          <ion-label>Lift Other Robots</ion-label>\n          <ion-toggle checked="false" [(ngModel)]="liftOthers" [ngModelOptions]="{standalone:true}"></ion-toggle>\n        </ion-item>\n      </ion-item-group>\n\n    </form>\n  </ion-list>\n</ion-content>\n'/*ion-inline-end:"/Users/matthewgallant/Documents/GitHub/ScoutApp/src/pages/add-team/add-team.html"*/,
-        }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* ViewController */],
-            __WEBPACK_IMPORTED_MODULE_2__angular_http__["b" /* Http */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* LoadingController */],
-            __WEBPACK_IMPORTED_MODULE_3__ionic_storage__["b" /* Storage */]])
-    ], AddTeamPage);
-    return AddTeamPage;
-}());
-
-//# sourceMappingURL=add-team.js.map
-
-/***/ }),
-
-/***/ 106:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AddMatchPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(4);
@@ -247,7 +56,7 @@ var AddMatchPage = /** @class */ (function () {
         else if (isNaN(this.switchTime) == true) {
             this.zeroTimeError = true;
         }
-        if (this.scaleTime + this.switchTime > 150) {
+        if (parseInt(this.scaleTime) + parseInt(this.switchTime) > 150) {
             this.longTimeError = true;
         }
         this.storage.get("teams").then(function (val) {
@@ -261,21 +70,18 @@ var AddMatchPage = /** @class */ (function () {
             else {
                 _this.noTeamError = true;
                 _this.noTeams.push(_this.teamOne);
-                console.log("ERROR");
             }
             if (numbers.indexOf(_this.teamTwo) > -1) {
             }
             else {
                 _this.noTeamError = true;
                 _this.noTeams.push(_this.teamTwo);
-                console.log("ERROR");
             }
             if (numbers.indexOf(_this.teamThree) > -1) {
             }
             else {
                 _this.noTeamError = true;
                 _this.noTeams.push(_this.teamThree);
-                console.log("ERROR");
             }
             if (_this.numberNotNumberError == true) {
                 var alert = _this.alertCtrl.create({
@@ -410,7 +216,7 @@ var AddMatchPage = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 107:
+/***/ 106:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -459,7 +265,7 @@ var CreditsPage = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 108:
+/***/ 107:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -691,6 +497,197 @@ var EditTeamPage = /** @class */ (function () {
 
 /***/ }),
 
+/***/ 108:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AddTeamPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_http__ = __webpack_require__(28);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_storage__ = __webpack_require__(31);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+
+
+var AddTeamPage = /** @class */ (function () {
+    function AddTeamPage(navCtrl, navParams, viewCtrl, http, alertCtrl, loadingCtrl, storage) {
+        this.navCtrl = navCtrl;
+        this.navParams = navParams;
+        this.viewCtrl = viewCtrl;
+        this.http = http;
+        this.alertCtrl = alertCtrl;
+        this.loadingCtrl = loadingCtrl;
+        this.storage = storage;
+        this.teams = [];
+    }
+    AddTeamPage.prototype.cancel = function () {
+        this.viewCtrl.dismiss();
+    };
+    AddTeamPage.prototype.selectDriveTrain = function () {
+    };
+    AddTeamPage.prototype.save = function () {
+        var _this = this;
+        if (this.name) {
+        }
+        else {
+            this.nameError = true;
+        }
+        if (this.number) {
+        }
+        else {
+            this.numberError = true;
+        }
+        if (isNaN(this.number) == true) {
+            this.numberNotNumberError = true;
+        }
+        if (this.groundCubes == true) {
+            this.gc = "Yes";
+        }
+        else {
+            this.gc = "No";
+        }
+        if (this.returnCubes == true) {
+            this.rc = "Yes";
+        }
+        else {
+            this.rc = "No";
+        }
+        if (this.stackCubes == true) {
+            this.sc = "Yes";
+        }
+        else {
+            this.sc = "No";
+        }
+        if (this.switch == true) {
+            this.sw = "Yes";
+        }
+        else {
+            this.sw = "No";
+        }
+        if (this.scale == true) {
+            this.sl = "Yes";
+        }
+        else {
+            this.sl = "No";
+        }
+        if (this.climb == true) {
+            this.cl = "Yes";
+        }
+        else {
+            this.cl = "No";
+        }
+        if (this.driveTrainType == "" || this.driveTrainType == null) {
+            this.driveTrainError = true;
+        }
+        if (this.liftOthers == true) {
+            this.lo = "Yes";
+        }
+        else {
+            this.lo = "No";
+        }
+        if (this.nameError == true) {
+            var alert_1 = this.alertCtrl.create({
+                title: 'Team Name!',
+                subTitle: 'You must enter a team name!',
+                buttons: ['OK']
+            });
+            alert_1.present();
+            this.nameError = false;
+        }
+        else if (this.numberError == true) {
+            var alert_2 = this.alertCtrl.create({
+                title: 'Team Number!',
+                subTitle: 'You must enter a team number!',
+                buttons: ['OK']
+            });
+            alert_2.present();
+            this.numberError = false;
+        }
+        else if (this.numberNotNumberError == true) {
+            var alert_3 = this.alertCtrl.create({
+                title: 'Team Number!',
+                subTitle: 'Please enter a valid number!',
+                buttons: ['OK']
+            });
+            alert_3.present();
+            this.numberNotNumberError = false;
+        }
+        else if (this.driveTrainError == true) {
+            var alert_4 = this.alertCtrl.create({
+                title: 'Drive Train!',
+                subTitle: 'Please select a drive train! If you do not know what type it is, select \'Unknown\'.',
+                buttons: ['OK']
+            });
+            alert_4.present();
+            this.driveTrainError = false;
+        }
+        else {
+            this.team = {
+                "teamName": this.name,
+                "teamNumber": this.number,
+                "comments": this.comments,
+                "groundCubes": this.gc,
+                "returnCubes": this.rc,
+                "stackCubes": this.sc,
+                "switch": this.sw,
+                "scale": this.sl,
+                "climb": this.cl,
+                "driveTrainType": this.driveTrainType,
+                "liftOthers": this.lo,
+                "wins": "0",
+                "losses": "0",
+                "forces": "0",
+                "boosts": "0",
+                "levitates": "0",
+                "timeScale": "0",
+                "timeSwitch": "0"
+            };
+            this.storage.get("teams").then(function (val) {
+                if (val == "" || val == null) {
+                    var data = "[" + JSON.stringify(_this.team) + "]";
+                    _this.storage.set("teams", data);
+                }
+                else {
+                    var existing = val.replace("]", ", ");
+                    var newData = existing + JSON.stringify(_this.team) + "]";
+                    _this.storage.set("teams", newData);
+                }
+            });
+            this.viewCtrl.dismiss();
+        }
+    };
+    AddTeamPage = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
+            selector: 'page-add-team',template:/*ion-inline-start:"/Users/matthewgallant/Documents/GitHub/ScoutApp/src/pages/add-team/add-team.html"*/'<ion-header>\n\n  <ion-navbar>\n    <ion-title>Add Team</ion-title>\n    <ion-buttons start>\n      <button ion-button icon-only (click)="cancel()">\n        Cancel\n      </button>\n    </ion-buttons>\n    <ion-buttons end>\n      <button ion-button icon-only type="submit" form="teamForm">\n        Save\n      </button>\n    </ion-buttons>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content>\n  <ion-list>\n    <form (ngSubmit)="save()" id="teamForm">\n\n      <ion-item-group>\n        <ion-item-divider color="dark">General Information</ion-item-divider>\n        <ion-item>\n          <ion-label fixed>Name:</ion-label>\n          <ion-input type="text" [(ngModel)]="name" [ngModelOptions]="{standalone:true}"></ion-input>\n        </ion-item>\n        <ion-item>\n          <ion-label fixed>Number:</ion-label>\n          <ion-input type="tel" [(ngModel)]="number" [ngModelOptions]="{standalone:true}"></ion-input>\n        </ion-item>\n        <ion-item>\n          <ion-label fixed>Comments:</ion-label>\n          <ion-textarea type="tel" [(ngModel)]="comments" [ngModelOptions]="{standalone:true}"></ion-textarea>\n        </ion-item>\n      </ion-item-group>\n\n      <ion-item-group>\n        <ion-item-divider color="dark">Cubes</ion-item-divider>\n        <ion-item>\n          <ion-label>Collects Ground Cubes</ion-label>\n          <ion-toggle checked="false" [(ngModel)]="groundCubes" [ngModelOptions]="{standalone:true}"></ion-toggle>\n        </ion-item>\n        <ion-item>\n          <ion-label>Collects Cubes from Return</ion-label>\n          <ion-toggle checked="false" [(ngModel)]="returnCubes" [ngModelOptions]="{standalone:true}"></ion-toggle>\n        </ion-item>\n        <ion-item>\n          <ion-label>Collects Cubes from Stacks</ion-label>\n          <ion-toggle checked="false" [(ngModel)]="stackCubes" [ngModelOptions]="{standalone:true}"></ion-toggle>\n        </ion-item>\n      </ion-item-group>\n\n      <ion-item-group>\n        <ion-item-divider color="dark">Robot</ion-item-divider>\n        <ion-item>\n          <ion-label>Drive Train Type</ion-label>\n          <ion-select [(ngModel)]="driveTrainType"  [ngModelOptions]="{standalone:true}">\n            <ion-option value="Kit of Parts">Kit of Parts</ion-option>\n            <ion-option value="Mecanum">Mecanum</ion-option>\n            <ion-option value="Omni">Omni</ion-option>\n            <ion-option value="Treads">Treads</ion-option>\n            <ion-option value="West Coast">West Coast</ion-option>\n            <ion-option value="Swerve">Swerve</ion-option>\n            <ion-option value="Hybrid">Hybrid</ion-option>\n            <ion-option value="Butterfly">Butterfly</ion-option>\n            <ion-option value="Kiwi">Kiwi</ion-option>\n            <ion-option value="Custom">Custom</ion-option>\n            <ion-option value="Unknown">Unknown</ion-option>\n          </ion-select>\n        </ion-item>\n        <ion-item>\n          <ion-label>Switch</ion-label>\n          <ion-toggle checked="false" [(ngModel)]="switch" [ngModelOptions]="{standalone:true}"></ion-toggle>\n        </ion-item>\n        <ion-item>\n          <ion-label>Scale</ion-label>\n          <ion-toggle checked="false" [(ngModel)]="scale" [ngModelOptions]="{standalone:true}"></ion-toggle>\n        </ion-item>\n        <ion-item>\n          <ion-label>Climb</ion-label>\n          <ion-toggle checked="false" [(ngModel)]="climb" [ngModelOptions]="{standalone:true}"></ion-toggle>\n        </ion-item>\n        <ion-item>\n          <ion-label>Lift Other Robots</ion-label>\n          <ion-toggle checked="false" [(ngModel)]="liftOthers" [ngModelOptions]="{standalone:true}"></ion-toggle>\n        </ion-item>\n      </ion-item-group>\n\n    </form>\n  </ion-list>\n</ion-content>\n'/*ion-inline-end:"/Users/matthewgallant/Documents/GitHub/ScoutApp/src/pages/add-team/add-team.html"*/,
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* ViewController */],
+            __WEBPACK_IMPORTED_MODULE_2__angular_http__["b" /* Http */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* LoadingController */],
+            __WEBPACK_IMPORTED_MODULE_3__ionic_storage__["b" /* Storage */]])
+    ], AddTeamPage);
+    return AddTeamPage;
+}());
+
+//# sourceMappingURL=add-team.js.map
+
+/***/ }),
+
 /***/ 109:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -700,8 +697,8 @@ var EditTeamPage = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_teams_teams__ = __webpack_require__(165);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__team_data_team_data__ = __webpack_require__(110);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__add_team_add_team__ = __webpack_require__(105);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__add_match_add_match__ = __webpack_require__(106);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__add_team_add_team__ = __webpack_require__(108);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__add_match_add_match__ = __webpack_require__(105);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__initial_tutorial_initial_tutorial__ = __webpack_require__(52);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__signin_signin__ = __webpack_require__(53);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__ionic_storage__ = __webpack_require__(31);
@@ -967,7 +964,7 @@ var HomePage = /** @class */ (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TeamDataPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__edit_team_edit_team__ = __webpack_require__(108);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__edit_team_edit_team__ = __webpack_require__(107);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1050,10 +1047,12 @@ var TeamDataPage = /** @class */ (function () {
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
             selector: 'page-team-data',template:/*ion-inline-start:"/Users/matthewgallant/Documents/GitHub/ScoutApp/src/pages/team-data/team-data.html"*/'<ion-header>\n\n  <ion-navbar>\n    <ion-title>{{name}} {{number}}</ion-title>\n    <ion-buttons start>\n      <button ion-button icon-only (click)="cancel()">\n        Cancel\n      </button>\n    </ion-buttons>\n    <ion-buttons end>\n        <button ion-button icon-only (click)="editTeam()">\n          Edit\n        </button>\n      </ion-buttons>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content>\n  <ion-list>\n\n    <ion-item-group>\n      <ion-item-divider color="dark">General Information</ion-item-divider>\n      <ion-item color="primary">\n        Name: {{name}}\n      </ion-item>\n      <ion-item color="primary">\n        Number: {{number}}\n      </ion-item>\n      <ion-item color="primary">\n        Comments: {{comments}}\n      </ion-item>\n    </ion-item-group>\n\n    <ion-item-group>\n      <ion-item-divider color="dark">Cubes</ion-item-divider>\n      <ion-item [color]="groundCubes == \'Yes\' ? \'success\' : \'danger\'">\n        Ground Cubes: {{groundCubes}}\n      </ion-item>\n      <ion-item [color]="returnCubes == \'Yes\' ? \'success\' : \'danger\'">\n        Return Cubes: {{returnCubes}}\n      </ion-item>\n      <ion-item [color]="stackCubes == \'Yes\' ? \'success\' : \'danger\'">\n        Stack Cubes: {{stackCubes}}\n      </ion-item>\n    </ion-item-group>\n\n    <ion-item-group>\n      <ion-item-divider color="dark">Robot</ion-item-divider>\n      <ion-item [color]="driveTrainType == \'Mecanum\' ? \'danger\' : \'success\'">\n        Drive Train: {{driveTrainType}}\n      </ion-item>\n      <ion-item [color]="switch == \'Yes\' ? \'success\' : \'danger\'">\n        Switch: {{switch}}\n      </ion-item>\n      <ion-item [color]="scale == \'Yes\' ? \'success\' : \'danger\'">\n        Scale: {{scale}}\n      </ion-item>\n      <ion-item [color]="climb == \'Yes\' ? \'success\' : \'danger\'">\n        Climb: {{climb}}\n      </ion-item>\n      <ion-item [color]="liftOthers == \'Yes\' ? \'success\' : \'danger\'">\n        Lift Other Robots: {{liftOthers}}\n      </ion-item>\n    </ion-item-group>\n\n    <ion-item-group>\n      <ion-item-divider color="dark">Stats</ion-item-divider>\n      <ion-item [color]="wins < 3 ? \'danger\' : \'success\'">\n        Wins: {{wins}}\n      </ion-item>\n      <ion-item [color]="losses < 3 ? \'success\' : \'danger\'">\n        Losses: {{losses}}\n      </ion-item>\n      <ion-item [color]="forces < 3 ? \'danger\' : \'success\'">\n        Forces Used: {{forces}}\n      </ion-item>\n      <ion-item [color]="boosts < 3 ? \'danger\' : \'success\'">\n        Boosts Used: {{boosts}}\n      </ion-item>\n      <ion-item [color]="levitates < 3 ? \'danger\' : \'success\'">\n        Levitates Used: {{levitates}}\n      </ion-item>\n      <ion-item [color]="timeScale < 200 ? \'danger\' : \'success\'">\n        Scale Ownership: {{timeScale}} Seconds\n      </ion-item>\n      <ion-item [color]="timeSwitch < 200 ? \'danger\' : \'success\'">\n        Switch Ownership: {{timeSwitch}} Seconds\n      </ion-item>\n    </ion-item-group>\n  </ion-list>\n</ion-content>\n'/*ion-inline-end:"/Users/matthewgallant/Documents/GitHub/ScoutApp/src/pages/team-data/team-data.html"*/,
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* ModalController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* ModalController */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* ViewController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* ViewController */]) === "function" && _d || Object])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* ModalController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* ViewController */]])
     ], TeamDataPage);
     return TeamDataPage;
-    var _a, _b, _c, _d;
 }());
 
 //# sourceMappingURL=team-data.js.map
@@ -1180,35 +1179,35 @@ webpackEmptyAsyncContext.id = 120;
 
 var map = {
 	"../pages/add-match/add-match.module": [
-		288,
+		287,
 		8
 	],
 	"../pages/add-team/add-team.module": [
-		287,
+		290,
 		7
 	],
 	"../pages/credits/credits.module": [
-		289,
+		288,
 		6
 	],
 	"../pages/edit-team/edit-team.module": [
-		291,
+		289,
 		5
 	],
 	"../pages/home/home.module": [
-		292,
+		291,
 		4
 	],
 	"../pages/initial-tutorial/initial-tutorial.module": [
-		290,
+		292,
 		3
 	],
 	"../pages/settings/settings.module": [
-		293,
+		294,
 		2
 	],
 	"../pages/signin/signin.module": [
-		294,
+		293,
 		1
 	],
 	"../pages/team-data/team-data.module": [
@@ -1279,7 +1278,7 @@ var TeamsProvider = /** @class */ (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AboutPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__credits_credits__ = __webpack_require__(107);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__credits_credits__ = __webpack_require__(106);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1380,12 +1379,12 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__pages_tabs_tabs__ = __webpack_require__(208);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__pages_settings_settings__ = __webpack_require__(111);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__pages_team_data_team_data__ = __webpack_require__(110);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__pages_add_team_add_team__ = __webpack_require__(105);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__pages_edit_team_edit_team__ = __webpack_require__(108);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__pages_add_match_add_match__ = __webpack_require__(106);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__pages_add_team_add_team__ = __webpack_require__(108);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__pages_edit_team_edit_team__ = __webpack_require__(107);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__pages_add_match_add_match__ = __webpack_require__(105);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__pages_signin_signin__ = __webpack_require__(53);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__pages_initial_tutorial_initial_tutorial__ = __webpack_require__(52);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__pages_credits_credits__ = __webpack_require__(107);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__pages_credits_credits__ = __webpack_require__(106);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__ionic_native_status_bar__ = __webpack_require__(206);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__ionic_native_splash_screen__ = __webpack_require__(207);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__providers_teams_teams__ = __webpack_require__(165);
@@ -1440,14 +1439,14 @@ var AppModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_2__angular_http__["c" /* HttpModule */],
                 __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["f" /* IonicModule */].forRoot(__WEBPACK_IMPORTED_MODULE_4__app_component__["a" /* MyApp */], {}, {
                     links: [
-                        { loadChildren: '../pages/add-team/add-team.module#AddTeamPageModule', name: 'AddTeamPage', segment: 'add-team', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/add-match/add-match.module#AddMatchPageModule', name: 'AddMatchPage', segment: 'add-match', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/credits/credits.module#CreditsPageModule', name: 'CreditsPage', segment: 'credits', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/initial-tutorial/initial-tutorial.module#InitialTutorialPageModule', name: 'InitialTutorialPage', segment: 'initial-tutorial', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/edit-team/edit-team.module#EditTeamPageModule', name: 'EditTeamPage', segment: 'edit-team', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/add-team/add-team.module#AddTeamPageModule', name: 'AddTeamPage', segment: 'add-team', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/home/home.module#HomePageModule', name: 'HomePage', segment: 'home', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/settings/settings.module#SettingsPageModule', name: 'SettingsPage', segment: 'settings', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/initial-tutorial/initial-tutorial.module#InitialTutorialPageModule', name: 'InitialTutorialPage', segment: 'initial-tutorial', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/signin/signin.module#SigninPageModule', name: 'SigninPage', segment: 'signin', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/settings/settings.module#SettingsPageModule', name: 'SettingsPage', segment: 'settings', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/team-data/team-data.module#TeamDataPageModule', name: 'TeamDataPage', segment: 'team-data', priority: 'low', defaultHistory: [] }
                     ]
                 }),
