@@ -1,1 +1,40 @@
-webpackJsonp([6],{269:function(a,e,n){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var _=n(0),r=(n(3),n(9),n(109)),t=function(){return function(){}}(),o=n(207),u=n(208),i=n(209),c=n(210),d=n(211),s=n(212),b=n(213),f=n(214),l=n(215),p=n(217),v=n(15),g=n(17),j=n(149),k=n(57);n.d(e,"CreditsPageModuleNgFactory",function(){return m});var m=_.W(t,[],function(a){return _._8([_._9(512,_.i,_.S,[[8,[o.a,u.a,i.a,c.a,d.a,s.a,b.a,f.a,l.a,p.a]],[3,_.i],_.s]),_._9(4608,v.k,v.j,[_.r,[2,v.s]]),_._9(4608,g.o,g.o,[]),_._9(4608,g.d,g.d,[]),_._9(512,v.b,v.b,[]),_._9(512,g.m,g.m,[]),_._9(512,g.e,g.e,[]),_._9(512,g.l,g.l,[]),_._9(512,j.a,j.a,[]),_._9(512,j.b,j.b,[]),_._9(512,t,t,[]),_._9(256,k.a,r.a,[])])})}});
+webpackJsonp([6],{
+
+/***/ 289:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CreditsPageModule", function() { return CreditsPageModule; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__credits__ = __webpack_require__(107);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+
+
+var CreditsPageModule = /** @class */ (function () {
+    function CreditsPageModule() {
+    }
+    CreditsPageModule = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
+            declarations: [],
+            imports: [
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__credits__["a" /* CreditsPage */]),
+            ],
+        })
+    ], CreditsPageModule);
+    return CreditsPageModule;
+}());
+
+//# sourceMappingURL=credits.module.js.map
+
+/***/ })
+
+});
+//# sourceMappingURL=6.js.map

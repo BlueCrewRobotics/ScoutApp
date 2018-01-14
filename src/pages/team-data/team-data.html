@@ -22,70 +22,70 @@
 
     <ion-item-group>
       <ion-item-divider color="dark">General Information</ion-item-divider>
-      <ion-item>
+      <ion-item color="primary">
         Name: {{name}}
       </ion-item>
-      <ion-item>
+      <ion-item color="primary">
         Number: {{number}}
       </ion-item>
-      <ion-item>
+      <ion-item color="primary">
         Comments: {{comments}}
       </ion-item>
     </ion-item-group>
 
     <ion-item-group>
       <ion-item-divider color="dark">Cubes</ion-item-divider>
-      <ion-item>
+      <ion-item [color]="groundCubes == 'Yes' ? 'success' : 'danger'">
         Ground Cubes: {{groundCubes}}
       </ion-item>
-      <ion-item>
+      <ion-item [color]="returnCubes == 'Yes' ? 'success' : 'danger'">
         Return Cubes: {{returnCubes}}
       </ion-item>
-      <ion-item>
+      <ion-item [color]="stackCubes == 'Yes' ? 'success' : 'danger'">
         Stack Cubes: {{stackCubes}}
       </ion-item>
     </ion-item-group>
 
     <ion-item-group>
       <ion-item-divider color="dark">Robot</ion-item-divider>
-      <ion-item>
+      <ion-item [color]="driveTrainType == 'Mecanum' ? 'danger' : 'success'">
         Drive Train: {{driveTrainType}}
       </ion-item>
-      <ion-item>
+      <ion-item [color]="switch == 'Yes' ? 'success' : 'danger'">
         Switch: {{switch}}
       </ion-item>
-      <ion-item>
+      <ion-item [color]="scale == 'Yes' ? 'success' : 'danger'">
         Scale: {{scale}}
       </ion-item>
-      <ion-item>
+      <ion-item [color]="climb == 'Yes' ? 'success' : 'danger'">
         Climb: {{climb}}
       </ion-item>
-      <ion-item>
+      <ion-item [color]="liftOthers == 'Yes' ? 'success' : 'danger'">
         Lift Other Robots: {{liftOthers}}
       </ion-item>
     </ion-item-group>
 
     <ion-item-group>
       <ion-item-divider color="dark">Stats</ion-item-divider>
-      <ion-item>
+      <ion-item [color]="wins < 3 ? 'danger' : 'success'">
         Wins: {{wins}}
       </ion-item>
-      <ion-item>
+      <ion-item [color]="losses < 3 ? 'success' : 'danger'">
         Losses: {{losses}}
       </ion-item>
-      <ion-item>
+      <ion-item [color]="forces < 3 ? 'danger' : 'success'">
         Forces Used: {{forces}}
       </ion-item>
-      <ion-item>
+      <ion-item [color]="boosts < 3 ? 'danger' : 'success'">
         Boosts Used: {{boosts}}
       </ion-item>
-      <ion-item>
+      <ion-item [color]="levitates < 3 ? 'danger' : 'success'">
         Levitates Used: {{levitates}}
       </ion-item>
-      <ion-item>
+      <ion-item [color]="timeScale < 200 ? 'danger' : 'success'">
         Scale Ownership: {{timeScale}} Seconds
       </ion-item>
-      <ion-item>
+      <ion-item [color]="timeSwitch < 200 ? 'danger' : 'success'">
         Switch Ownership: {{timeSwitch}} Seconds
       </ion-item>
     </ion-item-group>

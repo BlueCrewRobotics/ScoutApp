@@ -52,6 +52,13 @@ export class TeamDataPage {
     modal.present();
   }
 
+  setMyStyles() {
+    let styles = {
+      'background-color': this.groundCubes == "Yes" ? 'red' : 'green',
+    };
+    return styles;
+  }
+
   ionViewDidLoad() {
     this.name = this.navParams.get('teamName');
     this.number = this.navParams.get('teamNumber');
