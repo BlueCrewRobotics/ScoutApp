@@ -116,11 +116,11 @@ export class AddMatchPage {
       } else if (this.longTimeError == true) {
         let alert = this.alertCtrl.create({
           title: 'Time Error!',
-          subTitle: 'Please enter an amount of time less than 150 seconds!',
+          subTitle: 'Please enter an amount of time less than or equal to 150 seconds!',
           buttons: ['OK']
         });
         alert.present();
-        this.zeroTimeError = false;
+        this.longTimeError = false;
       } else {
           for (var i = 0, len = teams.length; i < len; i++) {
             if (this.win == true) {
