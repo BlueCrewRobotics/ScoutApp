@@ -17,6 +17,8 @@ import { AddMatchPage } from '../pages/add-match/add-match';
 import { SigninPage } from '../pages/signin/signin';
 import { InitialTutorialPage } from '../pages/initial-tutorial/initial-tutorial';
 import { CreditsPage } from '../pages/credits/credits';
+import { PredictionsTabPage } from '../pages/predictions-tab/predictions-tab';
+import { PredictionsPage } from '../pages/predictions/predictions';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -35,7 +37,9 @@ import { TeamsProvider } from '../providers/teams/teams';
     AddMatchPage,
     SigninPage,
     InitialTutorialPage,
-    CreditsPage
+    CreditsPage,
+    PredictionsTabPage,
+    PredictionsPage
   ],
   imports: [
     BrowserModule,
@@ -56,7 +60,9 @@ import { TeamsProvider } from '../providers/teams/teams';
     AddMatchPage,
     SigninPage,
     InitialTutorialPage,
-    CreditsPage
+    CreditsPage,
+    PredictionsTabPage,
+    PredictionsPage
   ],
   providers: [
     StatusBar,

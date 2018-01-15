@@ -13,6 +13,7 @@ import { ActionSheetController } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 import { Http, Headers, RequestOptions } from '@angular/http';
 import { Events } from 'ionic-angular';
+import { ToastController } from 'ionic-angular';
 
 @IonicPage()
 @Component({
@@ -25,6 +26,9 @@ export class HomePage {
   team:any;
 
   connection:number = 0;
+  key:number = 0;
+  general:number = 0;
+  success:number = 0;
 
   constructor(
     public navCtrl: NavController,
@@ -36,7 +40,8 @@ export class HomePage {
     public actionSheetCtrl: ActionSheetController,
     public storage: Storage,
     public http: Http,
-    public events: Events
+    public events: Events,
+    public toastCtrl: ToastController
     ) {
   }
 
@@ -74,6 +79,7 @@ export class HomePage {
   }
 
   itemSelected(item) {
+    console.log(item);
     let modal = this.modalCtrl.create(TeamDataPage, item);
     modal.onDidDismiss(data => {
       this.loadData();
@@ -101,6 +107,12 @@ export class HomePage {
                 this.teams = data;
                 this.storage.set("teams", JSON.stringify(data));
                 refresher.complete();
+                let toast = this.toastCtrl.create({
+                  message: 'New Teams Have Been Downloaded.',
+                  duration: 3000,
+                  position: 'top'
+                });
+                toast.present();
               }, error => {
                 this.connection = this.connection + 1;
                 this.connectionError();
@@ -137,6 +149,12 @@ export class HomePage {
             (data) => {
               this.teams = data;
               this.storage.set("teams", JSON.stringify(data));
+              let toast = this.toastCtrl.create({
+                message: 'New Teams Have Been Downloaded.',
+                duration: 3000,
+                position: 'top'
+              });
+              toast.present();
             }, error => {
               this.connection = this.connection + 1;
               this.connectionError();
@@ -150,12 +168,45 @@ export class HomePage {
 
   connectionError() {
     if (this.connection == 1) {
-      let alert = this.alertCtrl.create({
-        title: 'Connection Error!',
-        subTitle: 'You appear to not be connected to the internet! Scout requires access to the internet to upload data.',
-        buttons: ['OK']
+      let toast = this.toastCtrl.create({
+        message: 'No Internet Connection. Please Connect to the Internet and Try Again.',
+        duration: 3000,
+        position: 'top'
       });
-      alert.present();
+      toast.present();
+    }
+  }
+
+  keyError() {
+    if (this.key == 1) {
+      let toast = this.toastCtrl.create({
+        message: 'You Do Not Have a Valid Security Key. Please Change It in the Settings Tab to a Valid Key.',
+        duration: 3000,
+        position: 'top'
+      });
+      toast.present();
+    }
+  }
+
+  generalError() {
+    if (this.general == 1) {
+      let toast = this.toastCtrl.create({
+        message: 'An Error Has Occured. Please Try Again Later.',
+        duration: 3000,
+        position: 'top'
+      });
+      toast.present();
+    }
+  }
+
+  uploadSuccess() {
+    if (this.success == 1) {
+      let toast = this.toastCtrl.create({
+        message: 'Your Teams Have Been Uploaded.',
+        duration: 3000,
+        position: 'top'
+      });
+      toast.present();
     }
   }
 
@@ -185,19 +236,14 @@ export class HomePage {
                 this.http.post("http://scout.bluecrew6153.org/api/team.php", params, options)
                   .subscribe(data => {
                     if (data["_body"] == "Failure") {
-                      let alert = this.alertCtrl.create({
-                        title: 'Error!',
-                        subTitle: 'An error has occured while trying to add the team.',
-                        buttons: ['OK']
-                      });
-                      alert.present();
+                      this.general = this.general + 1;
+                      this.generalError();
                     } else if (data["_body"] == "SecurityError") {
-                      let alert = this.alertCtrl.create({
-                        title: 'Security Key Error!',
-                        subTitle: 'You do not have a valid security key. Please change your security key in the settings tab to a valid one.',
-                        buttons: ['OK']
-                      });
-                      alert.present();
+                      this.key = this.key + 1;
+                      this.keyError();
+                    } else {
+                      this.success = this.success + 1;
+                      this.uploadSuccess();
                     }
                   }, error => {
                     this.connection = this.connection + 1;
@@ -211,6 +257,9 @@ export class HomePage {
       ]
     });
     alert.present();
+    this.general = 0;
+    this.key = 0;
+    this.success = 0;
     this.connection = 0;
   }
 

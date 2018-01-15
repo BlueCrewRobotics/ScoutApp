@@ -1,0 +1,21 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Predictions</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="close()">
+        Close
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+  
+</ion-header>
+
+
+<ion-content>
+  <ion-list>
+    <button ion-item *ngFor="let team of calculatedTeams" (click)="itemSelected(team)">
+      {{team.teamName}}: {{team.score}}&#37;
+    </button>
+  </ion-list>
+</ion-content>
