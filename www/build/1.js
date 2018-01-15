@@ -1,1 +1,40 @@
-webpackJsonp([1],{281:function(a,n,e){"use strict";Object.defineProperty(n,"__esModule",{value:!0});var _=e(0),r=(e(3),e(9),e(84)),t=function(){return function(){}}(),o=e(209),u=e(210),i=e(211),c=e(212),b=e(213),d=e(214),f=e(215),s=e(216),l=e(217),g=e(227),p=e(16),v=e(18),j=e(151),k=e(58);e.d(n,"SigninPageModuleNgFactory",function(){return m});var m=_.W(t,[],function(a){return _._8([_._9(512,_.i,_.S,[[8,[o.a,u.a,i.a,c.a,b.a,d.a,f.a,s.a,l.a,g.a]],[3,_.i],_.s]),_._9(4608,p.k,p.j,[_.r,[2,p.s]]),_._9(4608,v.o,v.o,[]),_._9(4608,v.d,v.d,[]),_._9(512,p.b,p.b,[]),_._9(512,v.m,v.m,[]),_._9(512,v.e,v.e,[]),_._9(512,v.l,v.l,[]),_._9(512,j.a,j.a,[]),_._9(512,j.b,j.b,[]),_._9(512,t,t,[]),_._9(256,k.a,r.a,[])])})}});
+webpackJsonp([1],{
+
+/***/ 299:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SigninPageModule", function() { return SigninPageModule; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__signin__ = __webpack_require__(54);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+
+
+var SigninPageModule = /** @class */ (function () {
+    function SigninPageModule() {
+    }
+    SigninPageModule = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
+            declarations: [],
+            imports: [
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__signin__["a" /* SigninPage */]),
+            ],
+        })
+    ], SigninPageModule);
+    return SigninPageModule;
+}());
+
+//# sourceMappingURL=signin.module.js.map
+
+/***/ })
+
+});
+//# sourceMappingURL=1.js.map
