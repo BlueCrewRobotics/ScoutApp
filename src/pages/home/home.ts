@@ -181,7 +181,7 @@ export class HomePage {
     if (this.key == 1) {
       let toast = this.toastCtrl.create({
         message: 'You Do Not Have a Valid Security Key. Please Change It in the Settings Tab to a Valid Key.',
-        duration: 3000,
+        duration: 6000,
         position: 'top'
       });
       toast.present();
