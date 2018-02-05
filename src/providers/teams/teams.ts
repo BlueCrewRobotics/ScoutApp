@@ -8,7 +8,7 @@ export class TeamsProvider {
   url;
 
   constructor(public http: Http) {
-    this.url = 'http://scout.bluecrew6153.org/api/teams.json' + '?hash_id=' + Math.random();
+    this.url = 'https://scout.bluecrew6153.org/api/teams.json' + '?hash_id=' + Math.random();
   }
 
   getTeams() {

@@ -30,7 +30,7 @@ export class SigninPage {
     let options = new RequestOptions({ headers: headers });
 
     var params = 'securityKey=' + this.teamKey;    
-    this.http.post("http://scout.bluecrew6153.org/api/auth.php", params, options)
+    this.http.post("https://scout.bluecrew6153.org/api/auth.php", params, options)
       .subscribe(data => {
         if (data["_body"] == "Valid") {
           this.storage.set('securityKey', this.teamKey);
