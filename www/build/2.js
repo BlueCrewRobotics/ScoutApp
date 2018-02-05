@@ -1,1 +1,40 @@
-webpackJsonp([2],{281:function(a,e,n){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var t=n(0),_=(n(3),n(9),n(117)),r=function(){return function(){}}(),o=n(209),u=n(210),i=n(211),c=n(212),s=n(213),b=n(214),d=n(215),f=n(216),l=n(217),g=n(227),p=n(16),v=n(18),j=n(151),k=n(58);n.d(e,"SettingsPageModuleNgFactory",function(){return m});var m=t.W(r,[],function(a){return t._8([t._9(512,t.i,t.S,[[8,[o.a,u.a,i.a,c.a,s.a,b.a,d.a,f.a,l.a,g.a]],[3,t.i],t.s]),t._9(4608,p.k,p.j,[t.r,[2,p.s]]),t._9(4608,v.o,v.o,[]),t._9(4608,v.d,v.d,[]),t._9(512,p.b,p.b,[]),t._9(512,v.m,v.m,[]),t._9(512,v.e,v.e,[]),t._9(512,v.l,v.l,[]),t._9(512,j.a,j.a,[]),t._9(512,j.b,j.b,[]),t._9(512,r,r,[]),t._9(256,k.a,_.a,[])])})}});
+webpackJsonp([2],{
+
+/***/ 298:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SettingsPageModule", function() { return SettingsPageModule; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__settings__ = __webpack_require__(113);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+
+
+var SettingsPageModule = /** @class */ (function () {
+    function SettingsPageModule() {
+    }
+    SettingsPageModule = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
+            declarations: [],
+            imports: [
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__settings__["a" /* SettingsPage */]),
+            ],
+        })
+    ], SettingsPageModule);
+    return SettingsPageModule;
+}());
+
+//# sourceMappingURL=settings.module.js.map
+
+/***/ })
+
+});
+//# sourceMappingURL=2.js.map
