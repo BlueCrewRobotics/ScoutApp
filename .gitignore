@@ -27,16 +27,13 @@ Temporary Items
 .apdisk
 
 node_modules
-www
-.idea
-.temp
+.tmp
 .sass-cache
-<%= appPath %>/bower_components
-coverage
+**/bower_components or sometimes it is lib/**
 platforms
 plugins
 *.swp
 *.swo
 *.log
-
-app/scripts/configuration.js
+*.DS_Store
+.sourcemaps/
