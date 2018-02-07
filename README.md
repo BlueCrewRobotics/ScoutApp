@@ -15,9 +15,6 @@ Scout is supposed to make scouting dead simple at competitions. You can see all 
 - Edit Team Data
 - Add Match Data
 - Offline Support
-
-## Features in the Future
-
 - Team Analysis
 
 ## Getting Started
