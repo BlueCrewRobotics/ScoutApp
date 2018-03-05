@@ -67,10 +67,10 @@
 
     <ion-item-group>
       <ion-item-divider color="dark">Stats</ion-item-divider>
-      <ion-item [color]="wins < 3 ? 'danger' : 'success'">
+      <ion-item [color]= white>
         Wins: {{wins}}
       </ion-item>
-      <ion-item [color]="losses < 3 ? 'success' : 'danger'">
+      <ion-item [color]= white>  
         Losses: {{losses}}
       </ion-item>
       <ion-item [color]="winLossRatio >= 1 ? 'success' : 'danger'">
