@@ -24,6 +24,7 @@ export class TeamDataPage {
   climb:any;
   wins:any;
   losses:any;
+  winLossRatio:any;
   forces:any;
   boosts:any;
   levitates:any;
@@ -78,7 +79,11 @@ export class TeamDataPage {
     this.timeSwitch = this.navParams.get('timeSwitch');
     this.driveTrainType = this.navParams.get('driveTrainType');
     this.liftOthers = this.navParams.get('liftOthers');
-
+    if(this.wins == 0 && this.losses == 0){
+	    this.winLossRatio = "No Matches Played yet";
+    }else{
+	    this.winLossRatio = this.wins/this.losses;
+    }
     this.team = {
       "teamName" : this.name,
       "teamNumber" : this.number,

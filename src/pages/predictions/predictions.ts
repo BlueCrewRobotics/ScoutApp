@@ -108,7 +108,9 @@ export class PredictionsPage {
         var timeScale = parseInt(team['timeScale']) * this.timeScale;
         var timeSwitch = parseInt(team['timeSwitch']) * this.timeSwitch;
 
-        var finalScore = groundCubes + exchangeCubes + stackCubes + driveTrain + scale + climb + liftOthers + switchs + wins + losses + forces + boosts + levitates + timeScale + timeSwitch;
+	var finalScore = groundCubes + exchangeCubes + stackCubes + driveTrain + 
+		scale + climb + liftOthers + switchs + wins + losses + forces + 
+		boosts + levitates + timeScale + timeSwitch;
         
         var thisTeam = {
           "score" : (finalScore / 100).toFixed(4),
