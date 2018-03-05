@@ -73,8 +73,8 @@
       <ion-item [color]="losses < 3 ? 'success' : 'danger'">
         Losses: {{losses}}
       </ion-item>
-      <ion-item [color]="winLossRatio < 1 ? 'success' : 'danger'">
-	      Win Loss Ratio: {{winLossRatio}}
+      <ion-item [color]="winLossRatio >= 1 ? 'success' : 'danger'">
+	      Win to Loss Ratio: {{winLossRatio}}
       </ion-item>
       <ion-item [color]="forces < 3 ? 'danger' : 'success'">
         Forces Used: {{forces}}

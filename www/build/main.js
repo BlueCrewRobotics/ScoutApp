@@ -416,55 +416,6 @@ var AddTeamPage = /** @class */ (function () {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CreditsPage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_in_app_browser__ = __webpack_require__(165);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-var CreditsPage = /** @class */ (function () {
-    function CreditsPage(navCtrl, navParams, iab) {
-        this.navCtrl = navCtrl;
-        this.navParams = navParams;
-        this.iab = iab;
-    }
-    CreditsPage.prototype.launchSite = function (site) {
-        if (site == "matt") {
-            this.iab.create('http://matthewgallant.me');
-        }
-        else if (site == "jacob") {
-            this.iab.create('https://github.com/jakeydoodle123');
-        }
-    };
-    CreditsPage = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-credits',template:/*ion-inline-start:"/Users/jacobmealey/Documents/ScoutApp/src/pages/credits/credits.html"*/'\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>Scout Credits</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padded>\n  <ion-card>\n    <ion-card-content>\n        <ion-list>\n          <ion-item>\n            Developed by:\n          </ion-item>\n          <button ion-item (click)="launchSite(\'matt\')">\n            Matthew Gallant\n          </button>\n          <button ion-item (click)="launchSite(\'jacob\')">\n            Jacob Mealey\n          </button>\n        </ion-list>\n    </ion-card-content>\n  </ion-card>\n</ion-content>\n'/*ion-inline-end:"/Users/jacobmealey/Documents/ScoutApp/src/pages/credits/credits.html"*/,
-        }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */],
-            __WEBPACK_IMPORTED_MODULE_2__ionic_native_in_app_browser__["a" /* InAppBrowser */]])
-    ], CreditsPage);
-    return CreditsPage;
-}());
-
-//# sourceMappingURL=credits.js.map
-
-/***/ }),
-
-/***/ 109:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return EditTeamPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(3);
@@ -690,6 +641,55 @@ var EditTeamPage = /** @class */ (function () {
 }());
 
 //# sourceMappingURL=edit-team.js.map
+
+/***/ }),
+
+/***/ 109:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CreditsPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_in_app_browser__ = __webpack_require__(165);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var CreditsPage = /** @class */ (function () {
+    function CreditsPage(navCtrl, navParams, iab) {
+        this.navCtrl = navCtrl;
+        this.navParams = navParams;
+        this.iab = iab;
+    }
+    CreditsPage.prototype.launchSite = function (site) {
+        if (site == "matt") {
+            this.iab.create('http://matthewgallant.me');
+        }
+        else if (site == "jacob") {
+            this.iab.create('https://github.com/jakeydoodle123');
+        }
+    };
+    CreditsPage = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
+            selector: 'page-credits',template:/*ion-inline-start:"/Users/jacobmealey/Documents/ScoutApp/src/pages/credits/credits.html"*/'\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>Scout Credits</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padded>\n  <ion-card>\n    <ion-card-content>\n        <ion-list>\n          <ion-item>\n            Developed by:\n          </ion-item>\n          <button ion-item (click)="launchSite(\'matt\')">\n            Matthew Gallant\n          </button>\n          <button ion-item (click)="launchSite(\'jacob\')">\n            Jacob Mealey\n          </button>\n        </ion-list>\n    </ion-card-content>\n  </ion-card>\n</ion-content>\n'/*ion-inline-end:"/Users/jacobmealey/Documents/ScoutApp/src/pages/credits/credits.html"*/,
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */],
+            __WEBPACK_IMPORTED_MODULE_2__ionic_native_in_app_browser__["a" /* InAppBrowser */]])
+    ], CreditsPage);
+    return CreditsPage;
+}());
+
+//# sourceMappingURL=credits.js.map
 
 /***/ }),
 
@@ -1014,52 +1014,6 @@ var HomePage = /** @class */ (function () {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PredictionsTabPage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__predictions_predictions__ = __webpack_require__(112);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-
-var PredictionsTabPage = /** @class */ (function () {
-    function PredictionsTabPage(navCtrl, navParams, modalCtrl) {
-        this.navCtrl = navCtrl;
-        this.navParams = navParams;
-        this.modalCtrl = modalCtrl;
-    }
-    PredictionsTabPage.prototype.getPredictions = function () {
-        var modal = this.modalCtrl.create(__WEBPACK_IMPORTED_MODULE_2__predictions_predictions__["a" /* PredictionsPage */]);
-        modal.present();
-    };
-    PredictionsTabPage = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-predictions-tab',template:/*ion-inline-start:"/Users/jacobmealey/Documents/ScoutApp/src/pages/predictions-tab/predictions-tab.html"*/'<ion-header>\n\n  <ion-navbar>\n    <ion-title>Predictions</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content>\n  <ion-card>\n    <ion-card-content>\n      Predictions Allows You to Get an Estimate of Which Teams May be Good Alliance Partners. Predictions is in Beta and Should not be Solely Used. Use Predictions With Your Own Discretion.\n    </ion-card-content>\n    <ion-item>\n      <button ion-button block icon-left large (click)="getPredictions()">\n        <ion-icon name="podium"></ion-icon>\n        Get Predictions\n      </button>\n    </ion-item>\n  </ion-card>\n</ion-content>\n'/*ion-inline-end:"/Users/jacobmealey/Documents/ScoutApp/src/pages/predictions-tab/predictions-tab.html"*/,
-        }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* ModalController */]])
-    ], PredictionsTabPage);
-    return PredictionsTabPage;
-}());
-
-//# sourceMappingURL=predictions-tab.js.map
-
-/***/ }),
-
-/***/ 112:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PredictionsPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(3);
@@ -1213,6 +1167,52 @@ var PredictionsPage = /** @class */ (function () {
 
 /***/ }),
 
+/***/ 112:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PredictionsTabPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__predictions_predictions__ = __webpack_require__(111);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+var PredictionsTabPage = /** @class */ (function () {
+    function PredictionsTabPage(navCtrl, navParams, modalCtrl) {
+        this.navCtrl = navCtrl;
+        this.navParams = navParams;
+        this.modalCtrl = modalCtrl;
+    }
+    PredictionsTabPage.prototype.getPredictions = function () {
+        var modal = this.modalCtrl.create(__WEBPACK_IMPORTED_MODULE_2__predictions_predictions__["a" /* PredictionsPage */]);
+        modal.present();
+    };
+    PredictionsTabPage = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
+            selector: 'page-predictions-tab',template:/*ion-inline-start:"/Users/jacobmealey/Documents/ScoutApp/src/pages/predictions-tab/predictions-tab.html"*/'<ion-header>\n\n  <ion-navbar>\n    <ion-title>Predictions</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content>\n  <ion-card>\n    <ion-card-content>\n      Predictions Allows You to Get an Estimate of Which Teams May be Good Alliance Partners. Predictions is in Beta and Should not be Solely Used. Use Predictions With Your Own Discretion.\n    </ion-card-content>\n    <ion-item>\n      <button ion-button block icon-left large (click)="getPredictions()">\n        <ion-icon name="podium"></ion-icon>\n        Get Predictions\n      </button>\n    </ion-item>\n  </ion-card>\n</ion-content>\n'/*ion-inline-end:"/Users/jacobmealey/Documents/ScoutApp/src/pages/predictions-tab/predictions-tab.html"*/,
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* ModalController */]])
+    ], PredictionsTabPage);
+    return PredictionsTabPage;
+}());
+
+//# sourceMappingURL=predictions-tab.js.map
+
+/***/ }),
+
 /***/ 113:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -1341,11 +1341,11 @@ var map = {
 		9
 	],
 	"../pages/credits/credits.module": [
-		291,
+		292,
 		8
 	],
 	"../pages/edit-team/edit-team.module": [
-		292,
+		291,
 		7
 	],
 	"../pages/home/home.module": [
@@ -1357,11 +1357,11 @@ var map = {
 		5
 	],
 	"../pages/predictions-tab/predictions-tab.module": [
-		295,
+		296,
 		4
 	],
 	"../pages/predictions/predictions.module": [
-		296,
+		295,
 		3
 	],
 	"../pages/settings/settings.module": [
@@ -1440,7 +1440,7 @@ var TeamsProvider = /** @class */ (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AboutPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__credits_credits__ = __webpack_require__(108);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__credits_credits__ = __webpack_require__(109);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1481,7 +1481,7 @@ var AboutPage = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__home_home__ = __webpack_require__(110);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__settings_settings__ = __webpack_require__(113);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__predictions_tab_predictions_tab__ = __webpack_require__(111);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__predictions_tab_predictions_tab__ = __webpack_require__(112);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1545,13 +1545,13 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__pages_settings_settings__ = __webpack_require__(113);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__pages_team_data_team_data__ = __webpack_require__(52);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__pages_add_team_add_team__ = __webpack_require__(107);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__pages_edit_team_edit_team__ = __webpack_require__(109);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__pages_edit_team_edit_team__ = __webpack_require__(108);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__pages_add_match_add_match__ = __webpack_require__(106);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__pages_signin_signin__ = __webpack_require__(54);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__pages_initial_tutorial_initial_tutorial__ = __webpack_require__(53);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__pages_credits_credits__ = __webpack_require__(108);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__pages_predictions_tab_predictions_tab__ = __webpack_require__(111);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__pages_predictions_predictions__ = __webpack_require__(112);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__pages_credits_credits__ = __webpack_require__(109);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__pages_predictions_tab_predictions_tab__ = __webpack_require__(112);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__pages_predictions_predictions__ = __webpack_require__(111);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__ionic_native_status_bar__ = __webpack_require__(208);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__ionic_native_splash_screen__ = __webpack_require__(209);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__providers_teams_teams__ = __webpack_require__(167);
@@ -1612,12 +1612,12 @@ var AppModule = /** @class */ (function () {
                     links: [
                         { loadChildren: '../pages/add-match/add-match.module#AddMatchPageModule', name: 'AddMatchPage', segment: 'add-match', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/add-team/add-team.module#AddTeamPageModule', name: 'AddTeamPage', segment: 'add-team', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/credits/credits.module#CreditsPageModule', name: 'CreditsPage', segment: 'credits', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/edit-team/edit-team.module#EditTeamPageModule', name: 'EditTeamPage', segment: 'edit-team', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/credits/credits.module#CreditsPageModule', name: 'CreditsPage', segment: 'credits', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/home/home.module#HomePageModule', name: 'HomePage', segment: 'home', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/initial-tutorial/initial-tutorial.module#InitialTutorialPageModule', name: 'InitialTutorialPage', segment: 'initial-tutorial', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/predictions-tab/predictions-tab.module#PredictionsTabPageModule', name: 'PredictionsTabPage', segment: 'predictions-tab', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/predictions/predictions.module#PredictionsPageModule', name: 'PredictionsPage', segment: 'predictions', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/predictions-tab/predictions-tab.module#PredictionsTabPageModule', name: 'PredictionsTabPage', segment: 'predictions-tab', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/settings/settings.module#SettingsPageModule', name: 'SettingsPage', segment: 'settings', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/signin/signin.module#SigninPageModule', name: 'SigninPage', segment: 'signin', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/team-data/team-data.module#TeamDataPageModule', name: 'TeamDataPage', segment: 'team-data', priority: 'low', defaultHistory: [] }
@@ -1711,7 +1711,7 @@ var MyApp = /** @class */ (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TeamDataPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__edit_team_edit_team__ = __webpack_require__(109);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__edit_team_edit_team__ = __webpack_require__(108);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1769,6 +1769,12 @@ var TeamDataPage = /** @class */ (function () {
         this.timeSwitch = this.navParams.get('timeSwitch');
         this.driveTrainType = this.navParams.get('driveTrainType');
         this.liftOthers = this.navParams.get('liftOthers');
+        if (this.wins == 0 && this.losses == 0) {
+            this.winLossRatio = "No Matches Played yet";
+        }
+        else {
+            this.winLossRatio = this.wins / this.losses;
+        }
         this.team = {
             "teamName": this.name,
             "teamNumber": this.number,
@@ -1792,14 +1798,12 @@ var TeamDataPage = /** @class */ (function () {
     };
     TeamDataPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-team-data',template:/*ion-inline-start:"/Users/jacobmealey/Documents/ScoutApp/src/pages/team-data/team-data.html"*/'<ion-header>\n\n  <ion-navbar>\n    <ion-title>{{name}} {{number}}</ion-title>\n    <ion-buttons start>\n      <button ion-button icon-only (click)="cancel()">\n        Cancel\n      </button>\n    </ion-buttons>\n    <ion-buttons end>\n        <button ion-button icon-only (click)="editTeam()">\n          Edit\n        </button>\n      </ion-buttons>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content>\n  <ion-list>\n\n    <ion-item-group>\n      <ion-item-divider color="dark">General Information</ion-item-divider>\n      <ion-item color="primary">\n        Name: {{name}}\n      </ion-item>\n      <ion-item color="primary">\n        Number: {{number}}\n      </ion-item>\n      <ion-item color="primary">\n        Comments: {{comments}}\n      </ion-item>\n    </ion-item-group>\n\n    <ion-item-group>\n      <ion-item-divider color="dark">Cubes</ion-item-divider>\n      <ion-item [color]="groundCubes == \'Yes\' ? \'success\' : \'danger\'">\n        Ground Cubes: {{groundCubes}}\n      </ion-item>\n      <ion-item [color]="returnCubes == \'Yes\' ? \'success\' : \'danger\'">\n        Exchange Cubes: {{returnCubes}}\n      </ion-item>\n      <ion-item [color]="stackCubes == \'Yes\' ? \'success\' : \'danger\'">\n        Stack Cubes: {{stackCubes}}\n      </ion-item>\n    </ion-item-group>\n\n    <ion-item-group>\n      <ion-item-divider color="dark">Robot</ion-item-divider>\n      <ion-item [color]="driveTrainType == \'Mecanum\' ? \'danger\' : \'success\'">\n        Drive Train: {{driveTrainType}}\n      </ion-item>\n      <ion-item [color]="switch == \'Yes\' ? \'success\' : \'danger\'">\n        Switch: {{switch}}\n      </ion-item>\n      <ion-item [color]="scale == \'Yes\' ? \'success\' : \'danger\'">\n        Scale: {{scale}}\n      </ion-item>\n      <ion-item [color]="climb == \'Yes\' ? \'success\' : \'danger\'">\n        Climb: {{climb}}\n      </ion-item>\n      <ion-item [color]="liftOthers == \'Yes\' ? \'success\' : \'danger\'">\n        Lift Other Robots: {{liftOthers}}\n      </ion-item>\n    </ion-item-group>\n\n    <ion-item-group>\n      <ion-item-divider color="dark">Stats</ion-item-divider>\n      <ion-item [color]="wins < 3 ? \'danger\' : \'success\'">\n        Wins: {{wins}}\n      </ion-item>\n      <ion-item [color]="losses < 3 ? \'success\' : \'danger\'">\n        Losses: {{losses}}\n      </ion-item>\n      <ion-item [color]="winLossRatio < 1 ? \'success\' : \'danger\'">\n	      Win Loss Ratio: {{winLossRatio}}\n      </ion-item>\n      <ion-item [color]="forces < 3 ? \'danger\' : \'success\'">\n        Forces Used: {{forces}}\n      </ion-item>\n      <ion-item [color]="boosts < 3 ? \'danger\' : \'success\'">\n        Boosts Used: {{boosts}}\n      </ion-item>\n      <ion-item [color]="levitates < 3 ? \'danger\' : \'success\'">\n        Levitates Used: {{levitates}}\n      </ion-item>\n      <ion-item [color]="timeScale < 200 ? \'danger\' : \'success\'">\n        Scale Ownership: {{timeScale}} Seconds\n      </ion-item>\n      <ion-item [color]="timeSwitch < 200 ? \'danger\' : \'success\'">\n        Switch Ownership: {{timeSwitch}} Seconds\n      </ion-item>\n    </ion-item-group>\n  </ion-list>\n</ion-content>\n'/*ion-inline-end:"/Users/jacobmealey/Documents/ScoutApp/src/pages/team-data/team-data.html"*/,
+            selector: 'page-team-data',template:/*ion-inline-start:"/Users/jacobmealey/Documents/ScoutApp/src/pages/team-data/team-data.html"*/'<ion-header>\n\n  <ion-navbar>\n    <ion-title>{{name}} {{number}}</ion-title>\n    <ion-buttons start>\n      <button ion-button icon-only (click)="cancel()">\n        Cancel\n      </button>\n    </ion-buttons>\n    <ion-buttons end>\n        <button ion-button icon-only (click)="editTeam()">\n          Edit\n        </button>\n      </ion-buttons>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content>\n  <ion-list>\n\n    <ion-item-group>\n      <ion-item-divider color="dark">General Information</ion-item-divider>\n      <ion-item color="primary">\n        Name: {{name}}\n      </ion-item>\n      <ion-item color="primary">\n        Number: {{number}}\n      </ion-item>\n      <ion-item color="primary">\n        Comments: {{comments}}\n      </ion-item>\n    </ion-item-group>\n\n    <ion-item-group>\n      <ion-item-divider color="dark">Cubes</ion-item-divider>\n      <ion-item [color]="groundCubes == \'Yes\' ? \'success\' : \'danger\'">\n        Ground Cubes: {{groundCubes}}\n      </ion-item>\n      <ion-item [color]="returnCubes == \'Yes\' ? \'success\' : \'danger\'">\n        Exchange Cubes: {{returnCubes}}\n      </ion-item>\n      <ion-item [color]="stackCubes == \'Yes\' ? \'success\' : \'danger\'">\n        Stack Cubes: {{stackCubes}}\n      </ion-item>\n    </ion-item-group>\n\n    <ion-item-group>\n      <ion-item-divider color="dark">Robot</ion-item-divider>\n      <ion-item [color]="driveTrainType == \'Mecanum\' ? \'danger\' : \'success\'">\n        Drive Train: {{driveTrainType}}\n      </ion-item>\n      <ion-item [color]="switch == \'Yes\' ? \'success\' : \'danger\'">\n        Switch: {{switch}}\n      </ion-item>\n      <ion-item [color]="scale == \'Yes\' ? \'success\' : \'danger\'">\n        Scale: {{scale}}\n      </ion-item>\n      <ion-item [color]="climb == \'Yes\' ? \'success\' : \'danger\'">\n        Climb: {{climb}}\n      </ion-item>\n      <ion-item [color]="liftOthers == \'Yes\' ? \'success\' : \'danger\'">\n        Lift Other Robots: {{liftOthers}}\n      </ion-item>\n    </ion-item-group>\n\n    <ion-item-group>\n      <ion-item-divider color="dark">Stats</ion-item-divider>\n      <ion-item [color]="wins < 3 ? \'danger\' : \'success\'">\n        Wins: {{wins}}\n      </ion-item>\n      <ion-item [color]="losses < 3 ? \'success\' : \'danger\'">\n        Losses: {{losses}}\n      </ion-item>\n      <ion-item [color]="winLossRatio >= 1 ? \'success\' : \'danger\'">\n	      Win to Loss Ratio: {{winLossRatio}}\n      </ion-item>\n      <ion-item [color]="forces < 3 ? \'danger\' : \'success\'">\n        Forces Used: {{forces}}\n      </ion-item>\n      <ion-item [color]="boosts < 3 ? \'danger\' : \'success\'">\n        Boosts Used: {{boosts}}\n      </ion-item>\n      <ion-item [color]="levitates < 3 ? \'danger\' : \'success\'">\n        Levitates Used: {{levitates}}\n      </ion-item>\n      <ion-item [color]="timeScale < 200 ? \'danger\' : \'success\'">\n        Scale Ownership: {{timeScale}} Seconds\n      </ion-item>\n      <ion-item [color]="timeSwitch < 200 ? \'danger\' : \'success\'">\n        Switch Ownership: {{timeSwitch}} Seconds\n      </ion-item>\n    </ion-item-group>\n  </ion-list>\n</ion-content>\n'/*ion-inline-end:"/Users/jacobmealey/Documents/ScoutApp/src/pages/team-data/team-data.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* ModalController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* ViewController */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* ModalController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* ModalController */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* ViewController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* ViewController */]) === "function" && _d || Object])
     ], TeamDataPage);
     return TeamDataPage;
+    var _a, _b, _c, _d;
 }());
 
 //# sourceMappingURL=team-data.js.map

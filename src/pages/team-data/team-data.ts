@@ -72,11 +72,6 @@ export class TeamDataPage {
     this.climb = this.navParams.get('climb');
     this.wins = this.navParams.get('wins');
     this.losses = this.navParams.get('losses');
-    if(this.wins == 0 && this.losses == 0){
-	    this.winLossRatio = "No Matches Played yet";
-    }else{
-    	this.winLossRatio = this.wins/this.losses;
-    }
     this.forces = this.navParams.get('forces');
     this.boosts = this.navParams.get('boosts');
     this.levitates = this.navParams.get('levitates');
@@ -84,7 +79,11 @@ export class TeamDataPage {
     this.timeSwitch = this.navParams.get('timeSwitch');
     this.driveTrainType = this.navParams.get('driveTrainType');
     this.liftOthers = this.navParams.get('liftOthers');
-
+    if(this.wins == 0 && this.losses == 0){
+	    this.winLossRatio = "No Matches Played yet";
+    }else{
+	    this.winLossRatio = this.wins/this.losses;
+    }
     this.team = {
       "teamName" : this.name,
       "teamNumber" : this.number,
