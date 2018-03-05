@@ -4,197 +4,6 @@ webpackJsonp([11],{
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AddTeamPage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_http__ = __webpack_require__(29);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_storage__ = __webpack_require__(25);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-
-
-
-
-var AddTeamPage = /** @class */ (function () {
-    function AddTeamPage(navCtrl, navParams, viewCtrl, http, alertCtrl, loadingCtrl, storage) {
-        this.navCtrl = navCtrl;
-        this.navParams = navParams;
-        this.viewCtrl = viewCtrl;
-        this.http = http;
-        this.alertCtrl = alertCtrl;
-        this.loadingCtrl = loadingCtrl;
-        this.storage = storage;
-        this.teams = [];
-    }
-    AddTeamPage.prototype.cancel = function () {
-        this.viewCtrl.dismiss();
-    };
-    AddTeamPage.prototype.selectDriveTrain = function () {
-    };
-    AddTeamPage.prototype.save = function () {
-        var _this = this;
-        if (this.name) {
-        }
-        else {
-            this.nameError = true;
-        }
-        if (this.number) {
-        }
-        else {
-            this.numberError = true;
-        }
-        if (isNaN(this.number) == true) {
-            this.numberNotNumberError = true;
-        }
-        if (this.groundCubes == true) {
-            this.gc = "Yes";
-        }
-        else {
-            this.gc = "No";
-        }
-        if (this.returnCubes == true) {
-            this.rc = "Yes";
-        }
-        else {
-            this.rc = "No";
-        }
-        if (this.stackCubes == true) {
-            this.sc = "Yes";
-        }
-        else {
-            this.sc = "No";
-        }
-        if (this.switch == true) {
-            this.sw = "Yes";
-        }
-        else {
-            this.sw = "No";
-        }
-        if (this.scale == true) {
-            this.sl = "Yes";
-        }
-        else {
-            this.sl = "No";
-        }
-        if (this.climb == true) {
-            this.cl = "Yes";
-        }
-        else {
-            this.cl = "No";
-        }
-        if (this.driveTrainType == "" || this.driveTrainType == null) {
-            this.driveTrainError = true;
-        }
-        if (this.liftOthers == true) {
-            this.lo = "Yes";
-        }
-        else {
-            this.lo = "No";
-        }
-        if (this.nameError == true) {
-            var alert_1 = this.alertCtrl.create({
-                title: 'Team Name!',
-                subTitle: 'You must enter a team name!',
-                buttons: ['OK']
-            });
-            alert_1.present();
-            this.nameError = false;
-        }
-        else if (this.numberError == true) {
-            var alert_2 = this.alertCtrl.create({
-                title: 'Team Number!',
-                subTitle: 'You must enter a team number!',
-                buttons: ['OK']
-            });
-            alert_2.present();
-            this.numberError = false;
-        }
-        else if (this.numberNotNumberError == true) {
-            var alert_3 = this.alertCtrl.create({
-                title: 'Team Number!',
-                subTitle: 'Please enter a valid number!',
-                buttons: ['OK']
-            });
-            alert_3.present();
-            this.numberNotNumberError = false;
-        }
-        else if (this.driveTrainError == true) {
-            var alert_4 = this.alertCtrl.create({
-                title: 'Drive Train!',
-                subTitle: 'Please select a drive train! If you do not know what type it is, select \'Unknown\'.',
-                buttons: ['OK']
-            });
-            alert_4.present();
-            this.driveTrainError = false;
-        }
-        else {
-            this.team = {
-                "teamName": this.name,
-                "teamNumber": this.number,
-                "comments": this.comments,
-                "groundCubes": this.gc,
-                "returnCubes": this.rc,
-                "stackCubes": this.sc,
-                "switch": this.sw,
-                "scale": this.sl,
-                "climb": this.cl,
-                "driveTrainType": this.driveTrainType,
-                "liftOthers": this.lo,
-                "wins": "0",
-                "losses": "0",
-                "forces": "0",
-                "boosts": "0",
-                "levitates": "0",
-                "timeScale": "0",
-                "timeSwitch": "0"
-            };
-            this.storage.get("teams").then(function (val) {
-                if (val == "" || val == null) {
-                    var data = "[" + JSON.stringify(_this.team) + "]";
-                    _this.storage.set("teams", data);
-                }
-                else {
-                    var existing = val.replace("]", ", ");
-                    var newData = existing + JSON.stringify(_this.team) + "]";
-                    _this.storage.set("teams", newData);
-                }
-            });
-            this.viewCtrl.dismiss();
-        }
-    };
-    AddTeamPage = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-add-team',template:/*ion-inline-start:"/Users/matthewgallant/Documents/GitHub/ScoutApp/src/pages/add-team/add-team.html"*/'<ion-header>\n\n  <ion-navbar>\n    <ion-title>Add Team</ion-title>\n    <ion-buttons start>\n      <button ion-button icon-only (click)="cancel()">\n        Cancel\n      </button>\n    </ion-buttons>\n    <ion-buttons end>\n      <button ion-button icon-only type="submit" form="teamForm">\n        Save\n      </button>\n    </ion-buttons>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content>\n  <ion-list>\n    <form (ngSubmit)="save()" id="teamForm">\n\n      <ion-item-group>\n        <ion-item-divider color="dark">General Information</ion-item-divider>\n        <ion-item>\n          <ion-label fixed>Name:</ion-label>\n          <ion-input type="text" [(ngModel)]="name" [ngModelOptions]="{standalone:true}"></ion-input>\n        </ion-item>\n        <ion-item>\n          <ion-label fixed>Number:</ion-label>\n          <ion-input type="tel" [(ngModel)]="number" [ngModelOptions]="{standalone:true}"></ion-input>\n        </ion-item>\n        <ion-item>\n          <ion-label fixed>Comments:</ion-label>\n          <ion-textarea type="tel" [(ngModel)]="comments" [ngModelOptions]="{standalone:true}"></ion-textarea>\n        </ion-item>\n      </ion-item-group>\n\n      <ion-item-group>\n        <ion-item-divider color="dark">Cubes</ion-item-divider>\n        <ion-item>\n          <ion-label>Collects Ground Cubes</ion-label>\n          <ion-toggle checked="false" [(ngModel)]="groundCubes" [ngModelOptions]="{standalone:true}"></ion-toggle>\n        </ion-item>\n        <ion-item>\n          <ion-label>Collects Cubes from Exchange</ion-label>\n          <ion-toggle checked="false" [(ngModel)]="returnCubes" [ngModelOptions]="{standalone:true}"></ion-toggle>\n        </ion-item>\n        <ion-item>\n          <ion-label>Collects Cubes from Stacks</ion-label>\n          <ion-toggle checked="false" [(ngModel)]="stackCubes" [ngModelOptions]="{standalone:true}"></ion-toggle>\n        </ion-item>\n      </ion-item-group>\n\n      <ion-item-group>\n        <ion-item-divider color="dark">Robot</ion-item-divider>\n        <ion-item>\n          <ion-label>Drive Train Type</ion-label>\n          <ion-select [(ngModel)]="driveTrainType"  [ngModelOptions]="{standalone:true}">\n            <ion-option value="Kit of Parts">Kit of Parts</ion-option>\n            <ion-option value="Mecanum">Mecanum</ion-option>\n            <ion-option value="Omni">Omni</ion-option>\n            <ion-option value="Treads">Treads</ion-option>\n            <ion-option value="West Coast">West Coast</ion-option>\n            <ion-option value="Swerve">Swerve</ion-option>\n            <ion-option value="Hybrid">Hybrid</ion-option>\n            <ion-option value="Butterfly">Butterfly</ion-option>\n            <ion-option value="Kiwi">Kiwi</ion-option>\n            <ion-option value="Custom">Custom</ion-option>\n            <ion-option value="Unknown">Unknown</ion-option>\n          </ion-select>\n        </ion-item>\n        <ion-item>\n          <ion-label>Switch</ion-label>\n          <ion-toggle checked="false" [(ngModel)]="switch" [ngModelOptions]="{standalone:true}"></ion-toggle>\n        </ion-item>\n        <ion-item>\n          <ion-label>Scale</ion-label>\n          <ion-toggle checked="false" [(ngModel)]="scale" [ngModelOptions]="{standalone:true}"></ion-toggle>\n        </ion-item>\n        <ion-item>\n          <ion-label>Climb</ion-label>\n          <ion-toggle checked="false" [(ngModel)]="climb" [ngModelOptions]="{standalone:true}"></ion-toggle>\n        </ion-item>\n        <ion-item>\n          <ion-label>Lift Other Robots</ion-label>\n          <ion-toggle checked="false" [(ngModel)]="liftOthers" [ngModelOptions]="{standalone:true}"></ion-toggle>\n        </ion-item>\n      </ion-item-group>\n    </form>\n  </ion-list>\n</ion-content>\n'/*ion-inline-end:"/Users/matthewgallant/Documents/GitHub/ScoutApp/src/pages/add-team/add-team.html"*/,
-        }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* ViewController */],
-            __WEBPACK_IMPORTED_MODULE_2__angular_http__["b" /* Http */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* LoadingController */],
-            __WEBPACK_IMPORTED_MODULE_3__ionic_storage__["b" /* Storage */]])
-    ], AddTeamPage);
-    return AddTeamPage;
-}());
-
-//# sourceMappingURL=add-team.js.map
-
-/***/ }),
-
-/***/ 107:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AddMatchPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(3);
@@ -395,7 +204,7 @@ var AddMatchPage = /** @class */ (function () {
     };
     AddMatchPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-add-match',template:/*ion-inline-start:"/Users/matthewgallant/Documents/GitHub/ScoutApp/src/pages/add-match/add-match.html"*/'<ion-header>\n\n  <ion-navbar>\n    <ion-title>Add Match</ion-title>\n    <ion-buttons start>\n      <button ion-button icon-only (click)="cancel()">\n        Cancel\n      </button>\n    </ion-buttons>\n    <ion-buttons end>\n      <button ion-button icon-only type="submit" form="teamForm">\n        Save\n      </button>\n    </ion-buttons>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content class="bg-style">\n  <ion-list>\n    <form (ngSubmit)="save()" id="teamForm">\n\n      <ion-item-group>\n          <ion-item-divider color="dark">Team Numbers</ion-item-divider>\n        <ion-item>\n          <ion-label fixed>Team One:</ion-label>\n          <ion-input type="tel" [(ngModel)]="teamOne" [ngModelOptions]="{standalone:true}"></ion-input>\n        </ion-item>\n        <ion-item>\n          <ion-label fixed>Team Two:</ion-label>\n          <ion-input type="tel" [(ngModel)]="teamTwo" [ngModelOptions]="{standalone:true}"></ion-input>\n        </ion-item>\n        <ion-item>\n          <ion-label fixed>Team Three:</ion-label>\n          <ion-input type="tel" [(ngModel)]="teamThree" [ngModelOptions]="{standalone:true}"></ion-input>\n        </ion-item>\n      </ion-item-group>\n\n      <ion-item-group>\n        <ion-item-divider color="dark">Stats</ion-item-divider>\n        <ion-item>\n          <ion-label>Winning Alliance</ion-label>\n          <ion-toggle checked="false" [(ngModel)]="win" [ngModelOptions]="{standalone:true}"></ion-toggle>\n        </ion-item>\n      </ion-item-group>\n    \n      <ion-item-group>\n        <ion-item-divider color="dark">Power Ups</ion-item-divider>\n        <ion-item>\n          <ion-label>Force</ion-label>\n          <ion-toggle checked="false" [(ngModel)]="force" [ngModelOptions]="{standalone:true}"></ion-toggle>\n        </ion-item>\n        <ion-item>\n          <ion-label>Boost</ion-label>\n          <ion-toggle checked="false" [(ngModel)]="boost" [ngModelOptions]="{standalone:true}"></ion-toggle>\n        </ion-item>\n        <ion-item>\n          <ion-label>Levitate</ion-label>\n          <ion-toggle checked="false" [(ngModel)]="levitate" [ngModelOptions]="{standalone:true}"></ion-toggle>\n        </ion-item>\n      </ion-item-group>\n\n      <ion-item-group>\n        <ion-item-divider color="dark">Control Time</ion-item-divider>\n        <ion-item>\n          <ion-label fixed>Scale:</ion-label>\n          <ion-input type="tel" [(ngModel)]="scaleTime" [ngModelOptions]="{standalone:true}"></ion-input>\n        </ion-item>\n        <ion-item>\n          <ion-label fixed>Switch:</ion-label>\n          <ion-input type="tel" [(ngModel)]="switchTime" [ngModelOptions]="{standalone:true}"></ion-input>\n        </ion-item>\n      </ion-item-group>\n      \n    </form>\n  </ion-list>\n</ion-content>'/*ion-inline-end:"/Users/matthewgallant/Documents/GitHub/ScoutApp/src/pages/add-match/add-match.html"*/,
+            selector: 'page-add-match',template:/*ion-inline-start:"/Users/jacobmealey/Documents/ScoutApp/src/pages/add-match/add-match.html"*/'<ion-header>\n\n  <ion-navbar>\n    <ion-title>Add Match</ion-title>\n    <ion-buttons start>\n      <button ion-button icon-only (click)="cancel()">\n        Cancel\n      </button>\n    </ion-buttons>\n    <ion-buttons end>\n      <button ion-button icon-only type="submit" form="teamForm">\n        Save\n      </button>\n    </ion-buttons>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content class="bg-style">\n  <ion-list>\n    <form (ngSubmit)="save()" id="teamForm">\n\n      <ion-item-group>\n          <ion-item-divider color="dark">Team Numbers</ion-item-divider>\n        <ion-item>\n          <ion-label fixed>Team One:</ion-label>\n          <ion-input type="tel" [(ngModel)]="teamOne" [ngModelOptions]="{standalone:true}"></ion-input>\n        </ion-item>\n        <ion-item>\n          <ion-label fixed>Team Two:</ion-label>\n          <ion-input type="tel" [(ngModel)]="teamTwo" [ngModelOptions]="{standalone:true}"></ion-input>\n        </ion-item>\n        <ion-item>\n          <ion-label fixed>Team Three:</ion-label>\n          <ion-input type="tel" [(ngModel)]="teamThree" [ngModelOptions]="{standalone:true}"></ion-input>\n        </ion-item>\n      </ion-item-group>\n\n      <ion-item-group>\n        <ion-item-divider color="dark">Stats</ion-item-divider>\n        <ion-item>\n          <ion-label>Winning Alliance</ion-label>\n          <ion-toggle checked="false" [(ngModel)]="win" [ngModelOptions]="{standalone:true}"></ion-toggle>\n        </ion-item>\n      </ion-item-group>\n    \n      <ion-item-group>\n        <ion-item-divider color="dark">Power Ups</ion-item-divider>\n        <ion-item>\n          <ion-label>Force</ion-label>\n          <ion-toggle checked="false" [(ngModel)]="force" [ngModelOptions]="{standalone:true}"></ion-toggle>\n        </ion-item>\n        <ion-item>\n          <ion-label>Boost</ion-label>\n          <ion-toggle checked="false" [(ngModel)]="boost" [ngModelOptions]="{standalone:true}"></ion-toggle>\n        </ion-item>\n        <ion-item>\n          <ion-label>Levitate</ion-label>\n          <ion-toggle checked="false" [(ngModel)]="levitate" [ngModelOptions]="{standalone:true}"></ion-toggle>\n        </ion-item>\n      </ion-item-group>\n\n      <ion-item-group>\n        <ion-item-divider color="dark">Control Time</ion-item-divider>\n        <ion-item>\n          <ion-label fixed>Scale:</ion-label>\n          <ion-input type="tel" [(ngModel)]="scaleTime" [ngModelOptions]="{standalone:true}"></ion-input>\n        </ion-item>\n        <ion-item>\n          <ion-label fixed>Switch:</ion-label>\n          <ion-input type="tel" [(ngModel)]="switchTime" [ngModelOptions]="{standalone:true}"></ion-input>\n        </ion-item>\n      </ion-item-group>\n      \n    </form>\n  </ion-list>\n</ion-content>'/*ion-inline-end:"/Users/jacobmealey/Documents/ScoutApp/src/pages/add-match/add-match.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */],
@@ -409,6 +218,197 @@ var AddMatchPage = /** @class */ (function () {
 }());
 
 //# sourceMappingURL=add-match.js.map
+
+/***/ }),
+
+/***/ 107:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AddTeamPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_http__ = __webpack_require__(29);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_storage__ = __webpack_require__(25);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+
+
+var AddTeamPage = /** @class */ (function () {
+    function AddTeamPage(navCtrl, navParams, viewCtrl, http, alertCtrl, loadingCtrl, storage) {
+        this.navCtrl = navCtrl;
+        this.navParams = navParams;
+        this.viewCtrl = viewCtrl;
+        this.http = http;
+        this.alertCtrl = alertCtrl;
+        this.loadingCtrl = loadingCtrl;
+        this.storage = storage;
+        this.teams = [];
+    }
+    AddTeamPage.prototype.cancel = function () {
+        this.viewCtrl.dismiss();
+    };
+    AddTeamPage.prototype.selectDriveTrain = function () {
+    };
+    AddTeamPage.prototype.save = function () {
+        var _this = this;
+        if (this.name) {
+        }
+        else {
+            this.nameError = true;
+        }
+        if (this.number) {
+        }
+        else {
+            this.numberError = true;
+        }
+        if (isNaN(this.number) == true) {
+            this.numberNotNumberError = true;
+        }
+        if (this.groundCubes == true) {
+            this.gc = "Yes";
+        }
+        else {
+            this.gc = "No";
+        }
+        if (this.returnCubes == true) {
+            this.rc = "Yes";
+        }
+        else {
+            this.rc = "No";
+        }
+        if (this.stackCubes == true) {
+            this.sc = "Yes";
+        }
+        else {
+            this.sc = "No";
+        }
+        if (this.switch == true) {
+            this.sw = "Yes";
+        }
+        else {
+            this.sw = "No";
+        }
+        if (this.scale == true) {
+            this.sl = "Yes";
+        }
+        else {
+            this.sl = "No";
+        }
+        if (this.climb == true) {
+            this.cl = "Yes";
+        }
+        else {
+            this.cl = "No";
+        }
+        if (this.driveTrainType == "" || this.driveTrainType == null) {
+            this.driveTrainError = true;
+        }
+        if (this.liftOthers == true) {
+            this.lo = "Yes";
+        }
+        else {
+            this.lo = "No";
+        }
+        if (this.nameError == true) {
+            var alert_1 = this.alertCtrl.create({
+                title: 'Team Name!',
+                subTitle: 'You must enter a team name!',
+                buttons: ['OK']
+            });
+            alert_1.present();
+            this.nameError = false;
+        }
+        else if (this.numberError == true) {
+            var alert_2 = this.alertCtrl.create({
+                title: 'Team Number!',
+                subTitle: 'You must enter a team number!',
+                buttons: ['OK']
+            });
+            alert_2.present();
+            this.numberError = false;
+        }
+        else if (this.numberNotNumberError == true) {
+            var alert_3 = this.alertCtrl.create({
+                title: 'Team Number!',
+                subTitle: 'Please enter a valid number!',
+                buttons: ['OK']
+            });
+            alert_3.present();
+            this.numberNotNumberError = false;
+        }
+        else if (this.driveTrainError == true) {
+            var alert_4 = this.alertCtrl.create({
+                title: 'Drive Train!',
+                subTitle: 'Please select a drive train! If you do not know what type it is, select \'Unknown\'.',
+                buttons: ['OK']
+            });
+            alert_4.present();
+            this.driveTrainError = false;
+        }
+        else {
+            this.team = {
+                "teamName": this.name,
+                "teamNumber": this.number,
+                "comments": this.comments,
+                "groundCubes": this.gc,
+                "returnCubes": this.rc,
+                "stackCubes": this.sc,
+                "switch": this.sw,
+                "scale": this.sl,
+                "climb": this.cl,
+                "driveTrainType": this.driveTrainType,
+                "liftOthers": this.lo,
+                "wins": "0",
+                "losses": "0",
+                "forces": "0",
+                "boosts": "0",
+                "levitates": "0",
+                "timeScale": "0",
+                "timeSwitch": "0"
+            };
+            this.storage.get("teams").then(function (val) {
+                if (val == "" || val == null) {
+                    var data = "[" + JSON.stringify(_this.team) + "]";
+                    _this.storage.set("teams", data);
+                }
+                else {
+                    var existing = val.replace("]", ", ");
+                    var newData = existing + JSON.stringify(_this.team) + "]";
+                    _this.storage.set("teams", newData);
+                }
+            });
+            this.viewCtrl.dismiss();
+        }
+    };
+    AddTeamPage = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
+            selector: 'page-add-team',template:/*ion-inline-start:"/Users/jacobmealey/Documents/ScoutApp/src/pages/add-team/add-team.html"*/'<ion-header>\n\n  <ion-navbar>\n    <ion-title>Add Team</ion-title>\n    <ion-buttons start>\n      <button ion-button icon-only (click)="cancel()">\n        Cancel\n      </button>\n    </ion-buttons>\n    <ion-buttons end>\n      <button ion-button icon-only type="submit" form="teamForm">\n        Save\n      </button>\n    </ion-buttons>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content>\n  <ion-list>\n    <form (ngSubmit)="save()" id="teamForm">\n\n      <ion-item-group>\n        <ion-item-divider color="dark">General Information</ion-item-divider>\n        <ion-item>\n          <ion-label fixed>Name:</ion-label>\n          <ion-input type="text" [(ngModel)]="name" [ngModelOptions]="{standalone:true}"></ion-input>\n        </ion-item>\n        <ion-item>\n          <ion-label fixed>Number:</ion-label>\n          <ion-input type="tel" [(ngModel)]="number" [ngModelOptions]="{standalone:true}"></ion-input>\n        </ion-item>\n        <ion-item>\n          <ion-label fixed>Comments:</ion-label>\n          <ion-textarea type="tel" [(ngModel)]="comments" [ngModelOptions]="{standalone:true}"></ion-textarea>\n        </ion-item>\n      </ion-item-group>\n\n      <ion-item-group>\n        <ion-item-divider color="dark">Cubes</ion-item-divider>\n        <ion-item>\n          <ion-label>Collects Ground Cubes</ion-label>\n          <ion-toggle checked="false" [(ngModel)]="groundCubes" [ngModelOptions]="{standalone:true}"></ion-toggle>\n        </ion-item>\n        <ion-item>\n          <ion-label>Collects Cubes from Exchange</ion-label>\n          <ion-toggle checked="false" [(ngModel)]="returnCubes" [ngModelOptions]="{standalone:true}"></ion-toggle>\n        </ion-item>\n        <ion-item>\n          <ion-label>Collects Cubes from Stacks</ion-label>\n          <ion-toggle checked="false" [(ngModel)]="stackCubes" [ngModelOptions]="{standalone:true}"></ion-toggle>\n        </ion-item>\n      </ion-item-group>\n\n      <ion-item-group>\n        <ion-item-divider color="dark">Robot</ion-item-divider>\n        <ion-item>\n          <ion-label>Drive Train Type</ion-label>\n          <ion-select [(ngModel)]="driveTrainType"  [ngModelOptions]="{standalone:true}">\n            <ion-option value="Kit of Parts">Kit of Parts</ion-option>\n            <ion-option value="Mecanum">Mecanum</ion-option>\n            <ion-option value="Omni">Omni</ion-option>\n            <ion-option value="Treads">Treads</ion-option>\n            <ion-option value="West Coast">West Coast</ion-option>\n            <ion-option value="Swerve">Swerve</ion-option>\n            <ion-option value="Hybrid">Hybrid</ion-option>\n            <ion-option value="Butterfly">Butterfly</ion-option>\n            <ion-option value="Kiwi">Kiwi</ion-option>\n            <ion-option value="Custom">Custom</ion-option>\n            <ion-option value="Unknown">Unknown</ion-option>\n          </ion-select>\n        </ion-item>\n        <ion-item>\n          <ion-label>Switch</ion-label>\n          <ion-toggle checked="false" [(ngModel)]="switch" [ngModelOptions]="{standalone:true}"></ion-toggle>\n        </ion-item>\n        <ion-item>\n          <ion-label>Scale</ion-label>\n          <ion-toggle checked="false" [(ngModel)]="scale" [ngModelOptions]="{standalone:true}"></ion-toggle>\n        </ion-item>\n        <ion-item>\n          <ion-label>Climb</ion-label>\n          <ion-toggle checked="false" [(ngModel)]="climb" [ngModelOptions]="{standalone:true}"></ion-toggle>\n        </ion-item>\n        <ion-item>\n          <ion-label>Lift Other Robots</ion-label>\n          <ion-toggle checked="false" [(ngModel)]="liftOthers" [ngModelOptions]="{standalone:true}"></ion-toggle>\n        </ion-item>\n      </ion-item-group>\n    </form>\n  </ion-list>\n</ion-content>\n'/*ion-inline-end:"/Users/jacobmealey/Documents/ScoutApp/src/pages/add-team/add-team.html"*/,
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* ViewController */],
+            __WEBPACK_IMPORTED_MODULE_2__angular_http__["b" /* Http */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* LoadingController */],
+            __WEBPACK_IMPORTED_MODULE_3__ionic_storage__["b" /* Storage */]])
+    ], AddTeamPage);
+    return AddTeamPage;
+}());
+
+//# sourceMappingURL=add-team.js.map
 
 /***/ }),
 
@@ -448,7 +448,7 @@ var CreditsPage = /** @class */ (function () {
     };
     CreditsPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-credits',template:/*ion-inline-start:"/Users/matthewgallant/Documents/GitHub/ScoutApp/src/pages/credits/credits.html"*/'\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>Scout Credits</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padded>\n  <ion-card>\n    <ion-card-content>\n        <ion-list>\n          <ion-item>\n            Developed by:\n          </ion-item>\n          <button ion-item (click)="launchSite(\'matt\')">\n            Matthew Gallant\n          </button>\n          <button ion-item (click)="launchSite(\'jacob\')">\n            Jacob Mealey\n          </button>\n        </ion-list>\n    </ion-card-content>\n  </ion-card>\n</ion-content>\n'/*ion-inline-end:"/Users/matthewgallant/Documents/GitHub/ScoutApp/src/pages/credits/credits.html"*/,
+            selector: 'page-credits',template:/*ion-inline-start:"/Users/jacobmealey/Documents/ScoutApp/src/pages/credits/credits.html"*/'\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>Scout Credits</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padded>\n  <ion-card>\n    <ion-card-content>\n        <ion-list>\n          <ion-item>\n            Developed by:\n          </ion-item>\n          <button ion-item (click)="launchSite(\'matt\')">\n            Matthew Gallant\n          </button>\n          <button ion-item (click)="launchSite(\'jacob\')">\n            Jacob Mealey\n          </button>\n        </ion-list>\n    </ion-card-content>\n  </ion-card>\n</ion-content>\n'/*ion-inline-end:"/Users/jacobmealey/Documents/ScoutApp/src/pages/credits/credits.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */],
@@ -676,7 +676,7 @@ var EditTeamPage = /** @class */ (function () {
     };
     EditTeamPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-edit-team',template:/*ion-inline-start:"/Users/matthewgallant/Documents/GitHub/ScoutApp/src/pages/edit-team/edit-team.html"*/'<ion-header>\n\n  <ion-navbar>\n    <ion-title>Edit {{name}}</ion-title>\n    <ion-buttons start>\n      <button ion-button icon-only (click)="cancel()">\n        Cancel\n      </button>\n    </ion-buttons>\n    <ion-buttons end>\n      <button ion-button icon-only type="submit" form="editTeamForm">\n        Save\n      </button>\n    </ion-buttons>\n  </ion-navbar>\n\n</ion-header>\n\n<ion-content>\n  <ion-list>\n    <form (ngSubmit)="save()" id="editTeamForm">\n      <ion-item-group>\n        <ion-item-divider color="dark">General Information</ion-item-divider>\n        <ion-item>\n          <ion-label stacked>Team Number:</ion-label>\n          <ion-input type="tel" [(ngModel)]="number" [ngModelOptions]="{standalone:true}"></ion-input>\n        </ion-item>\n        <ion-item>\n          <ion-label stacked>Comments:</ion-label>\n          <ion-textarea type="tel" [(ngModel)]="comments" [ngModelOptions]="{standalone:true}"></ion-textarea>\n        </ion-item>\n      </ion-item-group>\n\n      <ion-item-group>\n        <ion-item-divider color="dark">Cubes</ion-item-divider>\n        <ion-item>\n          <ion-label>Ground Cubes</ion-label>\n          <ion-toggle checked="false" [(ngModel)]="groundCubes" [ngModelOptions]="{standalone:true}"></ion-toggle>\n        </ion-item>\n        <ion-item>\n          <ion-label>Exchange Cubes</ion-label>\n          <ion-toggle checked="false" [(ngModel)]="returnCubes" [ngModelOptions]="{standalone:true}"></ion-toggle>\n        </ion-item>\n        <ion-item>\n          <ion-label>Stack Cubes</ion-label>\n          <ion-toggle checked="false" [(ngModel)]="stackCubes" [ngModelOptions]="{standalone:true}"></ion-toggle>\n        </ion-item>\n      </ion-item-group>\n\n      <ion-item-group>\n        <ion-item-divider color="dark">Robot</ion-item-divider>\n        <ion-item>\n          <ion-label>Drive Train Type</ion-label>\n          <ion-select [(ngModel)]="driveTrainType"  [ngModelOptions]="{standalone:true}">\n            <ion-option value="Kit of Parts">Kit of Parts</ion-option>\n            <ion-option value="Mecanum">Mecanum</ion-option>\n            <ion-option value="Omni">Omni</ion-option>\n            <ion-option value="Treads">Treads</ion-option>\n            <ion-option value="West Coast">West Coast</ion-option>\n            <ion-option value="Swerve">Swerve</ion-option>\n            <ion-option value="Hybrid">Hybrid</ion-option>\n            <ion-option value="Butterfly">Butterfly</ion-option>\n            <ion-option value="Kiwi">Kiwi</ion-option>\n            <ion-option value="Custom">Custom</ion-option>\n            <ion-option value="Unknown">Unknown</ion-option>\n          </ion-select>\n        </ion-item>\n        <ion-item>\n          <ion-label>Switch</ion-label>\n          <ion-toggle checked="false" [(ngModel)]="switch" [ngModelOptions]="{standalone:true}"></ion-toggle>\n        </ion-item>\n        <ion-item>\n          <ion-label>Scale</ion-label>\n          <ion-toggle checked="false" [(ngModel)]="scale" [ngModelOptions]="{standalone:true}"></ion-toggle>\n        </ion-item>\n        <ion-item>\n          <ion-label>Climb</ion-label>\n          <ion-toggle checked="false" [(ngModel)]="climb" [ngModelOptions]="{standalone:true}"></ion-toggle>\n        </ion-item>\n        <ion-item>\n          <ion-label>Lift Other Robots</ion-label>\n          <ion-toggle checked="false" [(ngModel)]="liftOthers" [ngModelOptions]="{standalone:true}"></ion-toggle>\n        </ion-item>\n      </ion-item-group>\n      \n    </form>\n  </ion-list>\n</ion-content>\n'/*ion-inline-end:"/Users/matthewgallant/Documents/GitHub/ScoutApp/src/pages/edit-team/edit-team.html"*/,
+            selector: 'page-edit-team',template:/*ion-inline-start:"/Users/jacobmealey/Documents/ScoutApp/src/pages/edit-team/edit-team.html"*/'<ion-header>\n\n  <ion-navbar>\n    <ion-title>Edit {{name}}</ion-title>\n    <ion-buttons start>\n      <button ion-button icon-only (click)="cancel()">\n        Cancel\n      </button>\n    </ion-buttons>\n    <ion-buttons end>\n      <button ion-button icon-only type="submit" form="editTeamForm">\n        Save\n      </button>\n    </ion-buttons>\n  </ion-navbar>\n\n</ion-header>\n\n<ion-content>\n  <ion-list>\n    <form (ngSubmit)="save()" id="editTeamForm">\n      <ion-item-group>\n        <ion-item-divider color="dark">General Information</ion-item-divider>\n        <ion-item>\n          <ion-label stacked>Team Number:</ion-label>\n          <ion-input type="tel" [(ngModel)]="number" [ngModelOptions]="{standalone:true}"></ion-input>\n        </ion-item>\n        <ion-item>\n          <ion-label stacked>Comments:</ion-label>\n          <ion-textarea type="tel" [(ngModel)]="comments" [ngModelOptions]="{standalone:true}"></ion-textarea>\n        </ion-item>\n      </ion-item-group>\n\n      <ion-item-group>\n        <ion-item-divider color="dark">Cubes</ion-item-divider>\n        <ion-item>\n          <ion-label>Ground Cubes</ion-label>\n          <ion-toggle checked="false" [(ngModel)]="groundCubes" [ngModelOptions]="{standalone:true}"></ion-toggle>\n        </ion-item>\n        <ion-item>\n          <ion-label>Exchange Cubes</ion-label>\n          <ion-toggle checked="false" [(ngModel)]="returnCubes" [ngModelOptions]="{standalone:true}"></ion-toggle>\n        </ion-item>\n        <ion-item>\n          <ion-label>Stack Cubes</ion-label>\n          <ion-toggle checked="false" [(ngModel)]="stackCubes" [ngModelOptions]="{standalone:true}"></ion-toggle>\n        </ion-item>\n      </ion-item-group>\n\n      <ion-item-group>\n        <ion-item-divider color="dark">Robot</ion-item-divider>\n        <ion-item>\n          <ion-label>Drive Train Type</ion-label>\n          <ion-select [(ngModel)]="driveTrainType"  [ngModelOptions]="{standalone:true}">\n            <ion-option value="Kit of Parts">Kit of Parts</ion-option>\n            <ion-option value="Mecanum">Mecanum</ion-option>\n            <ion-option value="Omni">Omni</ion-option>\n            <ion-option value="Treads">Treads</ion-option>\n            <ion-option value="West Coast">West Coast</ion-option>\n            <ion-option value="Swerve">Swerve</ion-option>\n            <ion-option value="Hybrid">Hybrid</ion-option>\n            <ion-option value="Butterfly">Butterfly</ion-option>\n            <ion-option value="Kiwi">Kiwi</ion-option>\n            <ion-option value="Custom">Custom</ion-option>\n            <ion-option value="Unknown">Unknown</ion-option>\n          </ion-select>\n        </ion-item>\n        <ion-item>\n          <ion-label>Switch</ion-label>\n          <ion-toggle checked="false" [(ngModel)]="switch" [ngModelOptions]="{standalone:true}"></ion-toggle>\n        </ion-item>\n        <ion-item>\n          <ion-label>Scale</ion-label>\n          <ion-toggle checked="false" [(ngModel)]="scale" [ngModelOptions]="{standalone:true}"></ion-toggle>\n        </ion-item>\n        <ion-item>\n          <ion-label>Climb</ion-label>\n          <ion-toggle checked="false" [(ngModel)]="climb" [ngModelOptions]="{standalone:true}"></ion-toggle>\n        </ion-item>\n        <ion-item>\n          <ion-label>Lift Other Robots</ion-label>\n          <ion-toggle checked="false" [(ngModel)]="liftOthers" [ngModelOptions]="{standalone:true}"></ion-toggle>\n        </ion-item>\n      </ion-item-group>\n      \n    </form>\n  </ion-list>\n</ion-content>\n'/*ion-inline-end:"/Users/jacobmealey/Documents/ScoutApp/src/pages/edit-team/edit-team.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */],
@@ -701,10 +701,10 @@ var EditTeamPage = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_teams_teams__ = __webpack_require__(167);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__team_data_team_data__ = __webpack_require__(53);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__add_team_add_team__ = __webpack_require__(106);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__add_match_add_match__ = __webpack_require__(107);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__initial_tutorial_initial_tutorial__ = __webpack_require__(52);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__team_data_team_data__ = __webpack_require__(52);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__add_team_add_team__ = __webpack_require__(107);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__add_match_add_match__ = __webpack_require__(106);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__initial_tutorial_initial_tutorial__ = __webpack_require__(53);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__signin_signin__ = __webpack_require__(54);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__ionic_storage__ = __webpack_require__(25);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__angular_http__ = __webpack_require__(29);
@@ -989,7 +989,7 @@ var HomePage = /** @class */ (function () {
     };
     HomePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-teams',template:/*ion-inline-start:"/Users/matthewgallant/Documents/GitHub/ScoutApp/src/pages/home/home.html"*/'<ion-header>\n\n  <ion-navbar>\n    <ion-title>Blue Crew Scout</ion-title>\n    <ion-buttons end>\n      <button ion-button icon-only (click)="addTeam()">\n        <ion-icon name="add-circle"></ion-icon>\n      </button>\n    </ion-buttons>\n    <ion-buttons start>\n      <button ion-button icon-only (click)="uploadData()">\n        <ion-icon name="cloud-upload"></ion-icon>\n      </button>\n    </ion-buttons>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content>\n    <ion-refresher (ionRefresh)="doRefresh($event)">\n      <ion-refresher-content></ion-refresher-content>\n    </ion-refresher>\n    <ion-list>\n      <button ion-item *ngFor="let item of teams" (click)="itemSelected(item)">\n        {{item.teamName}}\n      </button>\n    </ion-list>\n</ion-content>\n'/*ion-inline-end:"/Users/matthewgallant/Documents/GitHub/ScoutApp/src/pages/home/home.html"*/,
+            selector: 'page-teams',template:/*ion-inline-start:"/Users/jacobmealey/Documents/ScoutApp/src/pages/home/home.html"*/'<ion-header>\n\n  <ion-navbar>\n    <ion-title>Blue Crew Scout</ion-title>\n    <ion-buttons end>\n      <button ion-button icon-only (click)="addTeam()">\n        <ion-icon name="add-circle"></ion-icon>\n      </button>\n    </ion-buttons>\n    <ion-buttons start>\n      <button ion-button icon-only (click)="uploadData()">\n        <ion-icon name="cloud-upload"></ion-icon>\n      </button>\n    </ion-buttons>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content>\n    <ion-refresher (ionRefresh)="doRefresh($event)">\n      <ion-refresher-content></ion-refresher-content>\n    </ion-refresher>\n    <ion-list>\n      <button ion-item *ngFor="let item of teams" (click)="itemSelected(item)">\n        {{item.teamName}}\n      </button>\n    </ion-list>\n</ion-content>\n'/*ion-inline-end:"/Users/jacobmealey/Documents/ScoutApp/src/pages/home/home.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */],
@@ -1043,7 +1043,7 @@ var PredictionsTabPage = /** @class */ (function () {
     };
     PredictionsTabPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-predictions-tab',template:/*ion-inline-start:"/Users/matthewgallant/Documents/GitHub/ScoutApp/src/pages/predictions-tab/predictions-tab.html"*/'<ion-header>\n\n  <ion-navbar>\n    <ion-title>Predictions</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content>\n  <ion-card>\n    <ion-card-content>\n      Predictions Allows You to Get an Estimate of Which Teams May be Good Alliance Partners. Predictions is in Beta and Should not be Solely Used. Use Predictions With Your Own Discretion.\n    </ion-card-content>\n    <ion-item>\n      <button ion-button block icon-left large (click)="getPredictions()">\n        <ion-icon name="podium"></ion-icon>\n        Get Predictions\n      </button>\n    </ion-item>\n  </ion-card>\n</ion-content>\n'/*ion-inline-end:"/Users/matthewgallant/Documents/GitHub/ScoutApp/src/pages/predictions-tab/predictions-tab.html"*/,
+            selector: 'page-predictions-tab',template:/*ion-inline-start:"/Users/jacobmealey/Documents/ScoutApp/src/pages/predictions-tab/predictions-tab.html"*/'<ion-header>\n\n  <ion-navbar>\n    <ion-title>Predictions</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content>\n  <ion-card>\n    <ion-card-content>\n      Predictions Allows You to Get an Estimate of Which Teams May be Good Alliance Partners. Predictions is in Beta and Should not be Solely Used. Use Predictions With Your Own Discretion.\n    </ion-card-content>\n    <ion-item>\n      <button ion-button block icon-left large (click)="getPredictions()">\n        <ion-icon name="podium"></ion-icon>\n        Get Predictions\n      </button>\n    </ion-item>\n  </ion-card>\n</ion-content>\n'/*ion-inline-end:"/Users/jacobmealey/Documents/ScoutApp/src/pages/predictions-tab/predictions-tab.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */],
@@ -1064,7 +1064,7 @@ var PredictionsTabPage = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_storage__ = __webpack_require__(25);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__team_data_team_data__ = __webpack_require__(53);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__team_data_team_data__ = __webpack_require__(52);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1169,7 +1169,9 @@ var PredictionsPage = /** @class */ (function () {
                 var levitates = parseInt(team['levitates']) * _this.levitates;
                 var timeScale = parseInt(team['timeScale']) * _this.timeScale;
                 var timeSwitch = parseInt(team['timeSwitch']) * _this.timeSwitch;
-                var finalScore = groundCubes + exchangeCubes + stackCubes + driveTrain + scale + climb + liftOthers + switchs + wins + losses + forces + boosts + levitates + timeScale + timeSwitch;
+                var finalScore = groundCubes + exchangeCubes + stackCubes + driveTrain +
+                    scale + climb + liftOthers + switchs + wins + losses + forces +
+                    boosts + levitates + timeScale + timeSwitch;
                 var thisTeam = {
                     "score": (finalScore / 100).toFixed(4),
                     "teamName": team['teamName']
@@ -1196,7 +1198,7 @@ var PredictionsPage = /** @class */ (function () {
     };
     PredictionsPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-predictions',template:/*ion-inline-start:"/Users/matthewgallant/Documents/GitHub/ScoutApp/src/pages/predictions/predictions.html"*/'<ion-header>\n\n  <ion-navbar>\n    <ion-title>Predictions Beta</ion-title>\n    <ion-buttons end>\n      <button ion-button icon-only (click)="close()">\n        Close\n      </button>\n    </ion-buttons>\n  </ion-navbar>\n  \n</ion-header>\n\n\n<ion-content>\n  <ion-list>\n    <button ion-item *ngFor="let team of calculatedTeams" (click)="itemSelected(team)">\n      {{team.teamName}}: {{team.score}}&#37;\n    </button>\n  </ion-list>\n</ion-content>\n'/*ion-inline-end:"/Users/matthewgallant/Documents/GitHub/ScoutApp/src/pages/predictions/predictions.html"*/,
+            selector: 'page-predictions',template:/*ion-inline-start:"/Users/jacobmealey/Documents/ScoutApp/src/pages/predictions/predictions.html"*/'<ion-header>\n\n  <ion-navbar>\n    <ion-title>Predictions Beta</ion-title>\n    <ion-buttons end>\n      <button ion-button icon-only (click)="close()">\n        Close\n      </button>\n    </ion-buttons>\n  </ion-navbar>\n  \n</ion-header>\n\n\n<ion-content>\n  <ion-list>\n    <button ion-item *ngFor="let team of calculatedTeams" (click)="itemSelected(team)">\n      {{team.teamName}}: {{team.score}}&#37;\n    </button>\n  </ion-list>\n</ion-content>\n'/*ion-inline-end:"/Users/jacobmealey/Documents/ScoutApp/src/pages/predictions/predictions.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */],
@@ -1221,7 +1223,7 @@ var PredictionsPage = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_storage__ = __webpack_require__(25);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__about_about__ = __webpack_require__(168);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__signin_signin__ = __webpack_require__(54);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__initial_tutorial_initial_tutorial__ = __webpack_require__(52);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__initial_tutorial_initial_tutorial__ = __webpack_require__(53);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1293,7 +1295,7 @@ var SettingsPage = /** @class */ (function () {
     };
     SettingsPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-settings',template:/*ion-inline-start:"/Users/matthewgallant/Documents/GitHub/ScoutApp/src/pages/settings/settings.html"*/'<ion-header>\n\n  <ion-navbar>\n    <ion-title>Scout Settings</ion-title>\n    <ion-buttons end>\n        <button ion-button icon-only (click)="save()">\n          Save\n        </button>\n      </ion-buttons>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content>\n  <ion-list>\n      <ion-item>\n        <ion-label>Team Key:</ion-label>\n        <ion-input type="text" [(ngModel)]="securityKey" [ngModelOptions]="{standalone:true}"></ion-input>\n      </ion-item>\n      <button ion-item (click)="reset()">\n        Reset Scout\n      </button>\n      <button ion-item (click)="about()">\n        About Scout\n      </button>\n  </ion-list>\n</ion-content>\n'/*ion-inline-end:"/Users/matthewgallant/Documents/GitHub/ScoutApp/src/pages/settings/settings.html"*/,
+            selector: 'page-settings',template:/*ion-inline-start:"/Users/jacobmealey/Documents/ScoutApp/src/pages/settings/settings.html"*/'<ion-header>\n\n  <ion-navbar>\n    <ion-title>Scout Settings</ion-title>\n    <ion-buttons end>\n        <button ion-button icon-only (click)="save()">\n          Save\n        </button>\n      </ion-buttons>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content>\n  <ion-list>\n      <ion-item>\n        <ion-label>Team Key:</ion-label>\n        <ion-input type="text" [(ngModel)]="securityKey" [ngModelOptions]="{standalone:true}"></ion-input>\n      </ion-item>\n      <button ion-item (click)="reset()">\n        Reset Scout\n      </button>\n      <button ion-item (click)="about()">\n        About Scout\n      </button>\n  </ion-list>\n</ion-content>\n'/*ion-inline-end:"/Users/jacobmealey/Documents/ScoutApp/src/pages/settings/settings.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */],
@@ -1331,11 +1333,11 @@ webpackEmptyAsyncContext.id = 122;
 
 var map = {
 	"../pages/add-match/add-match.module": [
-		290,
+		289,
 		10
 	],
 	"../pages/add-team/add-team.module": [
-		289,
+		290,
 		9
 	],
 	"../pages/credits/credits.module": [
@@ -1347,11 +1349,11 @@ var map = {
 		7
 	],
 	"../pages/home/home.module": [
-		294,
+		293,
 		6
 	],
 	"../pages/initial-tutorial/initial-tutorial.module": [
-		293,
+		294,
 		5
 	],
 	"../pages/predictions-tab/predictions-tab.module": [
@@ -1359,15 +1361,15 @@ var map = {
 		4
 	],
 	"../pages/predictions/predictions.module": [
-		297,
+		296,
 		3
 	],
 	"../pages/settings/settings.module": [
-		298,
+		297,
 		2
 	],
 	"../pages/signin/signin.module": [
-		296,
+		298,
 		1
 	],
 	"../pages/team-data/team-data.module": [
@@ -1460,7 +1462,7 @@ var AboutPage = /** @class */ (function () {
     };
     AboutPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-about',template:/*ion-inline-start:"/Users/matthewgallant/Documents/GitHub/ScoutApp/src/pages/about/about.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title>\n      About\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padded>\n    <ion-card>\n        <img src="assets/imgs/crew.png"/>\n        <ion-card-content>\n            <ion-list>\n              <ion-item>\n                Blue Crew Scout\n              </ion-item>\n              <ion-item>\n                Version 1.0\n              </ion-item>\n              <ion-item>\n                2018 FIRST Power Up\n              </ion-item>\n              <ion-item>\n                &copy; 2018 Blue Crew Robotics\n              </ion-item>\n              <button ion-item (click)="credits()">\n                Show Credits\n              </button>\n            </ion-list>\n        </ion-card-content>\n      </ion-card>\n</ion-content>\n'/*ion-inline-end:"/Users/matthewgallant/Documents/GitHub/ScoutApp/src/pages/about/about.html"*/
+            selector: 'page-about',template:/*ion-inline-start:"/Users/jacobmealey/Documents/ScoutApp/src/pages/about/about.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title>\n      About\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padded>\n    <ion-card>\n        <img src="assets/imgs/crew.png"/>\n        <ion-card-content>\n            <ion-list>\n              <ion-item>\n                Blue Crew Scout\n              </ion-item>\n              <ion-item>\n                Version 1.0\n              </ion-item>\n              <ion-item>\n                2018 FIRST Power Up\n              </ion-item>\n              <ion-item>\n                &copy; 2018 Blue Crew Robotics\n              </ion-item>\n              <button ion-item (click)="credits()">\n                Show Credits\n              </button>\n            </ion-list>\n        </ion-card-content>\n      </ion-card>\n</ion-content>\n'/*ion-inline-end:"/Users/jacobmealey/Documents/ScoutApp/src/pages/about/about.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */]])
     ], AboutPage);
@@ -1500,7 +1502,7 @@ var TabsPage = /** @class */ (function () {
         this.predictionsTab = __WEBPACK_IMPORTED_MODULE_3__predictions_tab_predictions_tab__["a" /* PredictionsTabPage */];
     }
     TabsPage = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({template:/*ion-inline-start:"/Users/matthewgallant/Documents/GitHub/ScoutApp/src/pages/tabs/tabs.html"*/'<ion-tabs>\n  <ion-tab [root]="homeTab" tabTitle="Home" tabIcon="home"></ion-tab>\n  <ion-tab [root]="predictionsTab" tabTitle="Predictions" tabIcon="analytics"></ion-tab>\n  <ion-tab [root]="settingsTab" tabTitle="Settings" tabIcon="settings"></ion-tab>\n</ion-tabs>\n'/*ion-inline-end:"/Users/matthewgallant/Documents/GitHub/ScoutApp/src/pages/tabs/tabs.html"*/
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({template:/*ion-inline-start:"/Users/jacobmealey/Documents/ScoutApp/src/pages/tabs/tabs.html"*/'<ion-tabs>\n  <ion-tab [root]="homeTab" tabTitle="Home" tabIcon="home"></ion-tab>\n  <ion-tab [root]="predictionsTab" tabTitle="Predictions" tabIcon="analytics"></ion-tab>\n  <ion-tab [root]="settingsTab" tabTitle="Settings" tabIcon="settings"></ion-tab>\n</ion-tabs>\n'/*ion-inline-end:"/Users/jacobmealey/Documents/ScoutApp/src/pages/tabs/tabs.html"*/
         }),
         __metadata("design:paramtypes", [])
     ], TabsPage);
@@ -1541,12 +1543,12 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__pages_home_home__ = __webpack_require__(110);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__pages_tabs_tabs__ = __webpack_require__(210);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__pages_settings_settings__ = __webpack_require__(113);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__pages_team_data_team_data__ = __webpack_require__(53);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__pages_add_team_add_team__ = __webpack_require__(106);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__pages_team_data_team_data__ = __webpack_require__(52);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__pages_add_team_add_team__ = __webpack_require__(107);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__pages_edit_team_edit_team__ = __webpack_require__(109);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__pages_add_match_add_match__ = __webpack_require__(107);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__pages_add_match_add_match__ = __webpack_require__(106);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__pages_signin_signin__ = __webpack_require__(54);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__pages_initial_tutorial_initial_tutorial__ = __webpack_require__(52);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__pages_initial_tutorial_initial_tutorial__ = __webpack_require__(53);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__pages_credits_credits__ = __webpack_require__(108);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__pages_predictions_tab_predictions_tab__ = __webpack_require__(111);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__pages_predictions_predictions__ = __webpack_require__(112);
@@ -1608,16 +1610,16 @@ var AppModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_2__angular_http__["c" /* HttpModule */],
                 __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["f" /* IonicModule */].forRoot(__WEBPACK_IMPORTED_MODULE_4__app_component__["a" /* MyApp */], {}, {
                     links: [
-                        { loadChildren: '../pages/add-team/add-team.module#AddTeamPageModule', name: 'AddTeamPage', segment: 'add-team', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/add-match/add-match.module#AddMatchPageModule', name: 'AddMatchPage', segment: 'add-match', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/add-team/add-team.module#AddTeamPageModule', name: 'AddTeamPage', segment: 'add-team', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/credits/credits.module#CreditsPageModule', name: 'CreditsPage', segment: 'credits', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/edit-team/edit-team.module#EditTeamPageModule', name: 'EditTeamPage', segment: 'edit-team', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/initial-tutorial/initial-tutorial.module#InitialTutorialPageModule', name: 'InitialTutorialPage', segment: 'initial-tutorial', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/home/home.module#HomePageModule', name: 'HomePage', segment: 'home', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/initial-tutorial/initial-tutorial.module#InitialTutorialPageModule', name: 'InitialTutorialPage', segment: 'initial-tutorial', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/predictions-tab/predictions-tab.module#PredictionsTabPageModule', name: 'PredictionsTabPage', segment: 'predictions-tab', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/signin/signin.module#SigninPageModule', name: 'SigninPage', segment: 'signin', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/predictions/predictions.module#PredictionsPageModule', name: 'PredictionsPage', segment: 'predictions', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/settings/settings.module#SettingsPageModule', name: 'SettingsPage', segment: 'settings', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/signin/signin.module#SigninPageModule', name: 'SigninPage', segment: 'signin', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/team-data/team-data.module#TeamDataPageModule', name: 'TeamDataPage', segment: 'team-data', priority: 'low', defaultHistory: [] }
                     ]
                 }),
@@ -1691,7 +1693,7 @@ var MyApp = /** @class */ (function () {
         });
     }
     MyApp = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({template:/*ion-inline-start:"/Users/matthewgallant/Documents/GitHub/ScoutApp/src/app/app.html"*/'<ion-nav [root]="rootPage"></ion-nav>\n'/*ion-inline-end:"/Users/matthewgallant/Documents/GitHub/ScoutApp/src/app/app.html"*/
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({template:/*ion-inline-start:"/Users/jacobmealey/Documents/ScoutApp/src/app/app.html"*/'<ion-nav [root]="rootPage"></ion-nav>\n'/*ion-inline-end:"/Users/jacobmealey/Documents/ScoutApp/src/app/app.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* Platform */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */]])
     ], MyApp);
@@ -1703,56 +1705,6 @@ var MyApp = /** @class */ (function () {
 /***/ }),
 
 /***/ 52:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return InitialTutorialPage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(3);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-var InitialTutorialPage = /** @class */ (function () {
-    function InitialTutorialPage(viewCtrl) {
-        this.viewCtrl = viewCtrl;
-        this.slides = [
-            {
-                title: "Welcome to Scout!",
-                description: "<b>Scout</b> allows you to easily scout FRC teams, add live match scoring, and more! Gone are the days of paper scouting!",
-                image: "assets/imgs/crew.png",
-            },
-            {
-                title: "How do I use Scout?",
-                description: "Simply add teams and match data by tapping the plus in the righthand corner. When you have an internet connection, tap the cloud icon to upload your data for the whole team to see.",
-                image: "assets/imgs/cloud.png",
-            }
-        ];
-    }
-    InitialTutorialPage.prototype.close = function () {
-        this.viewCtrl.dismiss();
-    };
-    InitialTutorialPage = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-initial-tutorial',template:/*ion-inline-start:"/Users/matthewgallant/Documents/GitHub/ScoutApp/src/pages/initial-tutorial/initial-tutorial.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title>Scout</ion-title>\n  </ion-navbar>\n</ion-header>\n\n\n<ion-content  class="tutorial-page">\n  <ion-slides pager>\n    <ion-slide *ngFor="let slide of slides">\n      <ion-toolbar>\n        <ion-buttons end>\n          <button ion-button color="primary" (click)="close()">Skip</button>\n        </ion-buttons>\n      </ion-toolbar>\n      <img [src]="slide.image" class="slide-image"/>\n      <h2 class="slide-title" [innerHTML]="slide.title"></h2>\n      <p [innerHTML]="slide.description"></p>\n    </ion-slide>\n    <ion-slide>\n      <ion-toolbar>\n      </ion-toolbar>\n      <img src="assets/imgs/crew.png" class="slide-image"/>\n      <h2 class="slide-title">Ready to Scout?</h2>\n      <button ion-button large clear icon-end color="primary" (click)="close()">\n        Continue\n        <ion-icon name="arrow-forward"></ion-icon>\n      </button>\n    </ion-slide>\n  </ion-slides>\n</ion-content>\n'/*ion-inline-end:"/Users/matthewgallant/Documents/GitHub/ScoutApp/src/pages/initial-tutorial/initial-tutorial.html"*/,
-        }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* ViewController */]])
-    ], InitialTutorialPage);
-    return InitialTutorialPage;
-}());
-
-//# sourceMappingURL=initial-tutorial.js.map
-
-/***/ }),
-
-/***/ 53:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1840,7 +1792,7 @@ var TeamDataPage = /** @class */ (function () {
     };
     TeamDataPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-team-data',template:/*ion-inline-start:"/Users/matthewgallant/Documents/GitHub/ScoutApp/src/pages/team-data/team-data.html"*/'<ion-header>\n\n  <ion-navbar>\n    <ion-title>{{name}} {{number}}</ion-title>\n    <ion-buttons start>\n      <button ion-button icon-only (click)="cancel()">\n        Cancel\n      </button>\n    </ion-buttons>\n    <ion-buttons end>\n        <button ion-button icon-only (click)="editTeam()">\n          Edit\n        </button>\n      </ion-buttons>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content>\n  <ion-list>\n\n    <ion-item-group>\n      <ion-item-divider color="dark">General Information</ion-item-divider>\n      <ion-item color="primary">\n        Name: {{name}}\n      </ion-item>\n      <ion-item color="primary">\n        Number: {{number}}\n      </ion-item>\n      <ion-item color="primary">\n        Comments: {{comments}}\n      </ion-item>\n    </ion-item-group>\n\n    <ion-item-group>\n      <ion-item-divider color="dark">Cubes</ion-item-divider>\n      <ion-item [color]="groundCubes == \'Yes\' ? \'success\' : \'danger\'">\n        Ground Cubes: {{groundCubes}}\n      </ion-item>\n      <ion-item [color]="returnCubes == \'Yes\' ? \'success\' : \'danger\'">\n        Exchange Cubes: {{returnCubes}}\n      </ion-item>\n      <ion-item [color]="stackCubes == \'Yes\' ? \'success\' : \'danger\'">\n        Stack Cubes: {{stackCubes}}\n      </ion-item>\n    </ion-item-group>\n\n    <ion-item-group>\n      <ion-item-divider color="dark">Robot</ion-item-divider>\n      <ion-item [color]="driveTrainType == \'Mecanum\' ? \'danger\' : \'success\'">\n        Drive Train: {{driveTrainType}}\n      </ion-item>\n      <ion-item [color]="switch == \'Yes\' ? \'success\' : \'danger\'">\n        Switch: {{switch}}\n      </ion-item>\n      <ion-item [color]="scale == \'Yes\' ? \'success\' : \'danger\'">\n        Scale: {{scale}}\n      </ion-item>\n      <ion-item [color]="climb == \'Yes\' ? \'success\' : \'danger\'">\n        Climb: {{climb}}\n      </ion-item>\n      <ion-item [color]="liftOthers == \'Yes\' ? \'success\' : \'danger\'">\n        Lift Other Robots: {{liftOthers}}\n      </ion-item>\n    </ion-item-group>\n\n    <ion-item-group>\n      <ion-item-divider color="dark">Stats</ion-item-divider>\n      <ion-item [color]="wins < 3 ? \'danger\' : \'success\'">\n        Wins: {{wins}}\n      </ion-item>\n      <ion-item [color]="losses < 3 ? \'success\' : \'danger\'">\n        Losses: {{losses}}\n      </ion-item>\n      <ion-item [color]="forces < 3 ? \'danger\' : \'success\'">\n        Forces Used: {{forces}}\n      </ion-item>\n      <ion-item [color]="boosts < 3 ? \'danger\' : \'success\'">\n        Boosts Used: {{boosts}}\n      </ion-item>\n      <ion-item [color]="levitates < 3 ? \'danger\' : \'success\'">\n        Levitates Used: {{levitates}}\n      </ion-item>\n      <ion-item [color]="timeScale < 200 ? \'danger\' : \'success\'">\n        Scale Ownership: {{timeScale}} Seconds\n      </ion-item>\n      <ion-item [color]="timeSwitch < 200 ? \'danger\' : \'success\'">\n        Switch Ownership: {{timeSwitch}} Seconds\n      </ion-item>\n    </ion-item-group>\n  </ion-list>\n</ion-content>\n'/*ion-inline-end:"/Users/matthewgallant/Documents/GitHub/ScoutApp/src/pages/team-data/team-data.html"*/,
+            selector: 'page-team-data',template:/*ion-inline-start:"/Users/jacobmealey/Documents/ScoutApp/src/pages/team-data/team-data.html"*/'<ion-header>\n\n  <ion-navbar>\n    <ion-title>{{name}} {{number}}</ion-title>\n    <ion-buttons start>\n      <button ion-button icon-only (click)="cancel()">\n        Cancel\n      </button>\n    </ion-buttons>\n    <ion-buttons end>\n        <button ion-button icon-only (click)="editTeam()">\n          Edit\n        </button>\n      </ion-buttons>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content>\n  <ion-list>\n\n    <ion-item-group>\n      <ion-item-divider color="dark">General Information</ion-item-divider>\n      <ion-item color="primary">\n        Name: {{name}}\n      </ion-item>\n      <ion-item color="primary">\n        Number: {{number}}\n      </ion-item>\n      <ion-item color="primary">\n        Comments: {{comments}}\n      </ion-item>\n    </ion-item-group>\n\n    <ion-item-group>\n      <ion-item-divider color="dark">Cubes</ion-item-divider>\n      <ion-item [color]="groundCubes == \'Yes\' ? \'success\' : \'danger\'">\n        Ground Cubes: {{groundCubes}}\n      </ion-item>\n      <ion-item [color]="returnCubes == \'Yes\' ? \'success\' : \'danger\'">\n        Exchange Cubes: {{returnCubes}}\n      </ion-item>\n      <ion-item [color]="stackCubes == \'Yes\' ? \'success\' : \'danger\'">\n        Stack Cubes: {{stackCubes}}\n      </ion-item>\n    </ion-item-group>\n\n    <ion-item-group>\n      <ion-item-divider color="dark">Robot</ion-item-divider>\n      <ion-item [color]="driveTrainType == \'Mecanum\' ? \'danger\' : \'success\'">\n        Drive Train: {{driveTrainType}}\n      </ion-item>\n      <ion-item [color]="switch == \'Yes\' ? \'success\' : \'danger\'">\n        Switch: {{switch}}\n      </ion-item>\n      <ion-item [color]="scale == \'Yes\' ? \'success\' : \'danger\'">\n        Scale: {{scale}}\n      </ion-item>\n      <ion-item [color]="climb == \'Yes\' ? \'success\' : \'danger\'">\n        Climb: {{climb}}\n      </ion-item>\n      <ion-item [color]="liftOthers == \'Yes\' ? \'success\' : \'danger\'">\n        Lift Other Robots: {{liftOthers}}\n      </ion-item>\n    </ion-item-group>\n\n    <ion-item-group>\n      <ion-item-divider color="dark">Stats</ion-item-divider>\n      <ion-item [color]="wins < 3 ? \'danger\' : \'success\'">\n        Wins: {{wins}}\n      </ion-item>\n      <ion-item [color]="losses < 3 ? \'success\' : \'danger\'">\n        Losses: {{losses}}\n      </ion-item>\n      <ion-item [color]="winLossRatio < 1 ? \'success\' : \'danger\'">\n	      Win Loss Ratio: {{winLossRatio}}\n      </ion-item>\n      <ion-item [color]="forces < 3 ? \'danger\' : \'success\'">\n        Forces Used: {{forces}}\n      </ion-item>\n      <ion-item [color]="boosts < 3 ? \'danger\' : \'success\'">\n        Boosts Used: {{boosts}}\n      </ion-item>\n      <ion-item [color]="levitates < 3 ? \'danger\' : \'success\'">\n        Levitates Used: {{levitates}}\n      </ion-item>\n      <ion-item [color]="timeScale < 200 ? \'danger\' : \'success\'">\n        Scale Ownership: {{timeScale}} Seconds\n      </ion-item>\n      <ion-item [color]="timeSwitch < 200 ? \'danger\' : \'success\'">\n        Switch Ownership: {{timeSwitch}} Seconds\n      </ion-item>\n    </ion-item-group>\n  </ion-list>\n</ion-content>\n'/*ion-inline-end:"/Users/jacobmealey/Documents/ScoutApp/src/pages/team-data/team-data.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */],
@@ -1851,6 +1803,56 @@ var TeamDataPage = /** @class */ (function () {
 }());
 
 //# sourceMappingURL=team-data.js.map
+
+/***/ }),
+
+/***/ 53:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return InitialTutorialPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(3);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var InitialTutorialPage = /** @class */ (function () {
+    function InitialTutorialPage(viewCtrl) {
+        this.viewCtrl = viewCtrl;
+        this.slides = [
+            {
+                title: "Welcome to Scout!",
+                description: "<b>Scout</b> allows you to easily scout FRC teams, add live match scoring, and more! Gone are the days of paper scouting!",
+                image: "assets/imgs/crew.png",
+            },
+            {
+                title: "How do I use Scout?",
+                description: "Simply add teams and match data by tapping the plus in the righthand corner. When you have an internet connection, tap the cloud icon to upload your data for the whole team to see.",
+                image: "assets/imgs/cloud.png",
+            }
+        ];
+    }
+    InitialTutorialPage.prototype.close = function () {
+        this.viewCtrl.dismiss();
+    };
+    InitialTutorialPage = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
+            selector: 'page-initial-tutorial',template:/*ion-inline-start:"/Users/jacobmealey/Documents/ScoutApp/src/pages/initial-tutorial/initial-tutorial.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title>Scout</ion-title>\n  </ion-navbar>\n</ion-header>\n\n\n<ion-content  class="tutorial-page">\n  <ion-slides pager>\n    <ion-slide *ngFor="let slide of slides">\n      <ion-toolbar>\n        <ion-buttons end>\n          <button ion-button color="primary" (click)="close()">Skip</button>\n        </ion-buttons>\n      </ion-toolbar>\n      <img [src]="slide.image" class="slide-image"/>\n      <h2 class="slide-title" [innerHTML]="slide.title"></h2>\n      <p [innerHTML]="slide.description"></p>\n    </ion-slide>\n    <ion-slide>\n      <ion-toolbar>\n      </ion-toolbar>\n      <img src="assets/imgs/crew.png" class="slide-image"/>\n      <h2 class="slide-title">Ready to Scout?</h2>\n      <button ion-button large clear icon-end color="primary" (click)="close()">\n        Continue\n        <ion-icon name="arrow-forward"></ion-icon>\n      </button>\n    </ion-slide>\n  </ion-slides>\n</ion-content>\n'/*ion-inline-end:"/Users/jacobmealey/Documents/ScoutApp/src/pages/initial-tutorial/initial-tutorial.html"*/,
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* ViewController */]])
+    ], InitialTutorialPage);
+    return InitialTutorialPage;
+}());
+
+//# sourceMappingURL=initial-tutorial.js.map
 
 /***/ }),
 
@@ -1918,7 +1920,7 @@ var SigninPage = /** @class */ (function () {
     };
     SigninPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-signin',template:/*ion-inline-start:"/Users/matthewgallant/Documents/GitHub/ScoutApp/src/pages/signin/signin.html"*/'<ion-header>\n\n  <ion-navbar>\n    <ion-title>Scout</ion-title>\n    <ion-buttons end>\n        <button ion-button icon-only (click)="signIn()">\n          Sign In\n        </button>\n      </ion-buttons>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padded>\n    <ion-card>\n      <img src="assets/imgs/crew.png"/>\n      <ion-card-content>\n        <ion-card-title>\n          Blue Crew Scout\n          </ion-card-title>\n        <p>\n          Welcome to Blue Crew Scout! Please sign in below with the team key.\n        </p>\n      </ion-card-content>\n    </ion-card>\n    <ion-item>\n      <ion-label color="dark">Team Key: </ion-label>\n      <ion-input type="text" [(ngModel)]="teamKey" [ngModelOptions]="{standalone:true}"></ion-input>\n    </ion-item>\n</ion-content>\n'/*ion-inline-end:"/Users/matthewgallant/Documents/GitHub/ScoutApp/src/pages/signin/signin.html"*/,
+            selector: 'page-signin',template:/*ion-inline-start:"/Users/jacobmealey/Documents/ScoutApp/src/pages/signin/signin.html"*/'<ion-header>\n\n  <ion-navbar>\n    <ion-title>Scout</ion-title>\n    <ion-buttons end>\n        <button ion-button icon-only (click)="signIn()">\n          Sign In\n        </button>\n      </ion-buttons>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padded>\n    <ion-card>\n      <img src="assets/imgs/crew.png"/>\n      <ion-card-content>\n        <ion-card-title>\n          Blue Crew Scout\n          </ion-card-title>\n        <p>\n          Welcome to Blue Crew Scout! Please sign in below with the team key.\n        </p>\n      </ion-card-content>\n    </ion-card>\n    <ion-item>\n      <ion-label color="dark">Team Key: </ion-label>\n      <ion-input type="text" [(ngModel)]="teamKey" [ngModelOptions]="{standalone:true}"></ion-input>\n    </ion-item>\n</ion-content>\n'/*ion-inline-end:"/Users/jacobmealey/Documents/ScoutApp/src/pages/signin/signin.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */],
